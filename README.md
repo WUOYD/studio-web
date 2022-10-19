@@ -4,7 +4,6 @@
 -   Projektarchitektur mit Diagramm
 -   Requirementsanalyse (User Stories, FR, NFR)
 -   Beschreibung Datensatz (Quelle, Format, Inhalt, Sample)
-- 
 ## Projektarchitektur
 
 ```mermaid
