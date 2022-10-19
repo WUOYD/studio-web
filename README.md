@@ -39,4 +39,4 @@ Als User will ich den Weg von meiner IP bis zur aufgerufenen Webseite verfolgen 
 ## Datensatz
 
 Geotargeting → IP-API: [](https://ip-api.com/)[https://ip-api.com/](https://ip-api.com/)
-Infotexte & Bilder → Selber schreiben und illustrieren
+Infotexte & Bilder → Selber schreiben und illustrieren.
