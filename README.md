@@ -1,35 +1,42 @@
-# studio_web
+# ReadMe
 
-This template should help get you started developing with Vue 3 in Vite.
+## Inhalt
+-   Projektarchitektur mit Diagramm
+-   Requirementsanalyse (User Stories, FR, NFR)
+-   Beschreibung Datensatz (Quelle, Format, Inhalt, Sample)
+## Projektarchitektur
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+```mermaid
+graph TD
+A[Webapplication] --> B
+A --> C[Frontend]
+B[Backend] --> D[PHP]
+B --> E[MySQL]
+B --> F[IP-API]
+C --> G[Vue.js]
+C --> H[Mapbox]
 ```
 
-### Compile and Hot-Reload for Development
+## Requirementsanalyse
 
-```sh
-npm run dev
-```
+****User stories****
+Als User will ich mich über die funktionsweise eines Netzwerks informieren um diese im Grundsatz zu verstehen.
+Als User will ich den Weg von meiner IP bis zur aufgerufenen Webseite verfolgen können und diesen verständlich dargestellt haben, um mir so einen Überblick verschaffen zu können.
 
-### Compile and Minify for Production
+****Functional requirements****
+-   User kann beliebige Domain eingeben.
+-   User kann durch Seite navigieren.
+-   User kann durch Informationen scrollen.
+-   User kann durch Karte (Mapbox) navigieren.
+-   User kann Cookies Einstellungen vornehmen.
 
-```sh
-npm run build
-```
+****Non-functional requirements****
+-   Responsiveness
+-   Performance
+-   Supported Browser (Chrome, Firefox, Safari)
+-   Multi-language support (German, English)
 
-### Lint with [ESLint](https://eslint.org/)
+## Datensatz
 
-```sh
-npm run lint
-```
+Geotargeting → IP-API: [](https://ip-api.com/)[https://ip-api.com/](https://ip-api.com/)
+Infotexte & Bilder → Selber schreiben und illustrieren.
