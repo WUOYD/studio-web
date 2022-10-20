@@ -97,8 +97,8 @@ window.onload = function(){
 				ip = xhr.responseText.split("#");
 				var data = await machStuff(/[^/]*$/.exec(ip[ip.length-1])[0]);
 				if( typeof data === 'object' && !Array.isArray(data) && data !== null){
-					document.querySelector('section form').innerHTML += '<div><p>AS: '+data.as+'</p><p>ISP: '+data.isp+'</p><p>Country: '+data.country+'</p><p>City: '+data.city+'</p></div>';
-					marker.push({
+					document.querySelector('main form').innerHTML += '<div><p>AS: '+data.as+'</p><p>ISP: '+data.isp+'</p><p>Country: '+data.country+'</p><p>City: '+data.city+'</p></div>';
+					/*marker.push({
 						type: 'Feature',
 						geometry: {
 							type: 'Point',
@@ -109,8 +109,8 @@ window.onload = function(){
 							description: data.isp
 						}
 					});
-					addMarker(marker);
-					updateClusterMarkers(marker);
+					console.log(marker);
+					addMarker(marker);*/
 				}
 			},
 			data: {
@@ -119,7 +119,7 @@ window.onload = function(){
             	ajax: true
 	        },             
 		}).done(function( data ) {
-			$("body section form").append("all done!</br>");
+			$("main form").innerHTML +="all done!</br>";
 		}); 
 	});
 };

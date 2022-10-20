@@ -11,5 +11,6 @@ app.use(router)
 
 app.mount('#app')
 
-import './mapbox/mapbox.js';
+
+import './globe/globe.js';
 import './trace.js';

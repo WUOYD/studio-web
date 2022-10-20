@@ -5,7 +5,7 @@
 <template>
     <main>
         <TheWelcome />
-            <form id="ip" action="POST">
+        <form id="ip" action="POST">
             <input type="text" placeholder="gib mal IP i">
             <button type="submit">Trace</button>
         </form>
