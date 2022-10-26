@@ -23,19 +23,25 @@ let windowHalfX = window.innerWidth / 2;
 let windowHalfY = window.innerHeight / 2;
 var Globe;
 
-init();
-initGlobe();
-onWindowResize();
-animate();
+export function globe(selector){
+  init(selector);
+  initGlobe();
+  onWindowResize(selector);
+  animate();
+}
 
 // SECTION Initializing core ThreeJS elements
-function init() {
+function init(elem) {
+  var selector = document.querySelector(elem);
   // Initialize renderer
   renderer = new WebGLRenderer({ antialias: true });
-  renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  //renderer.setPixelRatio(window.devicePixelRatio);
+  console.log(window.innerWidth);
+  console.log(selector);
+  console.log(selector.clientWidth);
+  renderer.setSize(selector.clientWidth, selector.clientHeight);
   // renderer.outputEncoding = THREE.sRGBEncoding;
-  document.body.appendChild(renderer.domElement);
+  selector.appendChild(renderer.domElement);
 
   // Initialize scene, light
   scene = new Scene();
@@ -44,7 +50,7 @@ function init() {
 
   // Initialize camera, light
   camera = new PerspectiveCamera();
-  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.aspect = selector.clientWidth / selector.clientHeight;
   camera.updateProjectionMatrix();
 
   var dLight = new DirectionalLight(0xffffff, 0.8);
@@ -92,7 +98,7 @@ function init() {
   controls.minPolarAngle = Math.PI / 3.5;
   controls.maxPolarAngle = Math.PI - Math.PI / 3;
 
-  window.addEventListener("resize", onWindowResize, false);
+  window.addEventListener("resize", onWindowResize(elem), false);
   document.addEventListener("mousemove", onMouseMove);
 }
 
@@ -233,12 +239,13 @@ function onMouseMove(event) {
   // console.log("x: " + mouseX + " y: " + mouseY);
 }
 
-function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
+function onWindowResize(elem) {
+  var selector = document.querySelector(elem);
+  camera.aspect = selector.clientWidth / selector.clientHeight;
   camera.updateProjectionMatrix();
-  windowHalfX = window.innerWidth / 1.5;
-  windowHalfY = window.innerHeight / 1.5;
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  windowHalfX = selector.clientWidth / 1.5;
+  windowHalfY = selector.clientHeight / 1.5;
+  renderer.setSize(selector.clientWidth, selector.clientHeight);
 }
 
 function animate() {

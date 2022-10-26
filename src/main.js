@@ -1,15 +1,16 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
 
 import './assets/main.css'
 
 const app = createApp(App)
 
-app.use(router)
-
 app.mount('#app')
 
 
-import './globe/globe.js';
+import { globe } from './globe/globe.js';
 import './trace.js';
+
+window.onload = function(){
+	globe("#globe");
+}
