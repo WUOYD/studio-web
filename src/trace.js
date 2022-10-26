@@ -1,5 +1,11 @@
-var lastCity = "";
-var marker = [];
+
+window.onload = function(){
+	document.querySelector("#ip").addEventListener("submit", async function(e){
+		e.preventDefault()
+		var ip = getIPValue();
+		traceIP(ip);
+	});
+};
 
 async function postData(url = '', data = {}) {
 	const response = await fetch(url, {
@@ -17,33 +23,52 @@ async function postData(url = '', data = {}) {
 	}  		
 }
 
-async function machStuff(ip){
+async function checkIfIpInDB(){
+	return await postData("http://localhost/stuWeb/server/ajax.php",{
+		action: 'checkIP',
+		ip: ip
+	});
+}
+
+async function getLocation(ip){
+	return await postData('http://ip-api.com/json/'+ip);
+}
+
+function insertLocationInDB(location) {
+	postData("http://localhost/stuWeb/server/ajax.php",{
+		action: 'insertDB',
+		data: location
+	});
+}
+
+var lastCity = "";
+
+function sortOutDuplicateCitys(data){
+	if(data){
+		if(lastCity !== data.city){
+			lastCity = data.city;
+			return data;
+		}
+		lastCity = data.city;
+	}
+	return false;
+}
+
+async function prepareLocation(ip){
 	var data = false;
 	if(ValidateIPaddress(ip)){
-		var respIP = await postData("http://localhost/stuWeb/server/ajax.php",{
-			action: 'checkIP',
-			ip: ip
-		});
-		if(!respIP){
-			var location = await postData('http://ip-api.com/json/'+ip);
+		var ipInDB = await checkIfIpInDB();
+		if(!ipInDB){
+			var location = await getLocation(ip);
 			if(location.status != 'fail'){
-				var insert = await postData("http://localhost/stuWeb/server/ajax.php",{
-					action: 'insertDB',
-					data: location
-				});
+				insertLocationInDB(location);
 				data = location;
 			}
 		} else {
-			data = respIP
+			data = ipInDB;
 		}
-		if(data){
-			if(lastCity !== data.city){
-				lastCity = data.city;
-				return data;
-			}
-			lastCity = data.city;
-		}
-		return false;
+		var cleanLocation = sortOutDuplicateCitys(data);
+		return cleanLocation;
 	}
 }
 
@@ -54,8 +79,7 @@ function ValidateIPaddress(ipaddress) {
 	return (false)  
 }
 
-window.onload = function(){
-
+function ajaxTracertPrefilter(){
 	$.ajaxPrefilter(function( options, _, jqXHR ) {
 		if ( options.onreadystatechange ) {
 			var xhrFactory = options.xhr;
@@ -81,45 +105,42 @@ window.onload = function(){
 			};
 		}
 	});
+}
 
-	document.querySelector("#ip").addEventListener("submit", async function(e){
-		e.preventDefault();
-		var ips = [];
-		var data = [];
-		var respIP = [];
-		var val = document.querySelector("#ip input").value;
+function traceIP(ip){
+	ajaxTracertPrefilter();
+	$.ajax({
+		url: "http://localhost/stuWeb/server/ajax.php",
+		method: "POST",
+		cache: false,
+		onreadystatechange: async function( xhr ) {
+			var cleanIP = cleanUpIP(xhr.responseText);
+			var location = await prepareLocation(cleanIP);
+			appendLocation(location);
+		},
+		data: {
+			action: 'traceIP',
+			ip: ip,
+			ajax: true
+		},             
+	}).done(function( data ) {
+		//TODO
+		document.querySelector("main form").innerHTML +="all done!</br>";
+	}); 
+}
 
-		$.ajax({
-			url: "http://localhost/stuWeb/server/ajax.php",
-			method: "POST",
-			cache: false,
-			onreadystatechange: async function( xhr ) {
-				ip = xhr.responseText.split("#");
-				var data = await machStuff(/[^/]*$/.exec(ip[ip.length-1])[0]);
-				if( typeof data === 'object' && !Array.isArray(data) && data !== null){
-					document.querySelector('main form').innerHTML += '<div><p>AS: '+data.as+'</p><p>ISP: '+data.isp+'</p><p>Country: '+data.country+'</p><p>City: '+data.city+'</p></div>';
-					/*marker.push({
-						type: 'Feature',
-						geometry: {
-							type: 'Point',
-							coordinates: [data.lon, data.lat]
-						},
-						properties: {
-							title: data.city,
-							description: data.isp
-						}
-					});
-					console.log(marker);
-					addMarker(marker);*/
-				}
-			},
-			data: {
-	       	    action: 'traceIP',
-            	ip: val,
-            	ajax: true
-	        },             
-		}).done(function( data ) {
-			$("main form").innerHTML +="all done!</br>";
-		}); 
-	});
-};
+function appendLocation(location){
+	//TODO
+	if( typeof location === 'object' && !Array.isArray(location) && location !== null){
+		document.querySelector('main form').innerHTML += '<div><p>AS: '+location.as+'</p><p>ISP: '+location.isp+'</p><p>Country: '+location.country+'</p><p>City: '+location.city+'</p></div>';
+	}
+}
+
+function cleanUpIP(ip){
+	var traceIP = ip.split("#");
+	return /[^/]*$/.exec(traceIP[traceIP.length-1])[0];
+}
+
+function getIPValue(){
+	return document.querySelector("#ip input").value;
+}
