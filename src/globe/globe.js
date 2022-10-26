@@ -139,8 +139,7 @@ function initGlobe() {
     .polygonCapColor(() => 'rgba(0, 0, 0, 0)')
     .polygonSideColor(() => 'rgba(0, 0, 0, 0)')
     .showAtmosphere(true)
-    //Atmo Color 
-    .atmosphereColor("#3a228a")
+    .atmosphereColor("#ffffff")
     .atmosphereAltitude(0.25)
     .hexPolygonColor((e) => {
       if (
