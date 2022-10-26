@@ -39,8 +39,8 @@ function init() {
 
   // Initialize scene, light
   scene = new Scene();
-  scene.add(new AmbientLight(0xbbbbbb, 0.3));
-  scene.background = new Color(0x040d21);
+  scene.add(new AmbientLight(0xFFFFFF, 0.3));
+  scene.background = new Color(0x000000);
 
   // Initialize camera, light
   camera = new PerspectiveCamera();
@@ -81,11 +81,13 @@ function init() {
   controls.enableDamping = true;
   controls.dynamicDampingFactor = 0.01;
   controls.enablePan = false;
-  controls.minDistance = 200;
-  controls.maxDistance = 500;
+  controls.minDistance = 100;
+  controls.maxDistance = 300;
   controls.rotateSpeed = 0.8;
   controls.zoomSpeed = 1;
-  controls.autoRotate = false;
+  controls.autoRotate = true;
+  controls.autoRotateSpeed = 0.2
+
 
   controls.minPolarAngle = Math.PI / 3.5;
   controls.maxPolarAngle = Math.PI - Math.PI / 3;
@@ -94,7 +96,8 @@ function init() {
   document.addEventListener("mousemove", onMouseMove);
 }
 
-// SECTION Globe
+//
+// Original SECTION Globe
 function initGlobe() {
   // Initialize the Globe
   Globe = new ThreeGlobe({
@@ -103,7 +106,38 @@ function initGlobe() {
   })
     .hexPolygonsData(countries.features)
     .hexPolygonResolution(3)
+    .hexPolygonMargin(0.2)
+    .showAtmosphere(true)
+    //Atmo Color 
+    .atmosphereColor("#00008b")
+    .atmosphereAltitude(0.2)
+    .hexPolygonColor((e) => {
+      if (
+        ["KGZ", "KOR", "THA", "RUS", "UZB", "IDN", "KAZ", "MYS"].includes(
+          e.properties.ISO_A3
+        )
+      ) {
+        return "rgba(255,255,255, 1)";
+      } else return "rgba(255,255,255, 0.7)";
+    });
+//
+
+/*
+// Hex + Outlines SECTION Globe
+function initGlobe() {
+  // Initialize the Globe
+  Globe = new ThreeGlobe({
+    waitForGlobeReady: true,
+    animateIn: true,
+  })
+
+    .hexPolygonsData(countries.features)
+    .hexPolygonResolution(3)
     .hexPolygonMargin(0.7)
+    .polygonsData(countries.features.filter(d => d.properties.ISO_A2 !== 'AQ'))
+    .polygonStrokeColor(() => '#111')
+    .polygonCapColor(() => 'rgba(0, 0, 0, 0)')
+    .polygonSideColor(() => 'rgba(0, 0, 0, 0)')
     .showAtmosphere(true)
     .atmosphereColor("#ffffff")
     .atmosphereAltitude(0.25)
@@ -114,14 +148,36 @@ function initGlobe() {
         )
       ) {
         return "rgba(255,255,255, 1)";
-      } else return "rgba(255,255,255, 0.7)";
+      } else return "rgba(255,255,255, 1)";
     });
+*/
 
+
+
+/*
+// Country Border SECTION Globe
+function initGlobe() {
+  // Initialize the Globe
+  Globe = new ThreeGlobe({
+    waitForGlobeReady: true,
+    animateIn: true,
+  })
+    .polygonsData(countries.features.filter(d => d.properties.ISO_A2 !== 'AQ'))
+    .polygonStrokeColor(() => '#111')
+    .polygonCapColor(() => 'rgba(0, 200, 0, 1.0)')
+    .polygonSideColor(() => 'rgba(255, 255, 255, 0)')
+    
+    .showAtmosphere(true)
+    //Atmo Color 
+    .atmosphereColor("#3a228a")
+    .atmosphereAltitude(0.25)
+  */
   // NOTE Arc animations are followed after the globe enters the scene
   setTimeout(() => {
     Globe.arcsData(travelHistory.flights)
       .arcColor((e) => {
-        return e.status ? "#9cff00" : "#FF4000";
+        //arc Color
+        return "#FFFFFF";
       })
       .arcAltitude((e) => {
         return e.arcAlt;
@@ -135,7 +191,7 @@ function initGlobe() {
       .arcsTransitionDuration(1000)
       .arcDashInitialGap((e) => e.order * 1)
       .labelsData(airportHistory.airports)
-      .labelColor(() => "#ffcb21")
+      .labelColor(() => "#ffffff")
       .labelDotOrientation((e) => {
         return e.text === "ALA" ? "top" : "right";
       })
@@ -154,8 +210,13 @@ function initGlobe() {
   Globe.rotateY(-Math.PI * (5 / 9));
   Globe.rotateZ(-Math.PI / 6);
   const globeMaterial = Globe.globeMaterial();
+
   globeMaterial.color = new Color(0x3a228a);
   globeMaterial.emissive = new Color(0x220038);
+
+  //globeMaterial.color = new Color(0x505050);
+  //globeMaterial.emissive = new Color(0x505050);
+
   globeMaterial.emissiveIntensity = 0.1;
   globeMaterial.shininess = 0.7;
 
@@ -180,11 +241,13 @@ function onWindowResize() {
 }
 
 function animate() {
+  /*
   camera.position.x +=
     Math.abs(mouseX) <= windowHalfX / 2
       ? (mouseX / 2 - camera.position.x) * 0.005
       : 0;
   camera.position.y += (-mouseY / 2 - camera.position.y) * 0.005;
+  */
   camera.lookAt(scene.position);
   controls.update();
   renderer.render(scene, camera);
