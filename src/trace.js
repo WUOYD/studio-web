@@ -1,11 +1,4 @@
-
-window.onload = function(){
-	document.querySelector("#ip").addEventListener("submit", async function(e){
-		e.preventDefault()
-		var ip = getIPValue();
-		traceIP(ip);
-	});
-};
+import { initGlobe } from './globe/globe.js';
 
 async function postData(url = '', data = {}) {
 	const response = await fetch(url, {
@@ -107,7 +100,7 @@ function ajaxTracertPrefilter(){
 	});
 }
 
-function traceIP(ip){
+export function traceIP(ip){
 	ajaxTracertPrefilter();
 	$.ajax({
 		url: "http://localhost/stuWeb/server/ajax.php",
@@ -117,6 +110,7 @@ function traceIP(ip){
 			var cleanIP = cleanUpIP(xhr.responseText);
 			var location = await prepareLocation(cleanIP);
 			appendLocation(location);
+			initGlobe(); //das gaht ned so, aber so chönsch e funktion usem andere file importiere
 		},
 		data: {
 			action: 'traceIP',
@@ -141,6 +135,6 @@ function cleanUpIP(ip){
 	return /[^/]*$/.exec(traceIP[traceIP.length-1])[0];
 }
 
-function getIPValue(){
+export function getIPValue(){
 	return document.querySelector("#ip input").value;
 }

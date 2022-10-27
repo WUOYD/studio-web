@@ -13,7 +13,7 @@ import {
   SphereGeometry,
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import countries from "./files/globe-data-min.json";
+import countries from "./files/globe-data.json";
 import travelHistory from "./files/my-flights.json";
 import airportHistory from "./files/my-airports.json";
 var renderer, camera, scene, controls;
@@ -30,15 +30,16 @@ export function globe(selector){
   animate();
 }
 
+function getLocation(location){
+
+}
+
 // SECTION Initializing core ThreeJS elements
 function init(elem) {
   var selector = document.querySelector(elem);
   // Initialize renderer
   renderer = new WebGLRenderer({ antialias: true });
   //renderer.setPixelRatio(window.devicePixelRatio);
-  console.log(window.innerWidth);
-  console.log(selector);
-  console.log(selector.clientWidth);
   renderer.setSize(selector.clientWidth, selector.clientHeight);
   // renderer.outputEncoding = THREE.sRGBEncoding;
   selector.appendChild(renderer.domElement);
@@ -104,7 +105,7 @@ function init(elem) {
 
 //
 // Original SECTION Globe
-function initGlobe() {
+export function initGlobe() {
   // Initialize the Globe
   Globe = new ThreeGlobe({
     waitForGlobeReady: true,
