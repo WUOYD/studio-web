@@ -1,7 +1,7 @@
 <template>
-    <section class="ip-section">
+    <section class="ip-section text-left-img">
         <div class="text-wrapper">
-            <h2 class="text-3xl font-bold underline text-blue-600">IP Section</h2>
+            <h2>IP Section</h2>
             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br><br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
         </div>
         <div class="img-wrapper">
@@ -14,25 +14,21 @@
 </template>
 
 <style scoped>
-    section.ip-section {
-        display: flex;
-        flex-direction: row;
+    section .img-wrapper img {
+        width: 50%;
+        object-fit:contain;
     }
 
-    .img-wrapper {
+    section .img-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    section .img-wrapper {
         padding-left: 15px;
     }
 
-    .text-wrapper {
+    section .text-wrapper {
         padding-right: 15px;
-    }
-
-    section > div {
-        width: 50%;
-    }
-
-    .img-wrapper img {
-        width: 50%;
-        object-fit:contain;
     }
 </style>

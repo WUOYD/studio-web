@@ -1,8 +1,10 @@
+@import "./base.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import "./base.css";
+/* General Css */
 
 #app {
     max-width: 1280px;
@@ -12,6 +14,23 @@
     font-weight: normal;
 }
 
+/* Components */
 section:not(:first-of-type) {
-    padding: 100px 0;
+    padding: 60px 0;
+}
+
+section.text-left-img,
+section.text-right-img {
+    display: flex;
+    flex-direction: row;
+}
+
+section h2 {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+section.text-left-img > div,
+section.text-right-img > div {
+    width: 50%;
 }
