@@ -1,5 +1,5 @@
 <template>
-    <section class="routing-section">
+    <section>
         <h2>Routing Section</h2>
     </section>
 </template>

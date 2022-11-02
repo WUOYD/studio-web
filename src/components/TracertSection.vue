@@ -1,15 +1,18 @@
 <template>
-    <section class="tracert-section">
-        <h1>Main Titel</h1>
-        <form id="ip" action="POST">
-            <input type="text" placeholder="gib mal IP i">
-            <button type="submit">Trace</button>
-        </form>
+    <section class="bg-black h-screen text-white grid grid-cols-12 grid-rows-5">
         <div id="globe"></div>
+        <div class="border-2 rounded flex items-center w-50 h-10 col-start-2 col-span-3 row-start-5">
+           <div class="mx-2">Search a domain</div> 
+            </div>
+
     </section>
 </template>
 <style>
     #globe {
+        position: absolute;
+        left: 20vw;
+        top: 10vh;
         height: 600px;
+        width: 600px;
     }
 </style>

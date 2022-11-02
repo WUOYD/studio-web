@@ -9,6 +9,7 @@
     "php": "php -S localhost:8000 -t server/"
   },
   "dependencies": {
+    "gsap": "^3.11.3",
     "three": "^0.145.0",
     "three-globe": "^2.24.8",
     "vue": "^3.2.38"
