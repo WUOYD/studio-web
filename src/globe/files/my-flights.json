@@ -2,13 +2,7 @@
     "type": "FlightsCollection",
     "flights": [
         {
-            "type": "flight",
-            "order": 1,
-            "from" : "FRU",
-            "to": "TAS",
-            "flightCode": "HY 778",
-            "date": "Feb 14, 2019",
-            "status": true,
+            
             "startLat": 42.85,
             "startLng": 74.583333333,
             "endLat": 41.266666666667,
