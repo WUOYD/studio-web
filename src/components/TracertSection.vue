@@ -5,6 +5,12 @@
            <div class="mx-2">Search a domain</div> 
             </div>
 
+
+            <form>
+                <label>Domain</label>
+                <input type="domain" required>
+
+            </form>
     </section>
 </template>
 <style>
@@ -15,4 +21,6 @@
         height: 600px;
         width: 600px;
     }
+
+    
 </style>

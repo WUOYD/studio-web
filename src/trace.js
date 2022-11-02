@@ -1,4 +1,5 @@
-import { initGlobe } from './globe/globe.js';
+export let locations = [];
+export let locationsRoutes = [];
 
 async function postData(url = '', data = {}) {
 	const response = await fetch(url, {
@@ -17,7 +18,7 @@ async function postData(url = '', data = {}) {
 }
 
 async function checkIfIpInDB(){
-	return await postData("http://localhost/stuWeb/server/ajax.php",{
+	return await postData("http://localhost/studio-web/server/ajax.php",{
 		action: 'checkIP',
 		ip: ip
 	});
@@ -28,13 +29,13 @@ async function getLocation(ip){
 }
 
 function insertLocationInDB(location) {
-	postData("http://localhost/stuWeb/server/ajax.php",{
+	postData("http://localhost/studio-web/server/ajax.php",{
 		action: 'insertDB',
 		data: location
 	});
 }
 
-var lastCity = "";
+let lastCity = "";
 
 function sortOutDuplicateCitys(data){
 	if(data){
@@ -48,11 +49,11 @@ function sortOutDuplicateCitys(data){
 }
 
 async function prepareLocation(ip){
-	var data = false;
+	let data = false;
 	if(ValidateIPaddress(ip)){
-		var ipInDB = await checkIfIpInDB();
+		let ipInDB = await checkIfIpInDB();
 		if(!ipInDB){
-			var location = await getLocation(ip);
+			let location = await getLocation(ip);
 			if(location.status != 'fail'){
 				insertLocationInDB(location);
 				data = location;
@@ -60,7 +61,7 @@ async function prepareLocation(ip){
 		} else {
 			data = ipInDB;
 		}
-		var cleanLocation = sortOutDuplicateCitys(data);
+		let cleanLocation = sortOutDuplicateCitys(data);
 		return cleanLocation;
 	}
 }
@@ -75,9 +76,9 @@ function ValidateIPaddress(ipaddress) {
 function ajaxTracertPrefilter(){
 	$.ajaxPrefilter(function( options, _, jqXHR ) {
 		if ( options.onreadystatechange ) {
-			var xhrFactory = options.xhr;
+			let xhrFactory = options.xhr;
 			options.xhr = function() {
-				var xhr = xhrFactory.apply( this, arguments );
+				let xhr = xhrFactory.apply( this, arguments );
 				function handler() {
 					options.onreadystatechange( xhr, jqXHR );
 				}
@@ -85,7 +86,7 @@ function ajaxTracertPrefilter(){
 					xhr.addEventListener( "readystatechange", handler, false );
 				} else {
 					setTimeout( function() {
-						var internal = xhr.onreadystatechange;
+						let internal = xhr.onreadystatechange;
 						if ( internal ) {
 							xhr.onreadystatechange = function() {
 								handler();
@@ -103,14 +104,14 @@ function ajaxTracertPrefilter(){
 export function traceIP(ip){
 	ajaxTracertPrefilter();
 	$.ajax({
-		url: "http://localhost/stuWeb/server/ajax.php",
+		url: "http://localhost/studio-web/server/ajax.php",
 		method: "POST",
 		cache: false,
 		onreadystatechange: async function( xhr ) {
-			var cleanIP = cleanUpIP(xhr.responseText);
-			var location = await prepareLocation(cleanIP);
+			let cleanIP = cleanUpIP(xhr.responseText);
+			let location = await prepareLocation(cleanIP);
 			appendLocation(location);
-			initGlobe(); //das gaht ned so, aber so chönsch e funktion usem andere file importiere
+			//initGlobe(); //das gaht ned so, aber so chönsch e funktion usem andere file importiere
 		},
 		data: {
 			action: 'traceIP',
@@ -126,12 +127,35 @@ export function traceIP(ip){
 function appendLocation(location){
 	//TODO
 	if( typeof location === 'object' && !Array.isArray(location) && location !== null){
-		document.querySelector('main form').innerHTML += '<div><p>AS: '+location.as+'</p><p>ISP: '+location.isp+'</p><p>Country: '+location.country+'</p><p>City: '+location.city+'</p></div>';
+		//format and push location into locations array
+		location.lng = location.lon;
+		location.text = location.countryCode;
+		location.size = 1.0;
+		locations.push(location);
+		console.log(locations)
+		//format and push location into locations array
+		let locationsRoute = [];
+		if (locations.length >= 2){
+			console.log("yallah")
+			console.log(locations.length-2);
+			console.log(locations[locations.length-2]);
+			console.log(locations[locations.length-2].lat);
+			locationsRoute.startLat = locations[locations.length-2].lat;
+			locationsRoute.startLng = locations[locations.length-2].lng;
+			locationsRoute.endLat = locations[locations.length-1].lat;
+			locationsRoute.endLng = locations[locations.length-1].lng;
+			locationsRoute.arcAlt = 0.05;
+			locationsRoute.status = true;
+			locationsRoutes.push(locationsRoute);
+		}
+		else{}
+		
+		console.log(locationsRoutes);
 	}
 }
 
 function cleanUpIP(ip){
-	var traceIP = ip.split("#");
+	let traceIP = ip.split("#");
 	return /[^/]*$/.exec(traceIP[traceIP.length-1])[0];
 }
 
