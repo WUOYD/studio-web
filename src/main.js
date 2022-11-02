@@ -14,9 +14,9 @@ import { traceIP, getIPValue } from './trace.js';
 window.onload = function(){
 	globe("#globe");
 
-	document.querySelector("#ip").addEventListener("submit", async function(e){
+	/*document.querySelector("#ip").addEventListener("submit", async function(e){
 		e.preventDefault()
 		var ip = getIPValue();
 		traceIP(ip);
-	});
+	});*/
 }
