@@ -4,7 +4,7 @@
     header {
         color: white;
         font-size: 270px;
-        height: 100vh;
+        height: 200vh;
         line-height:1;
         z-index:  1;
     }
@@ -13,22 +13,22 @@
         width: 100%;
     }
 
-    .test2 div:nth-child(odd){
+    .test2 div:first-of-type,
+    .test2 div:nth-of-type(2) {
         transform: translateX(-100%);
     }
-    .test2 div:nth-child(even){
+
+    .test2 div:last-of-type {
         transform: translateX(100%);
     }
-
-
 </style>
 
 
 <template>
     <header>
         <div class="test2">
-            <div class="test">WHAT</div>
-            <div class="test">THE</div>
+            <div class="test sp">WHAT</div>
+            <div class="test sp">THE</div>
             <div class="test">WEB</div>
         </div>
    </header>
@@ -37,14 +37,12 @@
 <script>
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
     mounted(){
         let images =  document.querySelectorAll('header .test2');
-        console.log(images);
         images.forEach((image, i) => {
             const tl = gsap.timeline({
                 scrollTrigger:{
@@ -56,12 +54,20 @@ export default {
                     markers: true,
                 }
             });
+
             tl.addLabel('initial');
-            tl.to(image.querySelectorAll('header div.test2 div.test'), {
+            tl.to(image.querySelectorAll('header div.test2 div.test:not(.sp)'), {
+                ease: 'none',
+                x: 600,
+                stagger: 0.0
+            }, 'initial');
+
+            tl.to(image.querySelectorAll('header div.test2 div.test.sp'), {
                 ease: 'none',
                 x: 0,
-                stagger: 0.2
-            });
+                stagger: 0.0
+            }, 'initial');
+            
         });
 
         /*let sliders = document.querySelectorAll('.slider');

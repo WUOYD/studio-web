@@ -19,8 +19,8 @@ section:not(:first-of-type) {
     padding: 60px 0;
 }
 
-section.text-left-img,
-section.text-right-img {
+section.text-left-img .wrapper,
+section.text-right-img .wrapper {
     display: flex;
     flex-direction: row;
 }
@@ -30,8 +30,8 @@ section h2 {
     font-weight: 600;
 }
 
-section.text-left-img > div,
-section.text-right-img > div {
+section.text-left-img .wrapper > div,
+section.text-right-img .wrapper > div {
     width: 50%;
 }
 

@@ -1,14 +1,16 @@
 <template>
     <section class="dns-section text-right-img">
-        <div class="text-wrapper">
-            <h2>DNS Section</h2>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br><br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-        </div>
-        <div class="img-wrapper">
-            <img src="@/assets/ip1.jpg">
-            <img src="@/assets/ip2.jpg">
-            <img src="@/assets/ip3.jpg">
-            <img src="@/assets/ip4.jpg">
+        <div class="wrapper">
+            <div class="text-wrapper">
+                <h2>DNS Section</h2>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br><br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            </div>
+            <div class="img-wrapper">
+                <img src="@/assets/ip1.jpg">
+                <img src="@/assets/ip2.jpg">
+                <img src="@/assets/ip3.jpg">
+                <img src="@/assets/ip4.jpg">
+            </div>
         </div>
     </section>
 </template>
@@ -24,7 +26,7 @@
         flex-wrap: wrap;
     }  
 
-    section.dns-section {
+    section.dns-section .wrapper {
         flex-direction: row-reverse;
     }
 

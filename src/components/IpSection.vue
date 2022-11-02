@@ -1,14 +1,16 @@
 <template>
-    <section class="h-screen text-white grid grid-cols-12 grid-rows-5 ip-section text-left-img">
-        <div class="text-wrapper">
-            <h2>IP Section</h2>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br><br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-        </div>
-        <div class="img-wrapper">
-            <img src="@/assets/ip1.jpg">
-            <img src="@/assets/ip2.jpg">
-            <img src="@/assets/ip3.jpg">
-            <img src="@/assets/ip4.jpg">
+    <section class="ip-section text-left-img">
+        <div class="wrapper">
+            <div class="text-wrapper">
+                <h2>IP Section</h2>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br><br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            </div>
+            <div class="img-wrapper">
+                <img src="@/assets/ip1.jpg">
+                <img src="@/assets/ip2.jpg">
+                <img src="@/assets/ip3.jpg">
+                <img src="@/assets/ip4.jpg">
+            </div>
         </div>
     </section>
 </template>
@@ -32,3 +34,36 @@
         padding-right: 15px;
     }
 </style>
+
+<script>
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default {
+    mounted(){
+        let sliders = document.querySelectorAll('section.ip-section');
+        console.log(document.querySelectorAll('section.ip-section'));
+        sliders.forEach((slider, i) => {
+            var x = slider.querySelector('.wrapper').offsetWidth + window.innerWidth;
+            console.log(x);
+            gsap.to(slider.querySelector('.wrapper'), {
+                x: -x,
+                ease: "none",
+                scrollTrigger:{
+                    trigger: slider,
+                    pin: true,
+                    scrub: true,
+                    start: () => "top top",
+                    end: () => '+=100%',
+                }
+            });
+        });
+
+        ScrollTrigger.sort();
+    }
+}
+
+
+</script>
