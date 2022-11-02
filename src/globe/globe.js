@@ -74,10 +74,10 @@ function init(elem) {
   controls.enablePan = false;
   controls.minDistance = 150;
   controls.maxDistance = 300;
-  controls.rotateSpeed = 0.8;
+  controls.rotateSpeed = 0.5;
   controls.zoomSpeed = 1;
-  controls.autoRotate = true;
-  controls.autoRotateSpeed = 0.2
+  //controls.autoRotate = true;
+  //controls.autoRotateSpeed = 0.2
   controls.minPolarAngle = Math.PI / 2.5;
   controls.maxPolarAngle = Math.PI * 2;
 
@@ -132,7 +132,7 @@ function drawTrace(){
       .arcStroke((e) => {
         return e.status ? 0.5 : 0.3;
       })
-      .arcDashLength(0.9)
+      .arcDashLength(0.7)
       .arcDashGap(4)
       .arcDashAnimateTime(1000)
       .arcsTransitionDuration(1000)
@@ -142,16 +142,17 @@ function drawTrace(){
       .labelDotOrientation((e) => {
         return e.text === "ALA" ? "top" : "right";
       })
-      .labelDotRadius(0.3)
+      .labelDotRadius(0.2)
       .labelSize((e) => e.size)
       .labelText("city")
       .labelResolution(6)
-      .labelAltitude(0.01)
+      .labelAltitude(0.03)
+      .labelRotation(0)
       .pointsData(locations)
       .pointColor(() => "#ffffff")
       .pointsMerge(true)
-      .pointAltitude(0.07)
-      .pointRadius(0.05);
+      .pointAltitude(0.03)
+      .pointRadius(0.1);
   }, 500);
 }
 

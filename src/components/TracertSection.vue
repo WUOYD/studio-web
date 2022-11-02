@@ -6,7 +6,7 @@
             </div>
 
 
-            <form>
+            <form id="ip">
                 <label>Domain</label>
                 <input type="domain" required>
 
@@ -20,6 +20,10 @@
         top: 10vh;
         height: 600px;
         width: 600px;
+    }
+
+    form input {
+        color: black;
     }
 
     
