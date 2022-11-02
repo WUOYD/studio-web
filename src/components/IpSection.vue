@@ -1,22 +1,5 @@
 <template>
-<<<<<<< HEAD
-    <section class="bg-black h-screen text-white grid grid-cols-12 grid-rows-5">
-    
-       <h2 class="col-start-8 col-span-4 row-start-1 text-5xl">
-        IP Section
-        </h2>
-        <p class="col-start-8 col-span-4 row-start-2">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet
-        </p>
-         
-            
-            
-    
-    </section>
-</template>
-
-
-=======
-    <section class="ip-section text-left-img">
+    <section class="h-screen text-white grid grid-cols-12 grid-rows-5 ip-section text-left-img">
         <div class="text-wrapper">
             <h2>IP Section</h2>
             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br><br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
@@ -49,4 +32,3 @@
         padding-right: 15px;
     }
 </style>
->>>>>>> 0a466e37a44b54393039c85d59b0991f6f76e397

@@ -1,9 +1,6 @@
 <template>
-<<<<<<< HEAD
-    <section>
-        <h2>Routing Section</h2>
-=======
     <section class="routing-section text-3-row">
+        <h2>Routing Section</h2>
         <div class="text-wrapper">
             <h2>Routing Section</h2>
             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br><br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
@@ -31,7 +28,6 @@
                 </div>
             </div>
         </div>
->>>>>>> 0a466e37a44b54393039c85d59b0991f6f76e397
     </section>
 </template>
 
