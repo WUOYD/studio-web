@@ -13,10 +13,9 @@
     }
 
     .test{
-        margin-top: 2vw;
         font-weight: 600;
         color: white;
-        font-size: 18vw;
+        font-size: 4vw;
         line-height:0.8;
         z-index:  1;
         font-family: 'Roboto', sans-serif;
@@ -26,14 +25,23 @@
         width: 100%;
     }
 
+    .test2{
+        
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
     .test2 div:nth-of-type(1){
-        transform: translateX(-100%);
+        transform: translateX(-80%);
     }
     .test2 div:nth-of-type(2){
-        transform: translateX(-150%);
+        transform: translateX(0%);
     }
     .test2 div:nth-of-type(3){
-        transform: translateX(200%);
+        transform: translateX(100%);
     }
 </style>
 
@@ -45,8 +53,9 @@
         <div class="test2">
             <div class="test sp">WHAT</div>
             <div class="test sp">THE</div>
-            <div class="test web">WEB</div>
+            <div class="test ">WEB</div>
         </div>
+        <div><img src="/assets/waves.png" alt="waves"></div>
    </header>
 </template>
 
@@ -74,12 +83,12 @@ export default {
             tl.addLabel('initial');
             tl.to(image.querySelectorAll('header div.test2 div.test:not(.sp)'), {
                 ease: 'none',
-                x: 500,
+                x: 0,
                 stagger: 0.0
             }, 'initial');
             tl.to(image.querySelectorAll('header div.test2 div.test.sp'), {
                 ease: 'none',
-                x: 0,
+                x: -30,
                 stagger: 0.0
             }, 'initial');
         });
