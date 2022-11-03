@@ -45,6 +45,9 @@
     }
 </style>
 
+
+
+
 <template>
     <header>
         <div class="test2">
@@ -73,8 +76,8 @@ export default {
                     scrub: true,
                     start: () => "top 0",
                     end: () => '+=150%',
-                },
-                yoyo: false,
+                    markers: true,
+                }
             });
 
             tl.addLabel('initial');
