@@ -44,10 +44,8 @@ gsap.registerPlugin(ScrollTrigger);
 export default {
     mounted(){
         let sliders = document.querySelectorAll('section.ip-section');
-        console.log(document.querySelectorAll('section.ip-section'));
         sliders.forEach((slider, i) => {
             var x = slider.querySelector('.wrapper').offsetWidth + window.innerWidth;
-            console.log(x);
             gsap.to(slider.querySelector('.wrapper'), {
                 x: -x,
                 ease: "none",

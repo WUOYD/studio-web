@@ -1,5 +1,13 @@
 export let locations = [];
-export let locationsRoutes = [];
+export var locationsRoutes = [];
+var loading = false;
+
+var julian = false;
+if(julian) {
+	var ajaxPath = "http://localhost/studio-web/server/ajax.php"
+}else{
+	var ajaxPath = "http://localhost/stuWeb/server/ajax.php"
+}
 
 async function postData(url = '', data = {}) {
 	const response = await fetch(url, {
@@ -18,7 +26,7 @@ async function postData(url = '', data = {}) {
 }
 
 async function checkIfIpInDB(){
-	return await postData("http://localhost/studio-web/server/ajax.php",{
+	return await postData(ajaxPath,{
 		action: 'checkIP',
 		ip: ip
 	});
@@ -29,7 +37,7 @@ async function getLocation(ip){
 }
 
 function insertLocationInDB(location) {
-	postData("http://localhost/studio-web/server/ajax.php",{
+	postData(ajaxPath,{
 		action: 'insertDB',
 		data: location
 	});
@@ -103,43 +111,55 @@ function ajaxTracertPrefilter(){
 
 export function traceIP(ip){
 	ajaxTracertPrefilter();
-	$.ajax({
-		url: "http://localhost/studio-web/server/ajax.php",
-		method: "POST",
-		cache: false,
-		onreadystatechange: async function( xhr ) {
-			let cleanIP = cleanUpIP(xhr.responseText);
-			let location = await prepareLocation(cleanIP);
-			appendLocation(location);
-			//initGlobe(); //das gaht ned so, aber so chönsch e funktion usem andere file importiere
-		},
-		data: {
-			action: 'traceIP',
-			ip: ip,
-			ajax: true
-		},             
-	}).done(function( data ) {
-		//TODO
-		document.querySelector("main form").innerHTML +="all done!</br>";
-	}); 
+	if(!loading){
+		resetTrace();
+		loading = true;
+		updateLoadingAnimation();
+		$.ajax({
+			url: ajaxPath,
+			method: "POST",
+			cache: false,
+			onreadystatechange: async function( xhr ) {
+				let cleanIP = cleanUpIP(xhr.responseText);
+				let location = await prepareLocation(cleanIP);
+				appendLocation(location);
+			},
+			data: {
+				action: 'traceIP',
+				ip: ip,
+				ajax: true
+			},             
+		}).done(function( data ) {
+			loading = false;
+			updateLoadingAnimation();
+			//document.querySelector(".sidebar").innerHTML +="all done!</br>";
+		});
+	}
+}
+
+function updateLoadingAnimation(){
+	var loadingAni = document.querySelector(".loading");
+	if(loading){
+		loadingAni.classList.add("show-loading");
+		loadingAni.classList.add("fadeIn");
+	}else{
+		loadingAni.classList.add("fadeOut");
+		setTimeout(function() {
+			loadingAni.classList.remove("show-loading");
+			loadingAni.classList.remove("fadeIn");
+			loadingAni.classList.remove("fadeOut");
+		}, 1000);;
+	}
 }
 
 function appendLocation(location){
-	//TODO
 	if( typeof location === 'object' && !Array.isArray(location) && location !== null){
-		//format and push location into locations array
 		location.lng = location.lon;
 		location.text = location.countryCode;
 		location.size = 1.0;
 		locations.push(location);
-		console.log(locations)
-		//format and push location into locations array
 		let locationsRoute = [];
 		if (locations.length >= 2){
-			console.log("yallah")
-			console.log(locations.length-2);
-			console.log(locations[locations.length-2]);
-			console.log(locations[locations.length-2].lat);
 			locationsRoute.startLat = locations[locations.length-2].lat;
 			locationsRoute.startLng = locations[locations.length-2].lng;
 			locationsRoute.endLat = locations[locations.length-1].lat;
@@ -148,10 +168,25 @@ function appendLocation(location){
 			locationsRoute.status = true;
 			locationsRoutes.push(locationsRoute);
 		}
-		else{}
-		
-		console.log(locationsRoutes);
+		appendLocationText(location);
 	}
+}
+
+function resetTrace(){
+	locationsRoutes = [];
+	locations = [];
+	var sidebar = document.querySelector("section.tracert-section .sidebar .locations");
+	sidebar.innerHTML = "";
+}
+
+function appendLocationText(location){
+	var sidebar = document.querySelector("section.tracert-section .sidebar .locations");
+	sidebar.innerHTML +='<div class="location">'+
+	'<div class="org">'+location.isp+'</div>'+
+	'<div class="loc">'+location.city+', '+location.country+'</div>'+
+	'</div>';
+	var lastAppend = document.querySelector("section.tracert-section .sidebar .location:last-of-type");
+	lastAppend.classList.add("fadeIn");
 }
 
 function cleanUpIP(ip){
