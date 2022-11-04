@@ -55,7 +55,7 @@
             <div class="test sp">THE</div>
             <div class="test ">WEB</div>
         </div>
-        <div><img src="/assets/waves.png" alt="waves"></div>
+        
    </header>
 </template>
 

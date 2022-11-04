@@ -2,23 +2,34 @@
     <section class="ip-section text-left-img">
         <div class="wrapper">
             <div class="text-wrapper">
-                <h2>IP Section</h2>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br><br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+             
+                <p>The Internet is a network of networks. It connects billions of devices together like a laptop or a smartphone.</p>
             </div>
             <div class="img-wrapper">
-                <img src="@/assets/ip1.jpg">
-                <img src="@/assets/ip2.jpg">
-                <img src="@/assets/ip3.jpg">
-                <img src="@/assets/ip4.jpg">
-            </div>
+                <img src="@/assets/Laptop.png">
+                <img src="@/assets/Laptop.png">
+                <img src="@/assets/Laptop.png">
+                <img src="@/assets/Laptop.png">
+              </div>
+            
+           
         </div>
     </section>
 </template>
 
 <style scoped>
+
+
+section .wrapper{
+    display: flex;
+    background-color: aqua;
+    height: 100vh;
+    width: 200vw;
+}
     section .img-wrapper img {
-        width: 50%;
-        object-fit:contain;
+        
+        background-color: blue;
+        
     }
 
     section .img-wrapper {
@@ -32,6 +43,19 @@
 
     section .text-wrapper {
         padding-right: 15px;
+        background-color: brown;
+    }
+
+   
+
+    section p{
+        width: 20vw;
+        font-size: 50px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        line-height: 1.3;
+        color: white;
+
     }
 </style>
 
