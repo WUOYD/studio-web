@@ -8,7 +8,7 @@
 
     header .test:last-of-type{
         -webkit-text-stroke-width: 1px;
-        -webkit-text-stroke-color: white;
+        -webkit-text-stroke-color: rgb(67, 242, 255);
         -webkit-text-fill-color: transparent;
     }
 
