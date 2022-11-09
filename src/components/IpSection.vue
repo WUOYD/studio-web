@@ -6,6 +6,9 @@
                    <p class="text-big">The Internet is a network of networks.</p>
                    <p> It connects billions of devices together like a laptop or a smartphone.</p>
                </div>
+                
+            </div>
+            <div class="section6 panel">
                 <div class="img-wrapper">
                     <div class="imgscale">
                         <img  src="@/assets/Laptop.png" alt="">
@@ -24,6 +27,7 @@
                     <span class="line"></span>
                     <span class="line2"></span>
                 </div>
+
             </div>
             <div class="section2 panel">
                <div class="text2-wrapper">
@@ -71,7 +75,7 @@
         justify-content: flex-start;
     }
 
-   /* section .section1{
+   section .section1{
         background-color: coral;
     }
 
@@ -89,7 +93,7 @@
     
      section .section4{
         background-color: grey;
-    }*/
+    }
    
 
     section .panel {
@@ -190,7 +194,7 @@
     }
 
     section .text-big{
-       font-size: 55px;
+       font-size: 40px;
        font-family: 'Roboto', sans-serif;
        font-weight: 500;
        line-height: 1.3;
