@@ -30,10 +30,10 @@
     }
 
     #globe {
-        width: 100%;
+        width: 750px;
         height: 100%;
         display: flex;
-        justify-content: center;
+        justify-content: flex-end;
     }
 
     section form {
@@ -58,6 +58,8 @@
     section .wrapper {
         position: relative;
         height: 100%;
+        display: flex;
+        justify-content: flex-end;
     }
 
     section .sidebar {

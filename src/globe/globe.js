@@ -115,7 +115,7 @@ function onWindowResize(elem) {
   camera.aspect = selector.offsetWidth / selector.offsetHeight;
   camera.updateProjectionMatrix();
   windowHalfX = selector.offsetWidth / 1.5;
-  windowHalfY = selector.off / 1.5;
+  windowHalfY = selector.offsetHeight / 1.5;
   renderer.setSize(selector.offsetWidth, selector.offsetHeight);
 }
 
