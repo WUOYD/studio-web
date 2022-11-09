@@ -23,6 +23,7 @@
                         <div></div>
                     </div>
                 </div>
+                <button type="button">More informations</button>
             </div>
             <div id="globe"></div>
         </div>
@@ -33,45 +34,11 @@
         height: 100vh;
     }
 
-    #globe {
-        width: 100vh;
-        height: 100%;
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    section form {
-        display: flex;
-        flex-direction: column;
-    }
-
-    form input {
-        color: white;
-        border: 2px solid white;
-        background-color: transparent;
-        border-radius: 10px;
-        margin: 5px 0 10px 0;
-        padding: 3px 10px;
-    }
-
-    #info p{
-        font-weight: 500;
-    }
-
-    form input:focus,
-    form input:active {
-        outline: 0;
-    }
-
     section .wrapper {
         position: relative;
         height: 100%;
         display: flex;
         justify-content: flex-end;
-    }
-
-    #ip{
-        margin-top: 2rem;
     }
 
     section .sidebar {
@@ -97,5 +64,48 @@
         justify-content: center;
     }
 
+    section form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    form input {
+        color: white;
+        border: 2px solid white;
+        background-color: transparent;
+        border-radius: 10px;
+        margin: 5px 0 10px 0;
+        padding: 3px 10px;
+    }
+
+    #info p{
+        font-weight: 500;
+    }
+
+    form input:focus,
+    form input:active {
+        outline: 0;
+    }
+
+    #ip{
+        margin-top: 2rem;
+    }
+    
+    button{
+        color: white;
+        border: 2px solid white;
+        background-color: transparent;
+        border-radius: 10px;
+        margin: 5px 0 10px 0;
+        padding: 3px 10px;
+        width: 100%;
+    }
+
+    #globe {
+        width: 100vh;
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
     
 </style>
