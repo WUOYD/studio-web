@@ -19,6 +19,10 @@
                     <div class="imgscale">
                         <img src="@/assets/Laptop.png" alt="">
                     </div>
+                    <span class="vertical-line"></span>
+                    <span class="vertical-line2"></span>
+                    <span class="line"></span>
+                    <span class="line2"></span>
                 </div>
             </div>
             <div class="section2 panel">
@@ -154,6 +158,47 @@
     section.ip-section {
         height: 100vh;
     }
+
+    .vertical-line{
+        position: absolute;
+        border-left: 4px solid white;
+        display: block;
+        height: 35vh;
+        margin-left: 95px;
+        margin-top: 160px;
+        width: 1px;
+    }
+
+    .vertical-line2{
+        position: absolute;
+        border-left: 4px solid white;
+        display: block;
+        height: 35vh;
+        margin-left: 403px;
+        margin-top: 160px;
+        width: 1px;
+    }
+
+    .line{
+        position: absolute;
+        border-bottom: 4px solid white;
+        display: block;
+        height: 1px;
+        margin-left: 195px;
+        margin-top: 149px;
+        width: 125px;
+    }
+
+    .line2{
+        position: absolute;
+        border-bottom: 4px solid white;
+        display: block;
+        height: 1px;
+        margin-left: 195px;
+        margin-top: 412px;
+        width: 125px;
+    }
+
 </style>
 
 <script>
