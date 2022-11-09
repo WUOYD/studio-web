@@ -6,67 +6,52 @@
     <section class="ip-section">
         <div class="wrapper">
             <div class="section1 panel">
-                <div class="text1-wrapper">
-                   <p class="text-big">The Internet is<br> a network of<span class="stroke"> networks</span><span class="blue">.</span></p>
-                   <p> It connects billions of devices together like a laptop or a smartphone.</p>
-               </div>
-                
-            </div>
-            <div class="section6 panel">
-                <div class="img-wrapper">
-                    <div class="imgscale">
-                        <img  src="@/assets/Laptop.png" alt="">
-                    </div>
-                    <div class="imgscale">
-                        <img  src="@/assets/Laptop.png" alt="">
-                    </div>
-                   <div class="imgscale">
-                        <img src="@/assets/Laptop.png" alt="">
-                    </div>
-                    <div class="imgscale">
-                        <img src="@/assets/Laptop.png" alt="">
-                    </div>
-                    <span class="vertical-line"></span>
-                    <span class="vertical-line2"></span>
-                    <span class="line"></span>
-                    <span class="line2"></span>
+                <div class="text-wrapper">
+                    <p class="text-big">The Internet is<br> a network of <span class="stroke">networks</span><span class="blue">.</span></p>
+                   <p>It connects billions of devices together like a laptop or a smartphone.</p>
                 </div>
-
             </div>
             <div class="section2 panel">
-               <div class="text2-wrapper">
-                <p> For connecting with each other </p>
-                <p class="text-big">every device has  an unique adress the socalled IP adress.</p>
-            </div>
-            <div class="img2-wrapper">
-                <img  src="@/assets/Laptop.png" alt="">
-                <p id="animated-ip" class="text-big">255.255.14.0</p>
-            </div>
-            
+                <div class="img-wrapper">
+                    <div>
+                        <img  src="@/assets/Laptop.png" alt="">
+                    </div>
+                    <div>
+                        <img  src="@/assets/Laptop.png" alt="">
+                    </div>
+                    <div>
+                        <img src="@/assets/Laptop.png" alt="">
+                    </div>
+                    <div>
+                        <img src="@/assets/Laptop.png" alt="">
+                    </div>
+                </div>
             </div>
             <div class="section3 panel">
-                <div id="trigger-ip" class="text3-wrapper">
-                    <p>An IP adress consists</p>
-                    <p class="text-big">four numbers ranging from 0 to 255 who are separated with a point.</p>
-                    <p> These numbers represent bits, which every computer works with internally.</p>
+               <div class="text-wrapper">
+                    <p class="text-big">Every <span class="stroke">device</span> has an Ip adress.</p>
+                    <p>The Ip adress is an unique indicator for a certain device<span class="blue">.</span></p>
+                </div>
+            </div>
+            <div class="section4 panel">
+                <div class="text-wrapper">
+                    <p class="text-big">An IP adress consists four <span class="stroke">numbers</span><span class="blue">.</span></p>
+                    <p>They are separated with a point. These numbers represent bits, which every computer works with internally. The numbers range from 0 to 255.</p>
                 </div>
             </div> 
-            <div class="section4 panel">
-                <div class="text4-wrapper"> 
-                    <p class="text-big">Each part of the IP adress has a different meaning. </p>
-                    <p>The first number refers to a country, the second to a region, the third to a subnet and the last to specifc device.  </p> 
-                </div> 
-                  <div class="ip-wrapper">
-                        country region subnet device
-                    </div>
-            </div>      
-
             <div class="section5 panel">
-                    <div class="text5-wrapper">
-                   <p> Normally users don’t know the IP adress of a service like YouTube or Facebook, so you google for the domain. Google tells you under which domain you can reach a service. Example: youtube.com / facebook.com</p>
-                    </div>
-                  
-
+                <div class="text-wrapper"> 
+                    <p class="text-big">Normally users don’t know the IP adress of a <span class="stroke">service</span><span class="blue">.</span></p>
+                    <p>So you google for the domain. Google tells you under which domain you can reach a service. Example: youtube.com / facebook.com</p> 
+                </div>
+            </div>      
+            <div class="section6 panel">
+                <div class="text-wrapper special-text text-big">
+                   <div>255<span class="blue">.</span></div>
+                   <div>255<span class="blue">.</span></div>
+                   <div>14<span class="blue">.</span></div>
+                   <div>0</div>
+                </div>
             </div>
         </div>
     </section>
@@ -79,27 +64,6 @@
         justify-content: flex-start;
     }
 
-  /* section .section1{
-        background-color: coral;
-    }
-
-    section .section2{
-        background-color: blanchedalmond;
-    }
-
-    section .section3{
-        background-color: lightgreen;
-    }
-
-    section .section4{
-        background-color: blueviolet;
-    }
-    
-     section .section4{
-        background-color: grey;
-    }
-   */
-
     section .panel {
         display: flex;
         min-width: 100%;
@@ -111,144 +75,92 @@
         margin-right: unset;
     }
 
-    section .text1-wrapper{
-        /*background-color: blueviolet;*/
+    .text-wrapper{
         display: flex;
         flex-direction: column;
         width: 100%;
-
     }
 
-    section .text2-wrapper{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 40vw;
-        /*background-color: green;*/
-    }
-
-    section .text3-wrapper{
-        /*background-color: burlywood;*/
-        display: flex;
-        flex-direction: column;
-        width: 40vw;
-
-    }
-
-    section .text4-wrapper{
-       /* background-color: pink;*/
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        width: 40vw;
-    }
-
-       section .text5-wrapper{
-       /* background-color: pink;*/
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        width: 40vw;
-    }
-
-    section .img-wrapper{
-        display: flex;
-        flex-wrap: wrap;
-        width: 30vw;
-        margin-left: 10vw;
-        /*background-color: blue;*/
-        justify-content: space-between;
-    }
-
-    section .img2-wrapper{
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-       /* background-color: orange;*/
-    }
-
-    .ip-align{
-        margin-top: 70vh;
-        
-    }
-
-    .ip-wrapper{
-    display: flex;
-    align-items: flex-end;
-    margin-left: 35px;
-    height: 200px;
-    margin-top: 63px;
-    font-size: 33px;
-    color: white;
-
-
-    }
-
-    section .imgscale{
-        width: 12vw;
-        height: 12vw;
-       /* background-color: beige;*/
-    }
-     
-    section p{
-        font-size: 40px;
+    .text-wrapper p {
+        font-size: 35px;
         font-family: 'Roboto', sans-serif;
         font-weight: 500;
         line-height: 1.3;
         color: white;
     }
 
-    section .text-big{
-       font-size: 160px;
-       font-family: 'Roboto', sans-serif;
-       font-weight: 500;
-       line-height: 1;
-       color: white;
+    .section2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
+    .text-wrapper.special-text {
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: unset;
+        align-items: center;
+    }
+
+    .special-text > div {
+        position: relative;
+    }
+
+    .section2 .img-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width:  90%;
+        flex-wrap: wrap;
+        height: 100%;
+    }
+
+    .section2 .img-wrapper > div {
+        width: 50%;
+        display: flex;
+        justify-content:center;
+        align-items:center;
+        position: relative;
+    }
+
+    .section2 .img-wrapper img {
+        width: 60%;
+        z-index: 2;
+    }
+
+    .section2 .img-wrapper > div:first-of-type::after,
+    .section2 .img-wrapper > div:nth-of-type(3)::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 60%;
+        height: 2px;
+        background-color: rgb(67, 242, 255);
+        right: -30%;
+    }
+
+    .section2 .img-wrapper > div:first-of-type::before,
+    .section2 .img-wrapper > div:nth-of-type(2)::before {
+        content: "";
+        position: absolute;
+        width: 4px;
+        height: 70%;
+        background-color: rgb(67, 242, 255);
+        bottom: -45%;
+        left: 50%;
+    }
+
+    section .text-big{
+        font-size: 130px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        line-height: 0.9;
+        color: white;
+        margin-bottom: 10px;
     }
 
     section.ip-section {
         height: 100vh;
-    }
-
-    .vertical-line{
-        position: absolute;
-        border-left: 2px solid white;
-        display: block;
-        height: 35vh;
-        margin-left: 95px;
-        margin-top: 160px;
-        width: 1px;
-    }
-
-    .vertical-line2{
-        position: absolute;
-        border-left: 2px solid white;
-        display: block;
-        height: 35vh;
-        margin-left: 403px;
-        margin-top: 160px;
-        width: 1px;
-    }
-
-    .line{
-        position: absolute;
-        border-bottom: 2px solid white;
-        display: block;
-        height: 1px;
-        margin-left: 195px;
-        margin-top: 149px;
-        width: 125px;
-    }
-
-    .line2{
-        position: absolute;
-        border-bottom: 2px solid white;
-        display: block;
-        height: 1px;
-        margin-left: 195px;
-        margin-top: 412px;
-        width: 125px;
     }
 
     .stroke{
@@ -258,7 +170,7 @@
     }
 
     .blue{
-        color:rgb(67, 242, 255) ;
+        color:rgb(67, 242, 255);
     }
 
 </style>
@@ -295,7 +207,7 @@ export default {
 
         let sections = gsap.utils.toArray(".panel");
         let slider = document.querySelector('section.ip-section');
-        var x = 3 * window.innerWidth - 3 * getPanelMarginLeft();
+        var x = 5 * window.innerWidth - 5 * getPanelMarginLeft();
         let scrollTween = gsap.to(slider.querySelector('section.ip-section .wrapper'), {
             x: -x,
             ease: "none",
@@ -303,13 +215,13 @@ export default {
                 trigger: slider,
                 pinType: "fixed",
                 pin: true,
-                snap: 1 / (4 - 1),
+                snap: 1 / (6 - 1),
                 scrub: 4,
                 start: () => "top top",
                 end: () => '+=100%',
             }
         });
-
+/*
         gsap.set("#animated-ip", {
             x: 0
         });
@@ -325,7 +237,7 @@ export default {
                 scrub: 1,
                 id: "2"
             }
-        });
+        });*/
     }
 }
 
