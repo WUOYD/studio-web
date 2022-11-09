@@ -112,9 +112,9 @@ window.onload = function(){
 
 		let points=[];
 		pS.setup = () => {
-			var canvas = pS.createCanvas(window.innerWidth, window.innerHeight);
+			var canvas = pS.createCanvas(window.innerWidth, window.innerHeight*2.5);
 		    canvas.parent('p5Canvas');
-			for(var i=0;i<150;i++){
+			for(var i=0;i<400;i++){
 				points.push(new Point(pS.random(pS.width),pS.random(pS.height),pS.random(-0.2,0.2),pS.random(-0.2,0.2)));
 			}
 		}

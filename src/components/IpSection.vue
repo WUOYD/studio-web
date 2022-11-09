@@ -20,12 +20,18 @@
             <div class="imgscale">
                  <img  src="@/assets/Laptop.png" alt="">
             </div>
+               
             <div class="imgscale">
                  <img src="@/assets/Laptop.png" alt="">
             </div>
             <div class="imgscale">
                 <img src="@/assets/Laptop.png" alt="">
             </div>
+            <span class="vertical-line"></span>
+            <span class="vertical-line2"></span>
+            <span class="line"></span>
+            <span class="line2"></span>
+         
         </div>
 
     </div>
@@ -148,8 +154,53 @@ section .img-wrapper{
     flex-wrap: wrap;
     width: 30vw;
     margin-left: 10vw;
-    /*background-color: blue;*/
+    background-color: blue;
     justify-content: space-between;
+}
+
+
+.vertical-line{
+    position: absolute;
+    border-left: 4px solid white;
+    display: block;
+    height: 35vh;
+    margin-left: 95px;
+    margin-top: 160px;
+    width: 1px;
+
+}
+
+.vertical-line2{
+    position: absolute;
+    border-left: 4px solid white;
+    display: block;
+    height: 35vh;
+    margin-left: 403px;
+    margin-top: 160px;
+    width: 1px;
+
+}
+
+.line{
+    position: absolute;
+    border-bottom: 4px solid white;
+    display: block;
+    height: 1px;
+    margin-left: 195px;
+    margin-top: 149px;
+    width: 125px;
+
+}
+
+.line2{
+    position: absolute;
+    border-bottom: 4px solid white;
+    display: block;
+    height: 1px;
+    margin-left: 195px;
+    margin-top: 412px;
+    width: 125px;
+
 }
 section .img2-wrapper{
 justify-content: center;
@@ -189,9 +240,15 @@ section .text-big{
 
 </style>
 
+
+
 <script>
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+/*import  * as DrawSVGPlugin from  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/DrawSVGPlugin3.min.js";
+import * as MotionPathPlugin from "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/MotionPathPlugin.min.js";*/
+
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -215,21 +272,28 @@ export default {
         });
 
 /*Ip text sidescroll text sollte sich nach rechts bewegen*/
+/*gsap.registerPlugin(ScrollTrigger);
+
 let sections = gsap.utils.toArray(".panel");
+const getTotalWidth = () => sections.slice(1).reduce((val, section) => val + section.offsetWidth, 0);
+const totalWidth = getTotalWidth();
+gsap.to(sections, {
+  xPercent: -100 * (sections.length - 1),
+  ease: "none",
+  scrollTrigger: {
+    scroller: ".scroller",
+    pinType: "fixed",
+    trigger: ".container",
+    pin: true,
+    scrub: 1,
+    snap: 1 / (sections.length - 1),
+    start: 0,
+    end: "+=" + (totalWidth / 4).toString(),
+    invalidateOnRefresh: true
+  }
+});*/
 
-let scrollTween = gsap.to(sections, {
-    xPercent: -100 * (sections.length - 1),
-    ease: "none", // <-- IMPORTANT!
-    scrollTrigger: {
-      trigger: ".container",
-      pin: true,
-      scrub: 0.1,
-      //snap: directionalSnap(1 / (sections.length - 1)),
-      end: "+=3000"
-    }
-  });
-
-gsap.to(".box-2", {
+/*gsap.to(".box-2", {
   y: -120,
   backgroundColor: "#1e90ff",
   ease: "none",
@@ -240,7 +304,7 @@ gsap.to(".box-2", {
     end: "center 20%",
     scrub: true
   }
-});
+});*/
 
 
 
