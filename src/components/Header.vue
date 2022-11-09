@@ -43,6 +43,7 @@
     .test2 div:nth-of-type(3){
         transform: translateX(100%);
     }
+
 </style>
 
 
@@ -55,13 +56,15 @@
             <div class="test sp">THE</div>
             <div class="test ">WEB</div>
         </div>
-        <div><img src="/assets/waves.png" alt="waves"></div>
+        <!-- <div><img src="/assets/waves.png" alt="waves"></div> -->
    </header>
 </template>
 
 <script>
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -92,8 +95,22 @@ export default {
                 stagger: 0.0
             }, 'initial');
         });
+
+
+
+
     }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 </script>

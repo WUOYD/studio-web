@@ -119,7 +119,6 @@ function onWindowResize(elem) {
 
 function drawTrace(){
   setInterval(() => {
-    console.log(locations);
     Globe.arcsData(locationsRoutes)
       .arcColor((e) => {
         return "#FFFFFF";

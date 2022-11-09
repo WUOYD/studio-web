@@ -173,8 +173,8 @@ function appendLocation(location){
 }
 
 function resetTrace(){
-	locationsRoutes = [];
 	locations = [];
+	locationsRoutes = [];
 	var sidebar = document.querySelector("section.tracert-section .sidebar .locations");
 	sidebar.innerHTML = "";
 }
