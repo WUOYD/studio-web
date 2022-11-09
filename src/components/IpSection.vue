@@ -29,8 +29,8 @@
             </div>
             <div class="section3 panel">
                <div class="text-wrapper">
-                    <p class="text-big">Every <span class="stroke">device</span> has an Ip adress.</p>
-                    <p>The Ip adress is an unique indicator for a certain device<span class="blue">.</span></p>
+                    <p class="text-big">Every <span class="stroke">device</span> has an Ip adress<span class="blue">.</span></p>
+                    <p>The Ip adress is an unique indicator for a certain device.</p>
                 </div>
             </div>
             <div class="section4 panel">
