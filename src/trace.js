@@ -25,7 +25,7 @@ async function postData(url = '', data = {}) {
 	}  		
 }
 
-async function checkIfIpInDB(){
+async function checkIfIpInDB(ip){
 	return await postData(ajaxPath,{
 		action: 'checkIP',
 		ip: ip
@@ -59,7 +59,7 @@ function sortOutDuplicateCitys(data){
 async function prepareLocation(ip){
 	let data = false;
 	if(ValidateIPaddress(ip)){
-		let ipInDB = await checkIfIpInDB();
+		let ipInDB = await checkIfIpInDB(ip);
 		if(!ipInDB){
 			let location = await getLocation(ip);
 			if(location.status != 'fail'){

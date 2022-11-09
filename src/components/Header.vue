@@ -78,7 +78,7 @@ export default {
                     scrub: true,
                     start: () => "top 0",
                     end: () => '+=150%',
-                    markers: true,
+                    markers: false,
                 }
             });
 
