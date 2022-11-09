@@ -23,7 +23,7 @@ html {
 }
 
 /* Components */
-section/*:not(:first-of-type) */{
+section:not(:first-of-type) {
     padding: 75px 0;
 }
 

@@ -1,3 +1,6 @@
+<script setup> 
+    import LoadingAnimation from './LoadingAnimation.vue'
+</script>
 <template>
     <section class="tracert-section">
         <div class="wrapper">
@@ -8,19 +11,24 @@
                     <input id="domain" type="domain" required>
                 </form>
                 <div class="locations"></div>
-                <div class="loading-wrapper">
+                <!-- <LoadingAnimation /> -->
+                <!-- <div class="loading-wrapper">
                     <div class="loading">
                         <div></div>
                         <div></div>
                         <div></div>
                         <div></div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
 </template>
 <style>
+    section.tracert-section{
+        height: 100vh;
+    }
+
     #globe {
         width: 100%;
         height: 600px;
@@ -49,6 +57,7 @@
 
     section .wrapper {
         position: relative;
+        height: 100%;
     }
 
     section .sidebar {
