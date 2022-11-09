@@ -3,7 +3,7 @@
         <div class="wrapper">
             <div class="titel-wrapper">
             <h2>The</h2>
-            <h2 class="stroke">Ip adress</h2>
+            <h2 class="stroke">IP ADRESS</h2>
             
             </div>
            
