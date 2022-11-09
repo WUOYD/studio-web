@@ -57,11 +57,12 @@ function init(elem) {
   dLight2.position.set(-200, 500, 200);
   camera.add(dLight2);
 
-  camera.position.z = 300;
-  camera.position.x = 0;
-  camera.position.y = 0;
+  camera.position.z = 262;
+  camera.position.x = 21;
+  camera.position.y = 63;
 
   scene.add(camera);
+  //scene.backgroundImageUrl('./files/night-sky.png')
 
   scene.fog = new Fog(0xafafaf, 400, 2000);
 
@@ -69,14 +70,14 @@ function init(elem) {
   controls.enableDamping = true;
   controls.dynamicDampingFactor = 0.01;
   controls.enablePan = false;
-  controls.minDistance = 150;
-  controls.maxDistance = 300;
   controls.rotateSpeed = 0.5;
   controls.zoomSpeed = 1;
+  controls.enableZoom = false;
+  controls.enableRotate = true;
   //controls.autoRotate = true;
   //controls.autoRotateSpeed = 0.2
-  controls.minPolarAngle = Math.PI / 2.5;
-  controls.maxPolarAngle = Math.PI * 2;
+  controls.minPolarAngle = 1.25;
+  controls.maxPolarAngle = 2.5;
 
   window.addEventListener("resize", onWindowResize(elem), false);
 }
@@ -90,11 +91,12 @@ export function initGlobe() {
     .polygonStrokeColor(() => '#FFFFFF')
     .polygonCapColor(() => 'rgba(0, 0, 0, 0)')
     .polygonSideColor(() => 'rgba(255, 255, 255, 0)')
+    .polygonAltitude(0.001)
     
     .showAtmosphere(true)
     .atmosphereColor("#ffffff")
     .atmosphereAltitude(0.15)
-    //.backgroundImageUrl('./files/night-sky.png')
+    
 
   Globe.rotateX(Math.PI / 6);
   const globeMaterial = Globe.globeMaterial();
@@ -121,7 +123,7 @@ function drawTrace(){
   setInterval(() => {
     Globe.arcsData(locationsRoutes)
       .arcColor((e) => {
-        return "#FFFFFF";
+        return "#43f2ff";
       })
       .arcAltitude((e) => {
         return e.arcAlt;
@@ -134,22 +136,21 @@ function drawTrace(){
       .arcDashAnimateTime(1000)
       .arcsTransitionDuration(1000)
       .arcDashInitialGap((e) => e.order * 1)
+      /*
       .labelsData(locations)
-      .labelColor(() => "#ffffff")
-      .labelDotOrientation((e) => {
-        return e.text === "ALA" ? "top" : "right";
-      })
+      .labelColor(() => "#43f2ff")
       .labelDotRadius(0.2)
       .labelSize((e) => e.size)
       .labelText("city")
       .labelResolution(6)
       .labelAltitude(0.03)
       .labelRotation(0)
+      */
       .pointsData(locations)
-      .pointColor(() => "#ffffff")
+      .pointColor(() => "#43f2ff")
       .pointsMerge(true)
       .pointAltitude(0.03)
-      .pointRadius(0.1);
+      .pointRadius(0.5);
   }, 500);
 }
 

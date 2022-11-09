@@ -1,4 +1,8 @@
+<script setup> 
+    import IpTitleSection from './IpTitleSection.vue'
+</script>
 <template>
+    <IpTitleSection />
     <section class="ip-section">
         <div class="wrapper">
             <div class="section1 panel">
@@ -69,7 +73,7 @@
 </template>
 
 <style scoped>
-    section .wrapper{
+    section.ip-section .wrapper{
         display: flex;
         height: 100%;
         justify-content: flex-start;
