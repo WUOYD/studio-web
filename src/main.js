@@ -27,10 +27,11 @@ window.onload = function(){
 	function p5Ready(pS){
 		let points=[];
 		pS.setup = () => {
+			pS.frameRate(30);
 			var canvas = pS.createCanvas(window.innerWidth, window.innerHeight*2.5);
 		    canvas.parent('p5Canvas');
-			for(var i=0;i<400;i++){
-				points.push(new Point(pS.random(pS.width),pS.random(pS.height),pS.random(-0.2,0.2),pS.random(-0.2,0.2)));
+			for(var i=0;i<300;i++){
+				points.push(new Point(pS.random(pS.width),pS.random(pS.height),pS.random(-0.4,0.4),pS.random(-0.4,0.4)));
 			}
 		}
 		pS.draw = () => {
