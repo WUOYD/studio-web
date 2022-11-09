@@ -2,7 +2,7 @@ export let locations = [];
 export var locationsRoutes = [];
 var loading = false;
 
-var julian = false;
+var julian = true;
 if(julian) {
 	var ajaxPath = "http://localhost/studio-web/server/ajax.php"
 }else{
