@@ -19,12 +19,12 @@
                         <div></div>
                         <div></div>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
     </section>
 </template>
-<style>
+<style scoped>
     section.tracert-section{
         height: 100vh;
     }
