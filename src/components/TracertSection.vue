@@ -34,7 +34,7 @@
     }
 
     form input {
-        
+        color: white;
         border: 2px solid white;
         background-color: transparent;
         border-radius: 10px;
