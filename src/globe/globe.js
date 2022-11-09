@@ -1,5 +1,5 @@
 import ThreeGlobe from "three-globe";
-import { WebGLRenderer, Scene } from "three";
+import { WebGLRenderer, Scene, } from "three";
 import { locations } from "../trace.js"
 import { locationsRoutes } from "../trace.js"
 
@@ -10,17 +10,10 @@ import {
   Color,
   Fog,
   PointLight,
-  SphereGeometry,
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import countries from "./files/globe-data.json";
-import travelHistory from "./files/my-flights.json";
-import airportHistory from "./files/my-airports.json";
 var renderer, camera, scene, controls;
-let mouseX = 0;
-let mouseY = 0;
-let windowHalfX = window.innerWidth / 2;
-let windowHalfY = window.innerHeight / 2;
 var Globe;
 
 export function globe(selector){
@@ -62,7 +55,6 @@ function init(elem) {
   camera.position.y = 63;
 
   scene.add(camera);
-  //scene.backgroundImageUrl('./files/night-sky.png')
 
   scene.fog = new Fog(0xafafaf, 400, 2000);
 
@@ -74,8 +66,6 @@ function init(elem) {
   controls.zoomSpeed = 1;
   controls.enableZoom = false;
   controls.enableRotate = true;
-  //controls.autoRotate = true;
-  //controls.autoRotateSpeed = 0.2
   controls.minPolarAngle = 1.25;
   controls.maxPolarAngle = 2.5;
 
@@ -87,15 +77,17 @@ export function initGlobe() {
     waitForGlobeReady: true,
     animateIn: true,
   })
+    
     .polygonsData(countries.features.filter(d => d.properties.ISO_A2 !== 'AQ'))
     .polygonStrokeColor(() => '#FFFFFF')
     .polygonCapColor(() => 'rgba(0, 0, 0, 0)')
     .polygonSideColor(() => 'rgba(255, 255, 255, 0)')
     .polygonAltitude(0.001)
+    .polygonCapCurvatureResolution(1)
     
     .showAtmosphere(true)
-    .atmosphereColor("#ffffff")
-    .atmosphereAltitude(0.15)
+    .atmosphereColor("#878787")
+    .atmosphereAltitude(0.20)
     
 
   Globe.rotateX(Math.PI / 6);
@@ -114,8 +106,8 @@ function onWindowResize(elem) {
   var selector = document.querySelector(elem);
   camera.aspect = selector.offsetWidth / selector.offsetHeight;
   camera.updateProjectionMatrix();
-  windowHalfX = selector.offsetWidth / 1.5;
-  windowHalfY = selector.offsetHeight / 1.5;
+  let windowHalfX = selector.offsetWidth / 1.5;
+  let windowHalfY = selector.offsetHeight / 1.5;
   renderer.setSize(selector.offsetWidth, selector.offsetHeight);
 }
 
@@ -125,9 +117,7 @@ function drawTrace(){
       .arcColor((e) => {
         return "#43f2ff";
       })
-      .arcAltitude((e) => {
-        return e.arcAlt;
-      })
+      .arcAltitude(0.1)
       .arcStroke((e) => {
         return e.status ? 0.5 : 0.3;
       })
@@ -136,16 +126,6 @@ function drawTrace(){
       .arcDashAnimateTime(1000)
       .arcsTransitionDuration(1000)
       .arcDashInitialGap((e) => e.order * 1)
-      /*
-      .labelsData(locations)
-      .labelColor(() => "#43f2ff")
-      .labelDotRadius(0.2)
-      .labelSize((e) => e.size)
-      .labelText("city")
-      .labelResolution(6)
-      .labelAltitude(0.03)
-      .labelRotation(0)
-      */
       .pointsData(locations)
       .pointColor(() => "#43f2ff")
       .pointsMerge(true)
