@@ -136,6 +136,7 @@ function drawTrace(){
       .arcDashAnimateTime(1000)
       .arcsTransitionDuration(1000)
       .arcDashInitialGap((e) => e.order * 1)
+      /*
       .labelsData(locations)
       .labelColor(() => "#43f2ff")
       .labelDotRadius(0.2)
@@ -144,6 +145,7 @@ function drawTrace(){
       .labelResolution(6)
       .labelAltitude(0.03)
       .labelRotation(0)
+      */
       .pointsData(locations)
       .pointColor(() => "#43f2ff")
       .pointsMerge(true)
@@ -156,6 +158,5 @@ function animate() {
   camera.lookAt(scene.position);
   controls.update();
   renderer.render(scene, camera);
-  console.log(camera.position.z , " " , camera.position.x , " " , camera.position.y)
   requestAnimationFrame(animate);
 }

@@ -12,14 +12,14 @@
                 </form>
                 <div class="locations"></div>
                 <!-- <LoadingAnimation /> -->
-                <!-- <div class="loading-wrapper">
+                <div class="loading-wrapper">
                     <div class="loading">
                         <div></div>
                         <div></div>
                         <div></div>
                         <div></div>
                     </div>
-                </div> -->
+                </div> 
             </div>
         </div>
     </section>
