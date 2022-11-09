@@ -77,7 +77,7 @@ export default {
                     pin: true,
                     scrub: true,
                     start: () => "top 0",
-                    end: () => '+=150%',
+                    end: () => '+=110%',
                     markers: false,
                 }
             });
