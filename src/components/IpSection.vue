@@ -7,9 +7,12 @@
         <div class="wrapper">
             <div class="section1 panel">
                 <div class="text1-wrapper">
-                   <p class="text-big">The Internet is a network of networks.</p>
+                   <p class="text-big">The Internet is<br> a network of<span class="stroke"> networks</span><span class="blue">.</span></p>
                    <p> It connects billions of devices together like a laptop or a smartphone.</p>
                </div>
+                
+            </div>
+            <div class="section6 panel">
                 <div class="img-wrapper">
                     <div class="imgscale">
                         <img  src="@/assets/Laptop.png" alt="">
@@ -28,6 +31,7 @@
                     <span class="line"></span>
                     <span class="line2"></span>
                 </div>
+
             </div>
             <div class="section2 panel">
                <div class="text2-wrapper">
@@ -75,7 +79,7 @@
         justify-content: flex-start;
     }
 
-   /* section .section1{
+  /* section .section1{
         background-color: coral;
     }
 
@@ -93,12 +97,13 @@
     
      section .section4{
         background-color: grey;
-    }*/
-   
+    }
+   */
 
     section .panel {
         display: flex;
-        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
         height: 100%;
     }
 
@@ -110,7 +115,7 @@
         /*background-color: blueviolet;*/
         display: flex;
         flex-direction: column;
-        width: 40vw;
+        width: 100%;
 
     }
 
@@ -186,7 +191,7 @@
     }
      
     section p{
-        font-size: 21px;
+        font-size: 40px;
         font-family: 'Roboto', sans-serif;
         font-weight: 500;
         line-height: 1.3;
@@ -194,10 +199,10 @@
     }
 
     section .text-big{
-       font-size: 55px;
+       font-size: 160px;
        font-family: 'Roboto', sans-serif;
        font-weight: 500;
-       line-height: 1.3;
+       line-height: 1;
        color: white;
 
     }
@@ -244,6 +249,16 @@
         margin-left: 195px;
         margin-top: 412px;
         width: 125px;
+    }
+
+    .stroke{
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: white;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .blue{
+        color:rgb(67, 242, 255) ;
     }
 
 </style>

@@ -1,14 +1,14 @@
 <template>
-    <section class="IpTitleSection">
+    <section class="DNSTitleSection">
         <div class="wrapper">
-            <h2>IP Titel</h2>
+            <h2>DNS Titel</h2>
             <p>Da muss no was ane FAbian & Julian haha</p>
         </div>
     </section>
 </template>
 
 <style scoped>
-    section.IpTitleSection {
+    section.DNSTitleSection {
         height: 100vh;
     }
 
