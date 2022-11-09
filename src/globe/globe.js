@@ -34,7 +34,7 @@ export function globe(selector){
 function init(elem) {
   var selector = document.querySelector(elem);
   renderer = new WebGLRenderer({ antialias: true });
-  renderer.setSize(selector.clientWidth, selector.clientHeight);
+  renderer.setSize(selector.offsetWidth, selector.offsetHeight);
   selector.appendChild(renderer.domElement);
 
   scene = new Scene();
@@ -42,7 +42,7 @@ function init(elem) {
   scene.background = new Color(0x000000);
 
   camera = new PerspectiveCamera();
-  camera.aspect = selector.clientWidth / selector.clientHeight;
+  camera.aspect = selector.offsetWidth / selector.offsetHeight;
   camera.updateProjectionMatrix();
 
   var dLight = new DirectionalLight(0xffffff, 0.8);
@@ -110,11 +110,11 @@ export function initGlobe() {
 
 function onWindowResize(elem) {
   var selector = document.querySelector(elem);
-  camera.aspect = selector.clientWidth / selector.clientHeight;
+  camera.aspect = selector.offsetWidth / selector.offsetHeight;
   camera.updateProjectionMatrix();
-  windowHalfX = selector.clientWidth / 1.5;
-  windowHalfY = selector.clientHeight / 1.5;
-  renderer.setSize(selector.clientWidth, selector.clientHeight);
+  windowHalfX = selector.offsetWidth / 1.5;
+  windowHalfY = selector.offsetHeight / 1.5;
+  renderer.setSize(selector.offsetWidth, selector.offsetHeight);
 }
 
 function drawTrace(){
