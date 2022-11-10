@@ -218,6 +218,7 @@ export default {
                 snap: 1 / (6 - 1),
                 scrub: 4,
                 start: () => "top top",
+                invalidateOnRefresh: true,
                 end: () => '+=100%',
             }
         });

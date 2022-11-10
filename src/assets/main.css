@@ -1,9 +1,5 @@
 @import "./base.css";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* General Css */
 
 #app {
@@ -25,6 +21,19 @@ html {
 /* Components */
 section:not(:first-of-type) {
     padding: 75px 0;
+    position: relative;
+}
+
+section/*:not(:first-of-type)*/::after {
+    content:"";
+    background-color:#CCFFFF;
+    position: absolute;
+    height: 100%;
+    width: 200vw;
+    left: -100vw;
+    z-index: -1;
+    top: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0) 20%, rgba(0,0,0) 80%, rgb(0, 0, 0, 0.2) 100%);
 }
 
 section.text-left-img .wrapper,
@@ -127,13 +136,14 @@ section.text-right-img .wrapper > div {
 
 /* P5 */
 #p5Canvas {
-    position:absolute;
+    position:fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 250vh;
+    height: 100vh;
     width: 100vw;
+    z-index: -1;
 }
 
 #p5Canvas > canvas {
@@ -143,8 +153,8 @@ section.text-right-img .wrapper > div {
 
 #p5Canvas::after {
     content: "";
-    background-color: rgba(0,0,0,0.6);
-    background:  linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 70%, rgb(0, 0, 0) 100%);
+    background-color: rgba(0,0,0,0.7);
+    /*background:  linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 70%, rgb(0, 0, 0) 100%);*/
     position: absolute;
     top: 0;
     left: 0;
