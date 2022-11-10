@@ -77,7 +77,7 @@ export default {
                     pin: true,
                     scrub: true,
                     start: () => "top 0",
-                    end: () => '+=110%',
+                    end: () => '+=130%',
                     markers: false,
                 }
             });
@@ -90,7 +90,7 @@ export default {
             }, 'initial');
             tl.to(image.querySelectorAll('header div.test2 div.test.sp'), {
                 ease: 'none',
-                x: -30,
+                x: 0,
                 stagger: 0.0
             }, 'initial');
         });
