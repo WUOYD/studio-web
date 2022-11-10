@@ -52,4 +52,8 @@
     section .img-wrapper {
         margin-top: 15px;
     }
+
+    section img {
+        max-width: 100%;
+    }
 </style>

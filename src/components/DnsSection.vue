@@ -60,14 +60,6 @@
                         country region subnet device
                     </div>
             </div>      
-
-            <div class="section5 panel">
-                    <div class="text5-wrapper">
-                   <p> Normally users don’t know the IP adress of a service like YouTube or Facebook, so you google for the domain. Google tells you under which domain you can reach a service. Example: youtube.com / facebook.com</p>
-                    </div>
-                  
-
-            </div>
         </div>
     </section>
 </template>
@@ -252,72 +244,3 @@
     }
 
 </style>
-
-<script>
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
-export default {
-    mounted(){
-        function setPanelWidths(){
-            var width = document.querySelector("section.dns-section .panel:first-of-type").offsetWidth;
-            var panels = document.querySelectorAll("section.dns-section .panel:not(:first-of-type)");
-            panels.forEach((panel, i) => {
-                panel.style.minWidth  = width+"px";
-                panel.style.maxWidth  = width+"px";
-                panel.style.marginLeft = getPanelMarginLeft() + "px";
-            });
-        }
-
-        function getPanelMarginLeft(){
-            var width = document.querySelector("section.dns-section .panel:first-of-type").offsetWidth;
-            var windowWidth = window.innerWidth;
-            return ((windowWidth - width) / 2);
-        }
-
-        setPanelWidths();
-
-        window.addEventListener("resize", setPanelWidths);
-
-        gsap.registerPlugin(ScrollTrigger);
-
-        let sections = gsap.utils.toArray(".panel");
-        let slider = document.querySelector('section.dns-section');
-        var x = 4 * window.innerWidth - 4 * getPanelMarginLeft();
-        let scrollTween = gsap.to(slider.querySelector('section.dns-section .wrapper'), {
-            x: -x,
-            ease: "none",
-            scrollTrigger: {
-                trigger: slider,
-                pinType: "fixed",
-                pin: true,
-                snap: 1 / (5 - 1),
-                scrub: 4,
-                start: () => "top top",
-                end: () => '+=100%',
-            }
-        });
-
-        gsap.set("#animated-item", {
-            x: 0
-        });
-
-        gsap.to("#animated-item", {
-            x: 3000,
-            ease: "none",
-            scrollTrigger: {
-                trigger: "#trigger-ip",
-                containerAnimation: scrollTween,
-                start: "center 80%",
-                end: "center 20%",
-                scrub: 1,
-                id: "2"
-            }
-        });
-    }
-}
-
-
-</script>

@@ -29,11 +29,11 @@ section/*:not(:first-of-type)*/::after {
     background-color:#CCFFFF;
     position: absolute;
     height: 100%;
-    width: 200vw;
+    width: 300vw;
     left: -100vw;
     z-index: -1;
     top: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0) 20%, rgba(0,0,0) 80%, rgb(0, 0, 0, 0.2) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0, 0.9) 20%, rgba(0,0,0, 0.9) 80%, rgb(0, 0, 0, 0.4) 100%);
 }
 
 section.text-left-img .wrapper,
@@ -134,8 +134,8 @@ section.text-right-img .wrapper > div {
     }
 }
 
-/* P5 */
-#p5Canvas {
+/* particles-js */
+#particles-js {
     position:fixed;
     top: 0;
     left: 0;
@@ -146,14 +146,14 @@ section.text-right-img .wrapper > div {
     z-index: -1;
 }
 
-#p5Canvas > canvas {
+#particles-js > canvas {
     width: 100%;
     height: 100%;
 }
 
-#p5Canvas::after {
+#particles-js::after {
     content: "";
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0,0,0,0.3);
     /*background:  linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 70%, rgb(0, 0, 0) 100%);*/
     position: absolute;
     top: 0;
