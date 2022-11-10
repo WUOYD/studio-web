@@ -102,7 +102,7 @@
     }
 
     #globe {
-        width: 100vh;
+        width: 66.6666%;
         height: 100%;
         display: flex;
         justify-content: flex-end;
