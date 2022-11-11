@@ -18,7 +18,7 @@ export function doGSAP(){
             pin: true,
             scrub: true,
             start: () => "top 0",
-            end: () => '+=130%',
+            end: () => '+=100%',
             markers: false,
         }
     });
@@ -72,7 +72,7 @@ export function doGSAP(){
             scrollTrigger: {
                 trigger: sec,
                 pin: true,
-                snap: 1 / (slideCount - 1),
+                /*snap: 1 / (slideCount - 1),*/
                 scrub: 1 / (slideCount + 1),
                 start: () => "top top",
                 invalidateOnRefresh: true,

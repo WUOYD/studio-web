@@ -1,5 +1,5 @@
 <template>
-    <section class="IpTitleSection">
+    <section id="Explore" class="IpTitleSection">
         <div class="wrapper">
             <div class="titel-wrapper">
             <h2>The</h2>

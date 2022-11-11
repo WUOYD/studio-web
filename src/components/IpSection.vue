@@ -152,8 +152,6 @@
 
     section .text-big{
         font-size: 130px;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 500;
         line-height: 0.9;
         color: white;
         margin-bottom: 10px;
