@@ -1,3 +1,19 @@
+<template>
+    <header>
+        <div class="header-wrapper">
+            <div class="header-item sp">WHAT</div>
+            <div class="header-item sp">THE</div>
+            <div class="header-item ">WEB</div>
+            <p>What the web is an educational service for tracing routes of websites.</p>
+            <form id="ip">
+                <label for="domain">Trace a Domain</label>
+                <input id="domain" placeholder="example-domain.com" type="domain" required>
+                <button type="submit">Trace</button>
+            </form>
+        </div>
+   </header>
+</template>
+
 <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
@@ -98,18 +114,3 @@
 
 
 
-<template>
-    <header>
-        <div class="header-wrapper">
-            <div class="header-item sp">WHAT</div>
-            <div class="header-item sp">THE</div>
-            <div class="header-item ">WEB</div>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
-            <form id="ip">
-                <label for="domain">Trace a Domain</label>
-                <input id="domain" placeholder="example-domain.com" type="domain" required>
-                <button type="button trace-btn">Trace</button>
-            </form>
-        </div>
-   </header>
-</template>

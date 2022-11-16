@@ -6,11 +6,13 @@
         <div class="wrapper">
             <div class="sidebar">
                 <div class="info"> 
-                    <h2 id="infotitle">What is "What the Web"?</h2>
-                    <p>What the web is an educational service for tracing routes of websites. The origin of tracing is always Switzerland. (Location of the webserver)</p>
+                    <h3>Enter a domain to trace</h3>
                 </div>
-                <h3>Locations Untertitel</h3>
-                <p style="color:red;"><span style="color: yellow;">Note a mini team mates:</span> dmarker werdet nonig gsetzt aber isch easy zum mache... mer müsst no irgendwie was finde zum arcs zeichne oder sie geil zverbinde :)<br><br> de explore button han ich eifach mal irgendwie platziert und gstylet (header au) aber das chan ja de fabian no apasse (btw das mit em agschnittene globe im header und denn abe animiere han ich au versuecht mache, dunkt mich easy schwer zum mache also vlt lieber irgendwie anderscht löse)<br><br>btw de p tag chammer lösche wenn ihrs glese hend p.s gang jetzt go penne es isch 2 am morge han no ganz viel sache gfixt und ufgrumt hoffe mer checkt alles no</p>
+                <form id="ip">
+                    <label for="domain">Trace a Domain</label>
+                    <input id="domain" placeholder="example-domain.com" type="domain" required>
+                    <button class="submitbutton" type="submit">Trace</button>
+                </form>
                 <div class="locations"></div>
                 <!-- <LoadingAnimation /> -->
                 <div class="loading-wrapper">
@@ -22,7 +24,9 @@
                     </div>
                 </div>
             </div>
-            <button class="button" type="button" href="#Explore">Explore More</button>
+            <div class="bottombar">
+                <button class="morebutton" type="button" href="#Explore">Learn more about networks</button>
+            </div>
         </div>
     </section>
 </template>
@@ -35,20 +39,16 @@
         position: relative;
         height: 100%;
         display: flex;
-        justify-content: flex-end;
-    }
-
-    h3 {
-        margin-top: 30px;
+        flex-direction: column;
     }
 
     section .sidebar {
-        position: absolute;
-        left: 0;
-        top: 75px;
+        position: relative;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
         background-color: rgba(255, 255, 255, 0.1);
-        max-height: calc(90% - 2 * 75px);
-        height: calc(90% - 2 * 75px);
+        border-radius: 15px;
+        height: 90%;
         color: white;
         padding: 1rem 1rem;
         width: 35%;
@@ -65,14 +65,58 @@
         display: flex;
         justify-content: center;
     }
-    
-    button{
-        width: 30%;
-        position: absolute;
-        bottom: 75px;
-        left: 0;
-        z-index: 2;
+
+    form {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
     }
+
+    form label {
+        display: none;
+    }
+
+    form input {
+        color: white;
+        border: 2px solid white;
+        background-color: transparent;
+        border-radius: 15px;
+        padding: 10px 10px;
+        width: 70%;
+        font-size: 20px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right: none;
+    }
+
+    .info h3{
+        font-weight: 500;
+        margin-left: 12px;
+    }
+
+    form input:focus,
+    form input:active {
+        outline: 0;
+    }
+    
+    .submitbutton{
+        width: 30%;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        position: relative;
+    }
+
+    .bottombar{
+        text-align: center;
+        z-index: 2;
+        height: 10%;
+    }
+    .morebutton{
+        width: 30%;
+    }
+
 /*
     #globe {
         width: 100vw;
