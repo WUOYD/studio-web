@@ -1,31 +1,23 @@
 <script setup> 
-    import IpTitleSection from './IpTitleSection.vue'
+    
 </script>
 <template>
     <IpTitleSection />
     <section class="ip-section">
         <div class="wrapper">
             <div class="section1 panel">
-                <div class="text-wrapper">
-                    <p class="text-big">The Internet is<br> a network of <span class="stroke">networks</span><span class="blue">.</span></p>
-                   <p>It connects billions of devices together like a laptop or a smartphone.</p>
+                <div class="ip-titel-wrapper">
+                    <h3>The <br> <span class="stroke-blue">IP ADRESS</span></h3>
                 </div>
             </div>
+
+
             <div class="section2 panel">
-                <div class="img-wrapper">
-                    <div>
-                        <img  src="@/assets/Laptop.png" alt="">
-                    </div>
-                    <div>
-                        <img  src="@/assets/Laptop.png" alt="">
-                    </div>
-                    <div>
-                        <img src="@/assets/Laptop.png" alt="">
-                    </div>
-                    <div>
-                        <img src="@/assets/Laptop.png" alt="">
-                    </div>
-                </div>
+                <div class="network-wrapper">
+                    <p class="text-big">The Internet is a network of <span class="stroke"> networks</span> <span class="blue">.</span></p>
+                    <p> It connects billions of devices together like a laptop or a smartphone.</p>
+                  
+            </div>
             </div>
             <div class="section3 panel">
                <div class="text-wrapper">
@@ -58,6 +50,64 @@
 </template>
 
 <style scoped>
+
+section .ip-titel-wrapper{
+    width: 100%;
+    height: 100%;
+    /*background-color: darksalmon;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h3 {
+
+        font-weight: 600;
+        color: white;
+        font-size: 5vw;
+        z-index:  1;
+        font-family: 'Roboto', sans-serif;
+    
+}
+
+section p{
+        font-weight: 600;
+        color: white;
+        font-size: 2vw;
+        line-height: 1.2;
+        z-index:  1;
+        font-family: 'Roboto', sans-serif;
+        margin-top: 5vh;
+
+}
+
+section .stroke-blue{
+      -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: rgb(67, 242, 255);
+        -webkit-text-fill-color: transparent;
+        
+
+}
+
+section .stroke{
+      -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: white;
+        -webkit-text-fill-color: transparent;
+        
+
+}
+
+.network-wrapper{
+display: flex;
+flex-direction: column;
+/*background-color: grey;*/
+width: 50%;
+height: 50%;
+margin-top: -20vh;
+
+
+
+}
     section.ip-section .wrapper{
         display: flex;
         height: 100%;
@@ -151,21 +201,19 @@
     }
 
     section .text-big{
-        font-size: 130px;
-        line-height: 0.9;
+        font-weight: 600;
         color: white;
-        margin-bottom: 10px;
+        font-size: 5vw;
+        line-height:1;
+        z-index:  1;
+        font-family: 'Roboto', sans-serif;
     }
 
     section.ip-section {
         height: 100vh;
     }
 
-    .stroke{
-        -webkit-text-stroke-width: 1px;
-        -webkit-text-stroke-color: white;
-        -webkit-text-fill-color: transparent;
-    }
+    
 
     .blue{
         color:rgb(67, 242, 255);
