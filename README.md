@@ -15,6 +15,7 @@ B --> E[MySQL]
 B --> F[IP-API]
 C --> G[Vue.js]
 C --> H[Mapbox]
+C --> I[GSAP]
 ```
 
 ## Requirementsanalyse
