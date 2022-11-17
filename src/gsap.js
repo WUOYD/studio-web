@@ -53,11 +53,24 @@ export function doGSAP(){
         return ((windowWidth - width) / 2);
     }
 
+    Object.defineProperty(Element.prototype, 'outerWidth', {
+        'get': function(){
+            var width = this.clientWidth;
+            var computedStyle = window.getComputedStyle(this); 
+            width += parseInt(computedStyle.marginLeft, 10);
+            width += parseInt(computedStyle.marginRight, 10);
+            width += parseInt(computedStyle.borderLeftWidth, 10);
+            width += parseInt(computedStyle.borderRightWidth, 10);
+            return width;
+        }
+    });
+
     var sections = [
         "section.ip-section",
         "section.dns-section"
     ];
 
+    /* function 100vw sections
     sections.forEach(function(section){
         var sec = document.querySelector(section);
         setPanelWidths(sec);
@@ -72,30 +85,62 @@ export function doGSAP(){
             scrollTrigger: {
                 trigger: sec,
                 pin: true,
-                /*snap: 1 / (slideCount - 1),*/
+                snap: 1 / (slideCount - 1),
                 scrub: 1 / (slideCount + 1),
                 start: () => "top top",
                 invalidateOnRefresh: true,
                 end: () => '+=' + slideCount * 1000 + '%',
             }
         });
-    });
-
-    /*gsap.set("#animated-ip", {
-        x: 0
-    });
-
-    gsap.to("#animated-ip", {
-        x: 3000,
-        ease: "none",
-        scrollTrigger: {
-            trigger: "#trigger-ip",
-            containerAnimation: scrollTween,
-            start: "center 80%",
-            end: "center 20%",
-            scrub: 1,
-            id: "2"
-        }
     });*/
+
+
+    sections.forEach(function(section){
+        var sec = document.querySelector(section);
+        let p = sec.querySelectorAll(".panel");
+        var panelWidths = 0;
+        p.forEach(function(pa, i){
+            if(i != 0){
+                console.log(i);
+                console.log(pa.outerWidth, pa);
+                panelWidths = panelWidths + pa.outerWidth;
+            }
+        });
+        console.log("---------");
+
+        let panel = gsap.utils.toArray(p);
+        var slideCount = panel.length;
+        var scrollTween = gsap.to(panel, {
+            x: -panelWidths,
+            ease: "none",
+            scrollTrigger: {
+                trigger: sec,
+                pin: true,
+                scrub: 1,
+                start: () => "top top",
+                invalidateOnRefresh: true,
+                end: () => '+=' + slideCount * 1000 + '%',
+            }
+        });
+
+        gsap.set("#ip-adress", {
+            x: 0
+        });
+
+        gsap.to("#ip-adress", {
+            x: sec.offsetWidth + document.querySelector(".section4").offsetWidth / 2 - document.querySelector("#ip-adress").offsetWidth / 2,
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#ip-adress",
+                containerAnimation: scrollTween,
+                start: "left left",
+                end: "right right",
+                marker: true,
+                scrub: 3,
+                id: "2"
+            }
+        });
+    });
+
 
 }

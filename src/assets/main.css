@@ -204,8 +204,7 @@ section.text-right-img .wrapper > div {
 }
 
 #globe canvas {
-    margin-left: 15%;
-    width: 85%;
+    width: 100%;
     height: 100%;
 }
 
