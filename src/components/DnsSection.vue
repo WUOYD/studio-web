@@ -1,96 +1,73 @@
-<script setup> 
-    import DNSTitleSection from './DNSTitleSection.vue'
-</script>
 <template>
-    <DNSTitleSection />
     <section class="dns-section">
         <div class="wrapper">
-            <div class="section1 panel">
-                <div class="text1-wrapper">
-                   <p class="text-big">The Internet is a network of networks.</p>
-                   <p> It connects billions of devices together like a laptop or a smartphone.</p>
-               </div>
-                
-            </div>
-            <div class="section6 panel">
-                <div class="img-wrapper">
-                    <div class="imgscale">
-                        <img  src="@/assets/Laptop.png" alt="">
+            <div class="title-section panel">
+                <div class="wrapper">
+                    <div class="titel-wrapper">
+                        <h2>The<br><span class="stroke">DNS Server</span></h2>
                     </div>
-                    <div class="imgscale">
-                        <img  src="@/assets/Laptop.png" alt="">
-                    </div>
-                   <div class="imgscale">
-                        <img src="@/assets/Laptop.png" alt="">
-                    </div>
-                    <div class="imgscale">
-                        <img src="@/assets/Laptop.png" alt="">
-                    </div>
-                    <span class="vertical-line"></span>
-                    <span class="vertical-line2"></span>
-                    <span class="line"></span>
-                    <span class="line2"></span>
                 </div>
-
+            </div>
+            <div class="section1 panel">
+                <div class="text-wrapper">
+                    <p class="text-big">A <span class="stroke">domain</span> consists two parts: the domain name and the top level domain<span class="blue">.</span></p>
+                   <p>The domain name can be anything like your name or the name of a business. The top level domain (TLD) discribes the use of the domain. It can be a country specific TLD like .fr for france or a generic TLD like .com short for commercial which is used by businesses.</p>
+                </div>
             </div>
             <div class="section2 panel">
-               <div class="text2-wrapper">
-                <p> For connecting with each other </p>
-                <p class="text-big">every device has  an unique adress the socalled IP adress.</p>
+                <div class="text-wrapper special-text text-big">
+                   <div>www<span class="blue">.</span></div>
+                   <div>google<span class="blue">.</span></div>
+                   <div>com<span class="blue">.</span></div>
+                </div>
             </div>
-            <div class="img2-wrapper">
-                <img  src="@/assets/Laptop.png" alt="">
-                <p id="animated-item" class="text-big">255.255.14.0</p>
-            </div>
-            
-            </div>
-            <div class="section3 panel">
-                <div id="trigger-ip" class="text3-wrapper">
-                    <p>An IP adress consists</p>
-                    <p class="text-big">four numbers ranging from 0 to 255 who are separated with a point.</p>
-                    <p> These numbers represent bits, which every computer works with internally.</p>
+            <div class="section4 panel">
+                <div class="text-wrapper">
+                    <p class="text-big">Every Domain has assinged an IP adress as its <span class="stroke">alias</span><span class="blue">.</span></p>
+                    <p>It’s much easier remembering the adress of a service like Google, when you don’t have to know a long IP adress and instead can use google.com.</p>
                 </div>
             </div> 
-            <div class="section4 panel">
-                <div class="text4-wrapper"> 
-                    <p class="text-big">Each part of the IP adress has a different meaning. </p>
-                    <p>The first number refers to a country, the second to a region, the third to a subnet and the last to specifc device.  </p> 
-                </div> 
-                  <div class="ip-wrapper">
-                        country region subnet device
-                    </div>
-            </div>      
+            <div class="section5 panel">
+                <div class="text-wrapper"> 
+                    <p class="text-big">Normally users don’t know the IP adress of a <span class="stroke">service</span><span class="blue">.</span></p>
+                    <p>The first number refers to a country, the second to a region, the third to a subnet and the last to specifc device.</p> 
+                </div>
+            </div>
         </div>
     </section>
 </template>
 
 <style scoped>
+    .title-section .titel-wrapper{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title-section h2 {
+        font-weight: 600;
+        color: white;
+        font-size: 80px;
+        line-height:0.8;
+        z-index:  1;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .title-section .stroke{
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: rgb(67, 242, 255);
+        -webkit-text-fill-color: transparent;
+    }
+
     section.dns-section .wrapper{
         display: flex;
+        width: 100%;
         height: 100%;
         justify-content: flex-start;
     }
-
-   section .section1{
-        background-color: coral;
-    }
-
-    section .section2{
-        background-color: blanchedalmond;
-    }
-
-    section .section3{
-        background-color: lightgreen;
-    }
-
-    section .section4{
-        background-color: blueviolet;
-    }
-    
-     section .section4{
-        background-color: grey;
-    }
-   
 
     section .panel {
         display: flex;
@@ -103,144 +80,124 @@
         margin-right: unset;
     }
 
-    section .text1-wrapper{
-        /*background-color: blueviolet;*/
+    .text-wrapper{
         display: flex;
         flex-direction: column;
-        width: 40vw;
-
+        width: 85%;
+        color: white;
+        position: relative;
     }
 
-    section .text2-wrapper{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 40vw;
-        /*background-color: green;*/
-    }
-
-    section .text3-wrapper{
-        /*background-color: burlywood;*/
-        display: flex;
-        flex-direction: column;
-        width: 40vw;
-
-    }
-
-    section .text4-wrapper{
-       /* background-color: pink;*/
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        width: 40vw;
-    }
-
-       section .text5-wrapper{
-       /* background-color: pink;*/
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        width: 40vw;
-    }
-
-    section .img-wrapper{
-        display: flex;
-        flex-wrap: wrap;
-        width: 30vw;
-        margin-left: 10vw;
-        /*background-color: blue;*/
-        justify-content: space-between;
-    }
-
-    section .img2-wrapper{
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-       /* background-color: orange;*/
-    }
-
-    .ip-align{
-        margin-top: 70vh;
-        
-    }
-
-    .ip-wrapper{
-    display: flex;
-    align-items: flex-end;
-    margin-left: 35px;
-    height: 200px;
-    margin-top: 63px;
-    font-size: 33px;
-    color: white;
-
-
-    }
-
-    section .imgscale{
-        width: 12vw;
-        height: 12vw;
-       /* background-color: beige;*/
-    }
-     
-    section p{
-        font-size: 21px;
+    .text-wrapper p {
+        font-size: 25px;
         font-family: 'Roboto', sans-serif;
         font-weight: 500;
         line-height: 1.3;
         color: white;
     }
 
-    section .text-big{
-       font-size: 40px;
-       font-family: 'Roboto', sans-serif;
-       font-weight: 500;
-       line-height: 1.3;
-       color: white;
+    .section2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
+    .text-wrapper.special-text {
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: unset;
+        align-items: center;
+    }
+
+    .special-text > div {
+        position: relative;
+    }
+
+    .special-text > div:nth-of-type(2)::after {
+        content: "name";
+    }
+
+    .special-text > div:nth-of-type(3)::after {
+        content: "top level domain";
+    }
+
+    .special-text > div::after {
+        position: absolute;
+        top: 185%;
+        left: 0;
+        font-size: 25%;
+        text-align: center;
+        width: 100%;
+    }
+
+    .special-text > div:nth-of-type(2)::before,
+    .special-text > div:nth-of-type(3)::before {
+        content: "";
+        border-left: 1px solid rgb(67, 242, 255);
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        height: 80%;
+    }
+
+    section .text-big{
+        font-size: 65px;
+        line-height: 0.9;
+        color: white;
+        margin-bottom: 30px;
     }
 
     section.dns-section {
         height: 100vh;
     }
 
-    .vertical-line{
-        position: absolute;
-        border-left: 2px solid white;
-        display: block;
-        height: 35vh;
-        margin-left: 95px;
-        margin-top: 160px;
-        width: 1px;
+    .stroke{
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: white;
+        -webkit-text-fill-color: transparent;
     }
 
-    .vertical-line2{
-        position: absolute;
-        border-left: 2px solid white;
-        display: block;
-        height: 35vh;
-        margin-left: 403px;
-        margin-top: 160px;
-        width: 1px;
+    .blue{
+        color:rgb(67, 242, 255);
     }
 
-    .line{
-        position: absolute;
-        border-bottom: 2px solid white;
-        display: block;
-        height: 1px;
-        margin-left: 195px;
-        margin-top: 149px;
-        width: 125px;
+    .section4 {
+        text-align: center;
+        justify-content: center;
     }
 
-    .line2{
-        position: absolute;
-        border-bottom: 2px solid white;
-        display: block;
-        height: 1px;
-        margin-left: 195px;
-        margin-top: 412px;
-        width: 125px;
+    .section4 .text-wrapper {
+        justify-content: center;
+        padding-bottom: 5%;
+    }
+
+    .section5 > div:first-of-type {
+        width: 55%;
+        justify-content: center;
+    }
+
+    .section5 > div:last-of-type {
+        width: 45%;
+        justify-content: flex-end;
+        align-items: center;
     }
 
 </style>
+
+<script>
+    export default {
+        data: () => ({
+
+        }),
+        mounted() {
+            function getPanelMarginLeft(){
+                var width = document.querySelector(".dns-section .title-section.panel").offsetWidth;
+                var windowWidth = window.innerWidth;
+                return ((windowWidth - width) / 2);
+            }
+
+            document.querySelector(".dns-section .section1.panel").style.marginLeft = getPanelMarginLeft() + "px";
+            document.querySelector(".dns-section .section5.panel").style.marginLeft = getPanelMarginLeft() + "px";
+        }
+    }
+</script>
