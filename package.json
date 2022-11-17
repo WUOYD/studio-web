@@ -9,6 +9,7 @@
     "php": "php -S localhost:8000 -t server/"
   },
   "dependencies": {
+    "deck.gl": "^8.8.20",
     "gsap": "^3.11.3",
     "mapbox-gl": "^2.10.0",
     "particles.js": "^2.0.0",

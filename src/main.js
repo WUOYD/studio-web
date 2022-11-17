@@ -21,7 +21,6 @@ window.onload = function(){
 	let submitforms = document.querySelectorAll(".tracert-form");
 	submitforms.forEach(function(submitform){
 		submitform.addEventListener("submit", async function(e){
-			console.log("Test")
 			e.preventDefault()
 			var ip = getIPValue(submitform);
 			traceIP(ip);

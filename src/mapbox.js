@@ -1,7 +1,7 @@
-
-import { EMPTY_ARR } from '@vue/shared';
 import mapboxgl from 'mapbox-gl';
 import { locations } from "./trace.js"
+import {Deck} from 'deck.gl/core';
+import {ScatterplotLayer} from 'deck.gl/layers';
 
 
 export function loadMapBox(){
@@ -27,6 +27,8 @@ export function loadMapBox(){
      
     let userInteracting = false;
     let spinEnabled = true;
+
+    
      
     function spinGlobe() {
         const zoom = map.getZoom();
@@ -81,13 +83,13 @@ export function loadMapBox(){
                 locations.forEach(element => {
                     // create a HTML element for each feature
                     const el = document.createElement('div');
-                    el.className = 'marker';
-                    console.log(element);                
+                    el.className = 'marker';             
                     // make a marker for each feature and add to the map
-                    new mapboxgl.Marker(el).setLngLat(element.coordinates).addTo(map);
+                    new mapboxgl.Marker(el).setLngLat({lng: element.lng, lat: element.lat}).addTo(map);
                 }); 
         }, 500);
       }
+
 
       setMarkers();
       spinGlobe();

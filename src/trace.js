@@ -156,12 +156,12 @@ function appendLocation(location){
 	let marker = {};
 	if( typeof location === 'object' && !Array.isArray(location) && location !== null){
 		marker.type = 'Point';
-		marker.coordinates = [location.lng,locations.lat];
+		marker.lng= location.lon;
+		marker.lat = location.lat;
 		marker.title = 'Mapbox';
 		marker.description = location.city
 		locations.push(marker);
 		appendLocationText(location);
-		console.log(locations)
 	}
 }
 

@@ -211,8 +211,8 @@ section.text-right-img .wrapper > div {
 .marker {
     background-image: url('./pinpoint.svg');
     background-size: cover;
-    width: 64px;
-    height: 64px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     cursor: pointer;
   }
