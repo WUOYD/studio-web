@@ -1,8 +1,9 @@
-import mapboxgl from 'mapbox-gl';
-import { locations } from "./trace.js"
-import {Deck} from 'deck.gl/core';
-import {ScatterplotLayer} from 'deck.gl/layers';
 
+import { EMPTY_ARR } from '@vue/shared';
+import mapboxgl from 'mapbox-gl';
+import { locations, locationsRoutes } from "./trace.js"
+import {MapboxOverlay} from '@deck.gl/mapbox';
+import {ArcLayer} from '@deck.gl/layers';
 
 export function loadMapBox(){
     var selector = document.querySelector("#globe");
@@ -16,7 +17,27 @@ export function loadMapBox(){
         zoom: 2,
         projection: 'globe'
     });
+    
+    let arcLayer = new ArcLayer({
+        id: 'arc-layer',
+        data: [
+            {lat: [0,0,0], lng: [0,0,0]}
+        ],
+        getSourcePosition: d => d.lat,
+        getTargetPosition:  d => d.lng,
+        getSourceColor: [67, 242, 255],
+        getTargetColor: [67, 242, 255],
+        getWidth: 1,
+        type: 'line'
+    })
 
+    const arcLayerOverlay = new MapboxOverlay({
+        interleaved: false,
+        layers: [
+            
+        ]
+    });
+    
     /* Globe Spinning */
     // At low zooms, complete a revolution every two minutes.
     const secondsPerRevolution = 600;
@@ -27,8 +48,6 @@ export function loadMapBox(){
      
     let userInteracting = false;
     let spinEnabled = true;
-
-    
      
     function spinGlobe() {
         const zoom = map.getZoom();
@@ -78,6 +97,8 @@ export function loadMapBox(){
         spinGlobe();
     });
 
+    map.addControl(arcLayerOverlay);
+
     function setMarkers(){
         setInterval(() => {
                 locations.forEach(element => {
@@ -86,10 +107,24 @@ export function loadMapBox(){
                     el.className = 'marker';             
                     // make a marker for each feature and add to the map
                     new mapboxgl.Marker(el).setLngLat({lng: element.lng, lat: element.lat}).addTo(map);
-                }); 
+                });
+                arcLayer = new ArcLayer({
+                    id: 'arc-layer',
+                    data: locationsRoutes,
+                    getSourcePosition:  [locationsRoutes.startLat, locationsRoutes.startLng],
+                    getTargetPosition:  [locationsRoutes.endLat, locationsRoutes.endLng],
+                    getSourceColor: [67, 242, 255],
+                    getTargetColor: [67, 242, 255],
+                    getWidth: 1
+                })
+                arcLayerOverlay.setProps({
+                    layers: [
+                        arcLayer
+                    ]
+                })
+                map.addControl(arcLayerOverlay);
         }, 500);
       }
-
 
       setMarkers();
       spinGlobe();

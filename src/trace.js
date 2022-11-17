@@ -1,5 +1,5 @@
 export let locations = [];
-export var locationsRoutes = [];
+export let locationsRoutes = [];
 var loading = false;
 
 var julian = true;
@@ -154,6 +154,7 @@ function updateLoadingAnimation(){
 
 function appendLocation(location){
 	let marker = {};
+	let locationsRoute = {};
 	if( typeof location === 'object' && !Array.isArray(location) && location !== null){
 		marker.type = 'Point';
 		marker.lng= location.lon;
@@ -162,6 +163,13 @@ function appendLocation(location){
 		marker.description = location.city
 		locations.push(marker);
 		appendLocationText(location);
+		if (locations.length >= 2){
+			locationsRoute.startLat = locations[locations.length-2].lat;
+			locationsRoute.startLng = locations[locations.length-2].lng;
+			locationsRoute.endLat = locations[locations.length-1].lat;
+			locationsRoute.endLng = locations[locations.length-1].lng;
+			locationsRoutes.push(locationsRoute);
+		}
 	}
 }
 
