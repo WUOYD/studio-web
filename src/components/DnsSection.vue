@@ -26,11 +26,24 @@
                     <p class="text-big">Every Domain has assinged an IP adress as its <span class="stroke">alias</span><span class="blue">.</span></p>
                     <p>It’s much easier remembering the adress of a service like Google, when you don’t have to know a long IP adress and instead can use google.com.</p>
                 </div>
-            </div> 
+            </div>
             <div class="section5 panel">
-                <div class="text-wrapper"> 
-                    <p class="text-big">Normally users don’t know the IP adress of a <span class="stroke">service</span><span class="blue">.</span></p>
-                    <p>The first number refers to a country, the second to a region, the third to a subnet and the last to specifc device.</p> 
+                <div class="text-wrapper text-big">
+                   <div>www<span class="blue">.</span></div>
+                   <div>TODO<span class="blue">.</span></div>
+                   <div>com</div>
+                </div>
+                <div class="text-wrapper text-big">
+                   <div>8<span class="blue">.</span></div>
+                   <div>8<span class="blue">.</span></div>
+                   <div>8<span class="blue">.</span></div>
+                   <div>8</div>
+                </div>
+            </div>
+            <div class="section6 panel">
+                <div class="text-wrapper">
+                    <p class="text-big">DNS is a service who works like a dynamic <span class="stroke">telephone book</span><span class="blue">.</span></p>
+                   <p>But who knows which IP adress is TODO.com assigned to? Here comes the Domain Name System (DNS).  If you enter a domain the DNS translates it to an IP adress.</p>
                 </div>
             </div>
         </div>
@@ -171,15 +184,17 @@
         padding-bottom: 5%;
     }
 
-    .section5 > div:first-of-type {
-        width: 55%;
+    .section5 .text-wrapper {
+        display: flex;
         justify-content: center;
+        flex-direction: row;
+        align-items: center;
     }
 
-    .section5 > div:last-of-type {
-        width: 45%;
-        justify-content: flex-end;
+    .section5 {
+        justify-content: center;
         align-items: center;
+        flex-direction: column;
     }
 
 </style>
@@ -197,7 +212,7 @@
             }
 
             document.querySelector(".dns-section .section1.panel").style.marginLeft = getPanelMarginLeft() + "px";
-            document.querySelector(".dns-section .section5.panel").style.marginLeft = getPanelMarginLeft() + "px";
+            //document.querySelector(".dns-section .section5.panel").style.marginLeft = getPanelMarginLeft() + "px";
         }
     }
 </script>
