@@ -8,9 +8,9 @@
                 <div class="info"> 
                     <h3>Enter a domain to trace</h3>
                 </div>
-                <form id="ip">
+                <form class="tracert-form" id="section-form">
                     <label for="domain">Trace a Domain</label>
-                    <input id="domain" placeholder="example-domain.com" type="domain" required>
+                    <input class="domain" placeholder="example-domain.com" type="domain" required>
                     <button class="submitbutton" type="submit">Trace</button>
                 </form>
                 <div class="locations"></div>

@@ -5,9 +5,9 @@
             <div class="header-item sp">THE</div>
             <div class="header-item ">WEB</div>
             <p>What the web is an educational service for tracing routes of the internet.</p>
-            <form id="ip">
+            <form class="tracert-form" id="header-form">
                 <label for="domain">Trace a Domain</label>
-                <input id="domain" placeholder="example-domain.com" type="domain" required>
+                <input class="domain" placeholder="example-domain.com" type="domain" required>
                 <button type="submit">Trace</button>
             </form>
         </div>

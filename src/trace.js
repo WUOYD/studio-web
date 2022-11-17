@@ -153,39 +153,31 @@ function updateLoadingAnimation(){
 }
 
 function appendLocation(location){
+	let marker = {};
 	if( typeof location === 'object' && !Array.isArray(location) && location !== null){
-		location.lng = location.lon;
-		location.text = location.countryCode;
-		location.size = 1.0;
-		locations.push(location);
-		let locationsRoute = [];
-		if (locations.length >= 2){
-			locationsRoute.startLat = locations[locations.length-2].lat;
-			locationsRoute.startLng = locations[locations.length-2].lng;
-			locationsRoute.endLat = locations[locations.length-1].lat;
-			locationsRoute.endLng = locations[locations.length-1].lng;
-			locationsRoute.arcAlt = 0.05;
-			locationsRoute.status = true;
-			locationsRoutes.push(locationsRoute);
-		}
+		marker.type = 'Point';
+		marker.coordinates = [location.lng,locations.lat];
+		marker.title = 'Mapbox';
+		marker.description = location.city
+		locations.push(marker);
 		appendLocationText(location);
+		console.log(locations)
 	}
 }
 
 function resetTrace(){
 	locations = [];
-	locationsRoutes = [];
-	var sidebar = document.querySelector("section.tracert-section .sidebar .locations");
+	var sidebar = document.querySelector("section.tracert-section .wrapper .sidebar .locations");
 	sidebar.innerHTML = "";
 }
 
 function appendLocationText(location){
-	var sidebar = document.querySelector("section.tracert-section .sidebar .locations");
+	var sidebar = document.querySelector("section.tracert-section .wrapper .sidebar .locations");
 	sidebar.innerHTML +='<div class="location">'+
 	'<div class="org">'+location.isp+'</div>'+
 	'<div class="loc">'+location.city+', '+location.country+'</div>'+
 	'</div>';
-	var lastAppend = document.querySelector("section.tracert-section .sidebar .location:last-of-type");
+	var lastAppend = document.querySelector("section.tracert-section .wrapper .sidebar .location:last-of-type");
 	lastAppend.classList.add("fadeIn");
 }
 
@@ -194,6 +186,6 @@ function cleanUpIP(ip){
 	return /[^/]*$/.exec(traceIP[traceIP.length-1])[0];
 }
 
-export function getIPValue(){
-	return document.querySelector("#ip input").value;
+export function getIPValue(submitform){
+	return submitform.querySelector("input").value;
 }

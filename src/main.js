@@ -18,13 +18,18 @@ window.onload = function(){
 	loadMapBox();
 	/*globe("#globe");*/
 
-	document.querySelector("#ip").addEventListener("submit", async function(e){
-		e.preventDefault()
-		var ip = getIPValue();
-		traceIP(ip);
-		console.log("test2");
-		scrollToHash("#Trace-Domain");
-	});
+	let submitforms = document.querySelectorAll(".tracert-form");
+	submitforms.forEach(function(submitform){
+		submitform.addEventListener("submit", async function(e){
+			console.log("Test")
+			e.preventDefault()
+			var ip = getIPValue(submitform);
+			traceIP(ip);
+			if(submitform.id == "header-form"){
+				scrollToHash("#Trace-Domain");
+			}
+		});
+	})
 
 	function scrollToHash(hash){
 		$([document.documentElement, document.body]).animate({
