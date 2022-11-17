@@ -1,4 +1,4 @@
-<script setup> 
+<script setup>
     import ipSVG from './ipSVG.vue'
 </script>
 <template>
@@ -13,10 +13,10 @@
             </div>
             <div class="section1 panel">
                 <div class="text-wrapper">
-                    <p class="text-big">The Internet is<br> a network of <span class="stroke">networks</span><span class="blue">.</span></p>
-                   <p>It connects billions of devices together like a laptop or a smartphone.</p>
+                    <p class="text-big">The Internet is a network of <span class="stroke">networks</span><span class="blue">.</span></p>
+                    <p>It connects billions of devices together like a laptop or a smartphone.</p>
                 </div>
-            </div>
+            </div> 
             <div class="section2 panel">
                 <ipSVG/>
             </div>
@@ -66,7 +66,7 @@
         font-weight: 600;
         color: white;
         font-size: 80px;
-        line-height:0.8;
+        line-height: 1;
         z-index:  1;
         font-family: 'Roboto', sans-serif;
     }
@@ -77,6 +77,39 @@
         -webkit-text-fill-color: transparent;
     }
 
+    h3 {
+        font-weight: 600;
+        color: white;
+        font-size: 5vw;
+        z-index:  1;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    section p{
+            font-weight: 600;
+            color: white;
+            font-size: 2vw;
+            line-height: 1.2;
+            z-index:  1;
+            font-family: 'Roboto', sans-serif;
+
+    }
+
+    section .stroke-blue{
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: rgb(67, 242, 255);
+      -webkit-text-fill-color: transparent;
+
+
+    }
+
+    section .stroke{
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: white;
+      -webkit-text-fill-color: transparent;
+
+
+    }
     section.ip-section .wrapper{
         display: flex;
         width: 100%;
@@ -176,17 +209,18 @@
         line-height: 0.9;
         color: white;
         margin-bottom: 30px;
+        font-weight: 600;
+        color: white;
+        line-height:1;
+        z-index:  1;
+        font-family: 'Roboto', sans-serif;
     }
 
     section.ip-section {
         height: 100vh;
     }
 
-    .stroke{
-        -webkit-text-stroke-width: 1px;
-        -webkit-text-stroke-color: white;
-        -webkit-text-fill-color: transparent;
-    }
+    
 
     .blue{
         color:rgb(67, 242, 255);
