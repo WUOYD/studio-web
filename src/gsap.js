@@ -101,12 +101,9 @@ export function doGSAP(){
         var panelWidths = 0;
         p.forEach(function(pa, i){
             if(i != 0){
-                console.log(i);
-                console.log(pa.outerWidth, pa);
                 panelWidths = panelWidths + pa.outerWidth;
             }
         });
-        console.log("---------");
 
         let panel = gsap.utils.toArray(p);
         var slideCount = panel.length;
@@ -116,10 +113,10 @@ export function doGSAP(){
             scrollTrigger: {
                 trigger: sec,
                 pin: true,
-                scrub: 1,
+                scrub: 0.3,
                 start: () => "top top",
                 invalidateOnRefresh: true,
-                end: () => '+=' + slideCount * 1000 + '%',
+                end: () => '+=' + panelWidths + 'px',
             }
         });
 
