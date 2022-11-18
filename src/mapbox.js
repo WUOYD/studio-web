@@ -2,7 +2,7 @@
 import { EMPTY_ARR } from '@vue/shared';
 import mapboxgl from 'mapbox-gl';
 import { locations, locationsRoutes } from "./trace.js"
-import {MapboxOverlay} from '@deck.gl/mapbox';
+import {MapboxLayer} from '@deck.gl/mapbox';
 import {ArcLayer} from '@deck.gl/layers';
 
 export function loadMapBox(){
@@ -18,25 +18,16 @@ export function loadMapBox(){
         projection: 'globe'
     });
     
-    let arcLayer = new ArcLayer({
+    const arcLayer = new MapboxLayer({
         id: 'arc-layer',
-        data: [
-            {lat: [0,0,0], lng: [0,0,0]}
-        ],
-        getSourcePosition: d => d.lat,
-        getTargetPosition:  d => d.lng,
+        type: ArcLayer,
+        data: [],
+        getSourcePosition: d => d.start,
+        getTargetPosition:  d => d.end,
         getSourceColor: [67, 242, 255],
         getTargetColor: [67, 242, 255],
-        getWidth: 1,
-        type: 'line'
+        getWidth: 1, 
     })
-
-    const arcLayerOverlay = new MapboxOverlay({
-        interleaved: false,
-        layers: [
-            
-        ]
-    });
     
     /* Globe Spinning */
     // At low zooms, complete a revolution every two minutes.
@@ -97,36 +88,34 @@ export function loadMapBox(){
         spinGlobe();
     });
 
-    map.addControl(arcLayerOverlay);
+    map.on('load', () => {
+        map.addLayer(arcLayer)
+    });
 
-    function setMarkers(){
+    function setMarkersAndArcs(){
         setInterval(() => {
-                locations.forEach(element => {
+            locations.forEach(element => {
                     // create a HTML element for each feature
                     const el = document.createElement('div');
                     el.className = 'marker';             
                     // make a marker for each feature and add to the map
                     new mapboxgl.Marker(el).setLngLat({lng: element.lng, lat: element.lat}).addTo(map);
-                });
-                arcLayer = new ArcLayer({
-                    id: 'arc-layer',
-                    data: locationsRoutes,
-                    getSourcePosition:  [locationsRoutes.startLat, locationsRoutes.startLng],
-                    getTargetPosition:  [locationsRoutes.endLat, locationsRoutes.endLng],
-                    getSourceColor: [67, 242, 255],
-                    getTargetColor: [67, 242, 255],
-                    getWidth: 1
-                })
-                arcLayerOverlay.setProps({
-                    layers: [
-                        arcLayer
-                    ]
-                })
-                map.addControl(arcLayerOverlay);
+                }); 
+            if(locationsRoutes.length > 0){
+                let newArcLayerData
+                newArcLayerData = {
+                    start: [locationsRoutes[locationsRoutes.length-1].startLat, locationsRoutes[locationsRoutes.length-1].startLng],
+                    end: [locationsRoutes[locationsRoutes.length-1].endLat, locationsRoutes[locationsRoutes.length-1].endLng]
+                }
+                let arcLayerData = [];
+                arcLayerData.push(newArcLayerData)
+                console.log(arcLayerData)
+                arcLayer.setProps({ data: arcLayerData})
+            }
+            else{}
         }, 500);
-      }
+    }
 
-      setMarkers();
-      spinGlobe();
+    setMarkersAndArcs();
+    spinGlobe();
 }
-

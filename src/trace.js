@@ -1,3 +1,5 @@
+import { loadMapBox } from './mapbox.js';
+
 export let locations = [];
 export let locationsRoutes = [];
 var loading = false;
@@ -170,6 +172,7 @@ function appendLocation(location){
 			locationsRoute.endLng = locations[locations.length-1].lng;
 			locationsRoutes.push(locationsRoute);
 		}
+
 	}
 }
 
