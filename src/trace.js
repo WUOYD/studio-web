@@ -1,10 +1,11 @@
 import { loadMapBox } from './mapbox.js';
 
 export let locations = [];
-export let locationsRoutes = [];
+export var locationsRoutes = [];
+import { unPinGLobe} from './gsap.js';
 var loading = false;
 
-var julian = true;
+var julian = false;
 if(julian) {
 	var ajaxPath = "http://localhost/studio-web/server/ajax.php"
 }else{
@@ -71,8 +72,10 @@ async function prepareLocation(ip){
 		} else {
 			data = ipInDB;
 		}
-		let cleanLocation = sortOutDuplicateCitys(data);
-		return cleanLocation;
+		let cleanLocation = await sortOutDuplicateCitys(data);
+		if( typeof cleanLocation === 'object' && !Array.isArray(cleanLocation) && cleanLocation !== null && typeof cleanLocation != undefined){
+			return cleanLocation;
+		}
 	}
 }
 
@@ -117,26 +120,66 @@ export function traceIP(ip){
 		resetTrace();
 		loading = true;
 		updateLoadingAnimation();
-		$.ajax({
+		var xhr = $.ajax({
 			url: ajaxPath,
 			method: "POST",
 			cache: false,
 			onreadystatechange: async function( xhr ) {
+				if(xhr.responseText.includes("Maximum execution time of")){
+					xhr.abort();
+				}
 				let cleanIP = cleanUpIP(xhr.responseText);
 				let location = await prepareLocation(cleanIP);
-				appendLocation(location);
+				if( typeof location === 'object' && typeof location != undefined){
+					appendLocation(location);
+				}
 			},
 			data: {
 				action: 'traceIP',
 				ip: ip,
 				ajax: true
 			},             
-		}).done(function( data ) {
+		}).always(function( data ) {
+			if(Array.isArray(data) && data.includes("invalid domain")){
+				setTimeout(function() {
+					cleanIPInput();
+					printErrorMessageHome();
+				}, 1500);
+			}
 			loading = false;
 			updateLoadingAnimation();
 			//document.querySelector(".sidebar").innerHTML +="all done!</br>";
 		});
 	}
+}
+
+function printErrorMessageHome(){
+	var elements = document.querySelectorAll("header .tracert-loading p.loading-dots");
+	for (let index = elements.length - 1; index >= 0; index--) {
+		setTimeout(function() {
+			elements[index].classList.remove("fadeIn");
+			elements[index].classList.add("fadeOut");
+		}, index * 250);
+		setTimeout(function() {
+			elements[index].classList.remove("fadeOut");
+		}, (index + 1) * 500);
+	}
+	setTimeout(function() {
+		document.querySelector("header .tracert-loading p.error").classList.add("fadeIn");
+		setTimeout(function() {
+			document.querySelector("header .tracert-loading p.error").classList.remove("fadeIn");
+			document.querySelector("header .tracert-loading p.error").classList.add("fadeOut");
+			setTimeout(function() {
+				document.querySelector("header .tracert-loading p.error").classList.remove("fadeOut");
+			}, 1500);
+		}, 1500);
+	}, 2000);
+}
+
+function cleanIPInput(){
+	document.querySelectorAll(".tracert-form input").forEach(function(ele){
+		ele.value = "";
+	});
 }
 
 function updateLoadingAnimation(){
@@ -150,45 +193,49 @@ function updateLoadingAnimation(){
 			loadingAni.classList.remove("show-loading");
 			loadingAni.classList.remove("fadeIn");
 			loadingAni.classList.remove("fadeOut");
-		}, 1000);;
+		}, 1000);
 	}
 }
 
 function appendLocation(location){
 	let marker = {};
 	let locationsRoute = {};
-	if( typeof location === 'object' && !Array.isArray(location) && location !== null){
-		marker.type = 'Point';
-		marker.lng= location.lon;
-		marker.lat = location.lat;
-		marker.title = 'Mapbox';
-		marker.description = location.city
-		locations.push(marker);
-		appendLocationText(location);
-		if (locations.length >= 2){
-			locationsRoute.startLat = locations[locations.length-2].lat;
-			locationsRoute.startLng = locations[locations.length-2].lng;
-			locationsRoute.endLat = locations[locations.length-1].lat;
-			locationsRoute.endLng = locations[locations.length-1].lng;
-			locationsRoutes.push(locationsRoute);
-		}
-
+	marker.type = 'Point';
+	marker.lng= location.lon;
+	marker.lat = location.lat;
+	marker.title = 'Mapbox';
+	marker.description = location.city
+	locations.push(marker);
+	appendLocationText(location);
+	if (locations.length >= 2){
+		locationsRoute.startLat = locations[locations.length-2].lat;
+		locationsRoute.startLng = locations[locations.length-2].lng;
+		locationsRoute.endLat = locations[locations.length-1].lat;
+		locationsRoute.endLng = locations[locations.length-1].lng;
+		locationsRoutes.push(locationsRoute);
 	}
 }
 
 function resetTrace(){
 	locations = [];
-	var sidebar = document.querySelector("section.tracert-section .wrapper .sidebar .locations");
+	var sidebar = document.querySelector("header .sidebar .locations");
 	sidebar.innerHTML = "";
 }
 
+var firstLocation = true;
+
 function appendLocationText(location){
-	var sidebar = document.querySelector("section.tracert-section .wrapper .sidebar .locations");
-	sidebar.innerHTML +='<div class="location">'+
-	'<div class="org">'+location.isp+'</div>'+
+	console.log(location);
+	if(firstLocation){
+		firstLocation = false;
+		repositionHeader();
+	}
+	var sidebar = document.querySelector("header .sidebar .locations");
+	sidebar.innerHTML +='<li class="location">'+
+	'<div class="org">'+location.isp+'<span>99ms</span></div>'+
 	'<div class="loc">'+location.city+', '+location.country+'</div>'+
-	'</div>';
-	var lastAppend = document.querySelector("section.tracert-section .wrapper .sidebar .location:last-of-type");
+	'</li>';
+	var lastAppend = document.querySelector("header .sidebar .location:last-of-type");
 	lastAppend.classList.add("fadeIn");
 }
 
@@ -199,4 +246,20 @@ function cleanUpIP(ip){
 
 export function getIPValue(submitform){
 	return submitform.querySelector("input").value;
+}
+
+function repositionHeader() {
+	$("header .cta-wrapper").animate({opacity: "0"},500);
+	$("#globe").animate({left: "20vw"},500);
+	setTimeout(function() {
+		document.querySelector("#globe-wrapper").classList.add("globeTop");
+		setTimeout(function() {
+			document.querySelector("#globe-wrapper").parentElement.style.zIndex = "1";
+		}, 1000);	
+		unPinGLobe();
+		document.querySelector("header .cta-wrapper").style.display = 'none';
+		var traceSection = document.querySelector("header .trace-section")
+		traceSection.style.display = 'block';
+		$("header .trace-section").animate({opacity: "1"});
+	}, 500);
 }
