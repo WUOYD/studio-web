@@ -5,6 +5,7 @@ cors();
 @apache_setenv('no-gzip', 1);
 @ini_set('zlib.output_compression', 0);
 @ini_set('implicit_flush', 1);
+set_time_limit(60);
 
 if(!isset($_POST["ajax"])){
 	$_POST =  json_decode(file_get_contents('php://input'), true);
@@ -30,23 +31,43 @@ if(isset($_POST["action"]) && !empty($_POST["action"])) {
 	}
 }
 
-function traceIP($ip){
-	for ($i = 0; $i < ob_get_level(); $i++) { 
-		ob_end_flush(); 
-	}
-	ob_implicit_flush(1);
-	$first = true;
+function is_valid_domain_name($domain_name){
+    return (preg_match("/^([a-z\d](-*[a-z\d])*)(\.([a-z\d](-*[a-z\d])*))*$/i", $domain_name) //valid chars check
+            && preg_match("/^.{1,253}$/", $domain_name) //overall length check
+            && preg_match("/^[^\.]{1,63}(\.[^\.]{1,63})*$/", $domain_name)   ); //length of each label
+}
 
-	$proc = popen("tracert ".$ip, 'r');
-		while (!feof($proc)) {
+function is_valid_ip_address($ip){
+    return preg_match("/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/", $ip); 
+}
+
+function traceIP($ip){
+	if (is_valid_domain_name($ip) || is_valid_ip_address($ip)) {
+		for ($i = 0; $i < ob_get_level(); $i++) { 
+			ob_end_flush(); 
+		}
+		ob_implicit_flush(1);
+		$first = true;
+		$play = true;
+
+		$proc = popen("tracert ".$ip, 'r');
+		while (!feof($proc) && $play) {
 			$o = fread($proc, 4096);
+			echo $o;
+			/*if(str_contains($o, 'Maximum execution time of')){
+				echo "stop";
+				ob_end_flush();
+				$play = false;
+			}*/
 			if (preg_match('/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/', $o, $ip_match)) {
 				if(!$first){
 					echo "/".$ip_match[0];
 				}
 				$first = false;
 			}
-			flush();
+		}
+	}else{
+		echo "invalid domain";
 	}
 } 
 

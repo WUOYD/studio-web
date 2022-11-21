@@ -157,10 +157,6 @@
         -webkit-text-fill-color: transparent;
     }
 
-    .blue{
-        color:rgb(67, 242, 255);
-    }
-
     .section4 {
         text-align: center;
         justify-content: center;

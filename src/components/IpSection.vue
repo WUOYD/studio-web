@@ -220,12 +220,6 @@
         height: 100vh;
     }
 
-    
-
-    .blue{
-        color:rgb(67, 242, 255);
-    }
-
     .section4 {
         text-align: center;
         justify-content: center;

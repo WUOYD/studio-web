@@ -1,13 +1,15 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+var tlGlobe;
+
 export function doGSAP(){
 
     gsap.registerPlugin(ScrollTrigger);
 
-    /*window.addEventListener("resize", function(){
-        TODO Responsive
-    });*/
+    window.addEventListener("resize", function(){
+        /*TODO Responsive*/
+    });
 
     /* ---------- Header ---------- */
 
@@ -35,65 +37,71 @@ export function doGSAP(){
         stagger: 0.0
     }, 'initial');
 
-    /* ---------- Sliders ---------- */
 
-    function setPanelWidths(section){
-        var width = section.querySelector(".panel:first-of-type").offsetWidth;
-        var panels = section.querySelectorAll(".panel:not(:first-of-type)");
-        panels.forEach((panel, i) => {
-            panel.style.minWidth  = width+"px";
-            panel.style.maxWidth  = width+"px";
-            panel.style.marginLeft = getPanelMarginLeft(section) + "px";
-        });
-    }
-
-    function getPanelMarginLeft(section){
-        var width = section.querySelector(".panel:first-of-type").offsetWidth;
-        var windowWidth = window.innerWidth;
-        return ((windowWidth - width) / 2);
-    }
-
-    Object.defineProperty(Element.prototype, 'outerWidth', {
-        'get': function(){
-            var width = this.clientWidth;
-            var computedStyle = window.getComputedStyle(this); 
-            width += parseInt(computedStyle.marginLeft, 10);
-            width += parseInt(computedStyle.marginRight, 10);
-            width += parseInt(computedStyle.borderLeftWidth, 10);
-            width += parseInt(computedStyle.borderRightWidth, 10);
-            return width;
+    tlGlobe = gsap.timeline({
+        scrollTrigger:{
+            trigger: document.querySelector("#globe-wrapper"),
+            pin: true,
+            scrub: 0.3,
+            start: () => "0% 0",
+            end: () => '+=100%',
+            markers: false,
         }
     });
 
+    /*const tlCTA = gsap.timeline({
+        scrollTrigger:{
+            trigger: document.querySelector("header .h-wrapper"),
+            pin: true,
+            scrub: 0.3,
+            start: () => "top 0",
+            end: () => '+=100%',
+            markers: false,
+        }
+    });*/
+
+}
+
+export function unPinGLobe(){
+    tlGlobe.kill(true);
+    gsap.set("#globe-wrapper", {clearProps: true});
+}
+
+
+/* ---------- Sliders ---------- */
+function setPanelWidths(section){
+    var width = section.querySelector(".panel:first-of-type").offsetWidth;
+    var panels = section.querySelectorAll(".panel:not(:first-of-type)");
+    panels.forEach((panel, i) => {
+        panel.style.minWidth  = width+"px";
+        panel.style.maxWidth  = width+"px";
+        panel.style.marginLeft = getPanelMarginLeft(section) + "px";
+    });
+}
+
+function getPanelMarginLeft(section){
+    var width = section.querySelector(".panel:first-of-type").offsetWidth;
+    var windowWidth = window.innerWidth;
+    return ((windowWidth - width) / 2);
+}
+
+Object.defineProperty(Element.prototype, 'outerWidth', {
+    'get': function(){
+        var width = this.clientWidth;
+        var computedStyle = window.getComputedStyle(this); 
+        width += parseInt(computedStyle.marginLeft, 10);
+        width += parseInt(computedStyle.marginRight, 10);
+        width += parseInt(computedStyle.borderLeftWidth, 10);
+        width += parseInt(computedStyle.borderRightWidth, 10);
+        return width;
+    }
+});
+
+export function gsapSliders(){
     var sections = [
         "section.ip-section",
         "section.dns-section"
     ];
-
-    /* function 100vw sections
-    sections.forEach(function(section){
-        var sec = document.querySelector(section);
-        setPanelWidths(sec);
-
-        let p = sec.querySelectorAll(".panel");
-        let panel = gsap.utils.toArray(p);
-        var slideCount = panel.length;
-        var x = (slideCount - 1) * window.innerWidth - (slideCount - 1) * getPanelMarginLeft(sec);
-        var scrollTween = gsap.to(sec.querySelector('.wrapper'), {
-            x: -x,
-            ease: "none",
-            scrollTrigger: {
-                trigger: sec,
-                pin: true,
-                snap: 1 / (slideCount - 1),
-                scrub: 1 / (slideCount + 1),
-                start: () => "top top",
-                invalidateOnRefresh: true,
-                end: () => '+=' + slideCount * 1000 + '%',
-            }
-        });
-    });*/
-
 
     sections.forEach(function(section){
         var sec = document.querySelector(section);
@@ -101,12 +109,9 @@ export function doGSAP(){
         var panelWidths = 0;
         p.forEach(function(pa, i){
             if(i != 0){
-                console.log(i);
-                console.log(pa.outerWidth, pa);
                 panelWidths = panelWidths + pa.outerWidth;
             }
         });
-        console.log("---------");
 
         let panel = gsap.utils.toArray(p);
         var slideCount = panel.length;
@@ -119,7 +124,7 @@ export function doGSAP(){
                 scrub: 1,
                 start: () => "top top",
                 invalidateOnRefresh: true,
-                end: () => '+=' + slideCount * 1000 + '%',
+                end: () => '+=' + panelWidths + 'px',
             }
         });
 
@@ -141,6 +146,4 @@ export function doGSAP(){
             }
         });
     });
-
-
 }

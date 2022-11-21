@@ -10,7 +10,7 @@
     <Header />
     <main>
         <article>
-            <TracertSection />
+            <!-- <TracertSection /> -->
             <IpSection />
             <DnsSection />
             <RoutingSection />

@@ -6,16 +6,25 @@ import { locations } from "./trace.js"
 
 export function loadMapBox(){
     var selector = document.querySelector("#globe");
-    var token = 'pk.eyJ1Ijoid3VveWQiLCJhIjoiY2w4bXF5dTZzMGEwdzQwbzVsbHo3Z3Q4MyJ9.dx001yEPBrdCmSZWrvQ4Pw';
+    var token = 'pk.eyJ1Ijoib21hci1qdWxpYW4iLCJhIjoiY2xhYmtyb2g5MDFpajNvcmFtcnB4NGo2aiJ9.Hz8ypCa64WSOYogf7osAcg';
     mapboxgl.accessToken = token;
 
     const map = new mapboxgl.Map({
         container: selector,
-        style: 'mapbox://styles/wuoyd/clajk215g003514mrhxhoy98q', //das isch de link zu mim mapbox studio style
+        style: 'mapbox://styles/omar-julian/clamg84sk001i14ldyf2j9tgc',
         center: [20, 40],
-        zoom: 2,
-        projection: 'globe'
+        zoom: 2.3,
+        projection: 'globe',
+        /*cooperativeGestures: true,*/
     });
+
+    map["scrollZoom"].disable();
+    map["boxZoom"].disable();
+    map["dragRotate"].disable();
+    map["dragPan"].disable();
+    map["keyboard"].disable();
+    map["doubleClickZoom"].disable();
+    map["touchZoomRotate"].disable();
 
     /* Globe Spinning */
     // At low zooms, complete a revolution every two minutes.
@@ -89,7 +98,7 @@ export function loadMapBox(){
         }, 500);
       }
 
-      setMarkers();
+      //setMarkers();
       spinGlobe();
 }
 
