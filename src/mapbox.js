@@ -18,7 +18,41 @@ export function loadMapBox(){
         projection: 'globe',
         /*cooperativeGestures: true,*/
     });
-    
+
+    let data = {};
+
+     /*
+    //LineLayer
+    map.on('load', async () => {
+        map.addSource('route', {
+            'type': 'geojson',
+            'data': {
+                'type': 'Feature',
+                'properties': {},
+                'geometry': {
+                    'type': 'LineString',
+                    'coordinates': [
+                    ]
+                }   
+            }
+        })
+
+        map.addLayer({
+            'id': 'route',
+            'type': 'line',
+            'source': 'route',
+            'layout': {
+            'line-join': 'round',
+            'line-cap': 'round'
+            },
+            'paint': {
+            'line-color': '#43F2FF',
+            'line-width': 8
+            }
+        });
+    })
+   
+    //ArcLayer
     const arcLayer = new MapboxLayer({
         id: 'arc-layer',
         type: ArcLayer,
@@ -30,6 +64,8 @@ export function loadMapBox(){
         getWidth: 1, 
     })
 
+    */
+  
     map["scrollZoom"].disable();
     map["boxZoom"].disable();
     map["dragRotate"].disable();
@@ -37,7 +73,7 @@ export function loadMapBox(){
     map["keyboard"].disable();
     map["doubleClickZoom"].disable();
     map["touchZoomRotate"].disable();
-
+    
     /* Globe Spinning */
     // At low zooms, complete a revolution every two minutes.
     const secondsPerRevolution = 600;
@@ -97,10 +133,6 @@ export function loadMapBox(){
         spinGlobe();
     });
 
-    map.on('load', () => {
-        map.addLayer(arcLayer)
-    });
-
     function setMarkersAndArcs(){
         setInterval(() => {
             locations.forEach(element => {
@@ -109,8 +141,22 @@ export function loadMapBox(){
                     el.className = 'marker';             
                     // make a marker for each feature and add to the map
                     new mapboxgl.Marker(el).setLngLat({lng: element.lng, lat: element.lat}).addTo(map);
-                }); 
-            if(locationsRoutes.length > 0){
+                });
+                
+                /*
+                //Line Version
+                let i = 0;
+                if(locationsRoutes.length > i){
+                    let routeData = [[locationsRoutes[locationsRoutes.length-1].startLat, locationsRoutes[locationsRoutes.length-1].startLng], [locationsRoutes[locationsRoutes.length-1].endLat, locationsRoutes[locationsRoutes.length-1].endLng]]
+                    data.geometry.coordinates[0].push(routeData)
+                    map.getSource('route').setData(data).
+                    map.panTo(routeData[routeData.length])
+                    i++
+                }
+                else{}
+                
+                    /*
+                // Arc Version
                 let newArcLayerData
                 newArcLayerData = {
                     start: [locationsRoutes[locationsRoutes.length-1].startLat, locationsRoutes[locationsRoutes.length-1].startLng],
@@ -122,6 +168,7 @@ export function loadMapBox(){
                 arcLayer.setProps({ data: arcLayerData})
             }
             else{}
+            */
         }, 500);
     }
 
