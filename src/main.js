@@ -21,9 +21,8 @@ window.onload = function(){
 		submitform.addEventListener("submit", async function(e){
 			e.preventDefault()
 			var ip = getIPValue(submitform);
-			//traceIP(ip);
+			traceIP(ip);
 			if(submitform.id == "header-form"){
-				traceIP(ip);
 				loadingTracertHome(ip);
 			}
 		});

@@ -140,7 +140,7 @@ export function traceIP(ip){
 				ajax: true
 			},             
 		}).always(function( data ) {
-			if(Array.isArray(data) && data.includes("invalid domain")){
+			if((Array.isArray(data) && data.includes("invalid domain")) || data === "invalid domain"){
 				setTimeout(function() {
 					cleanIPInput();
 					printErrorMessageHome();
@@ -227,7 +227,6 @@ var firstLocation = true;
 function appendLocationText(location){
 	console.log(location);
 	if(firstLocation){
-		firstLocation = false;
 		repositionHeader();
 	}
 	var sidebar = document.querySelector("header .sidebar .locations");
@@ -237,6 +236,12 @@ function appendLocationText(location){
 	'</li>';
 	var lastAppend = document.querySelector("header .sidebar .location:last-of-type");
 	lastAppend.classList.add("fadeIn");
+	if(!firstLocation){
+		setTimeout(function() {
+			document.querySelector("header .sidebar .locations li:nth-last-child(-n+2)").classList.add("anime");
+		}, 500);
+	}
+	firstLocation = false;
 }
 
 function cleanUpIP(ip){

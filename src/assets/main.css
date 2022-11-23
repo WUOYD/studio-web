@@ -107,6 +107,12 @@ header .sidebar .locations li:not(:last-of-type)::after {
     position: absolute;
     right: calc(100% + 15px + 10px / 2);
     top: calc(10px + 10px + 5px + 2px);
+    /*height: calc(100% - 10px);*/
+    height: 0;
+    transition: height 1s;
+}
+
+header .sidebar .locations li.anime:not(:last-of-type)::after {
     height: calc(100% - 10px);
 }
 

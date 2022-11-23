@@ -14,7 +14,7 @@ export function loadMapBox(){
         container: selector,
         style: 'mapbox://styles/omar-julian/clamg84sk001i14ldyf2j9tgc',
         center: [20, 40],
-        zoom: 2.3,
+        zoom: 2.1,
         projection: 'globe',
         /*cooperativeGestures: true,*/
     });

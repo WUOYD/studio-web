@@ -69,7 +69,7 @@
     header .cta-wrapper .tracert-loading p {
         text-align: left;
         width: 100%;
-        font-size: 40px;
+        font-size: 25px;
         margin-top: 15px;
         opacity: 0;
     }
