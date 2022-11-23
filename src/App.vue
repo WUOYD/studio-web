@@ -14,7 +14,6 @@
             <IpSection />
             <DnsSection />
             <RoutingSection />
-            <Footer />
         </article>
     </main>
     <Footer />
