@@ -1,12 +1,58 @@
 <template>
     <footer>
         <div class="wrapper">
-
-
+            <div class="footer-cell" id="left">
+                HSLU Digital Ideation
+            </div>
+            <div class="footer-cell" id="mittle">
+                ©<span id="year"></span> 
+            </div>
+            <div class="footer-cell" id="right">
+                <a href="https://www.w3schools.com">Impressum</a>
+            </div>
         </div>
     </footer>
 </template>
+
 <style scoped>
+.wrapper{
+    padding: 5vh 0;
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid white;
+}
+
+.footer-cell{
+    position: relative;
+    width: 33.3333%;
+    margin: auto;
+}
+
+#left{
+    text-align: left;
+}
+#mittle{
+    text-align: center;
+}
+#right {
+    text-align: right;
+}
+
+#right a{
+    color: var(--color-text);
+    text-decoration: none;
+}
 
 </style>
+
+<script>
+    export default {
+        data: () => ({
+
+        }),
+        mounted() {
+            document.getElementById("year").innerHTML = new Date().getFullYear();
+        }
+    }
+</script>
 
