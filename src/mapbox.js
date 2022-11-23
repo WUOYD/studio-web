@@ -7,15 +7,16 @@ import {ArcLayer} from '@deck.gl/layers';
 
 export function loadMapBox(){
     var selector = document.querySelector("#globe");
-    var token = 'pk.eyJ1Ijoid3VveWQiLCJhIjoiY2w4bXF5dTZzMGEwdzQwbzVsbHo3Z3Q4MyJ9.dx001yEPBrdCmSZWrvQ4Pw';
+    var token = 'pk.eyJ1Ijoib21hci1qdWxpYW4iLCJhIjoiY2xhYmtyb2g5MDFpajNvcmFtcnB4NGo2aiJ9.Hz8ypCa64WSOYogf7osAcg';
     mapboxgl.accessToken = token;
 
     const map = new mapboxgl.Map({
         container: selector,
-        style: 'mapbox://styles/wuoyd/clajk215g003514mrhxhoy98q',
+        style: 'mapbox://styles/omar-julian/clamg84sk001i14ldyf2j9tgc',
         center: [20, 40],
-        zoom: 2,
-        projection: 'globe'
+        zoom: 2.1,
+        projection: 'globe',
+        /*cooperativeGestures: true,*/
     });
 
     let data = {};
@@ -62,7 +63,16 @@ export function loadMapBox(){
         getTargetColor: [67, 242, 255],
         getWidth: 1, 
     })
+
     */
+  
+    map["scrollZoom"].disable();
+    map["boxZoom"].disable();
+    map["dragRotate"].disable();
+    //map["dragPan"].disable();
+    map["keyboard"].disable();
+    map["doubleClickZoom"].disable();
+    map["touchZoomRotate"].disable();
     
     /* Globe Spinning */
     // At low zooms, complete a revolution every two minutes.
@@ -162,6 +172,6 @@ export function loadMapBox(){
         }, 500);
     }
 
-    setMarkersAndArcs();
-    spinGlobe();
+    /*setMarkersAndArcs();
+    spinGlobe();*/
 }

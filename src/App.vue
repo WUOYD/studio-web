@@ -1,6 +1,5 @@
 <script setup> 
     import Header from './components/Header.vue'
-    import TracertSection from './components/TracertSection.vue'
     import IpSection from './components/IpSection.vue'
     import DnsSection from './components/DnsSection.vue'
     import RoutingSection from './components/RoutingSection.vue'
@@ -10,7 +9,6 @@
     <Header />
     <main>
         <article>
-            <TracertSection />
             <IpSection />
             <DnsSection />
             <RoutingSection />

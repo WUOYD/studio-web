@@ -2,7 +2,7 @@
     import ipSVG from './ipSVG.vue'
 </script>
 <template>
-    <section class="ip-section">
+    <section id="ip-address" class="ip-section">
         <div class="wrapper">
             <div class="title-section panel">
                 <div class="wrapper">
@@ -218,12 +218,6 @@
 
     section.ip-section {
         height: 100vh;
-    }
-
-    
-
-    .blue{
-        color:rgb(67, 242, 255);
     }
 
     .section4 {
