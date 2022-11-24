@@ -14,7 +14,7 @@
             <div class="trace-section">
                 <div class="sidebar">
                     <form class="tracert-form" id="section-form">
-                        <input class="domain" placeholder="example-domain.commm" type="domain" required>
+                        <input class="domain" placeholder="example-domain.com" type="domain" required>
                         <button class="submitbutton" type="submit">Trace</button>
                     </form>
                     <ul class="locations"></ul>
@@ -31,7 +31,7 @@
                 <button id="explore-button">Explore how it works</button>
             </div>
             <div class="cta-wrapper">
-                <p>enter a domain to track the network <span class="stroke">path of a website</span><span class="blue">.</span></p>
+                <p>Enter a domain to track the network path of a <span class="stroke">website</span><span class="blue">.</span></p>
                 <form class="tracert-form" id="header-form">
                     <label for="domain">Trace a Domain</label>
                     <input class="domain" placeholder="example-domain.com" type="domain" required>
@@ -126,12 +126,12 @@
 
     header .cta-wrapper::before {
         content: "";
-        background: linear-gradient(to bottom, rgba(0,0,0,0.0) 0%, rgba(0,0,0, 0.7) 15%, rgba(0,0,0, 0.7) 85%, rgba(0, 0, 0, 0) 100%);
         position: absolute;
         left: -100vw;
         width: 200vw;
-        height: 100%;
-        top: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.0) 0%, rgba(0,0,0, 0.6) 40%, rgba(0,0,0, 0.6) 85%, rgba(0, 0, 0, 0) 100%);
+        height: 120vh;
+        bottom: 0;
     }
 
     header .cta-wrapper {
@@ -174,12 +174,6 @@
         100% {
             transform: translateX(-50%) scale(1.05);
         }
-    }
-
-    header .stroke{
-        -webkit-text-stroke-width: 1px;
-        -webkit-text-stroke-color: white;
-        -webkit-text-fill-color: transparent;
     }
 
     header .info {
