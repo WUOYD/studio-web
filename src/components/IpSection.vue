@@ -36,7 +36,7 @@
                     <p>They are separated with a point. These numbers represent bits, which every computer works with internally. The numbers range from 0 to 255.</p>
                 </div>
             </div> 
-            <div class="section5 panel">
+            <div class="section5 panel row-1">
                 <div class="text-wrapper"> 
                     <p class="text-big">Normally users don’t know the IP adress of a <span class="stroke">service</span><span class="blue">.</span></p>
                     <p>The first number refers to a country, the second to a region, the third to a subnet and the last to specifc device.</p> 
@@ -63,6 +63,14 @@
         position:absolute;
         bottom:0;
         left:0;
+    }
+
+    .section5 {
+        align-items: flex-start;
+    }
+
+    .section5 .ip-locate{
+        height: 100%;
     }
 
     .section5 > div:first-of-type {
