@@ -49,17 +49,6 @@ export function doGSAP(){
         }
     });
 
-    /*const tlCTA = gsap.timeline({
-        scrollTrigger:{
-            trigger: document.querySelector("header .h-wrapper"),
-            pin: true,
-            scrub: 0.3,
-            start: () => "top 0",
-            end: () => '+=100%',
-            markers: false,
-        }
-    });*/
-
 }
 
 export function unPinGLobe(){
@@ -100,7 +89,8 @@ Object.defineProperty(Element.prototype, 'outerWidth', {
 export function gsapSliders(){
     var sections = [
         "section.ip-section",
-        "section.dns-section"
+        "section.dns-section",
+        "section.routing-section"
     ];
 
     sections.forEach(function(section){
@@ -133,16 +123,14 @@ export function gsapSliders(){
         });
 
         gsap.to("#ip-adress", {
-            x: sec.offsetWidth + document.querySelector(".section4").offsetWidth / 2 - document.querySelector("#ip-adress").offsetWidth / 2,
+            x: sec.offsetWidth,
             ease: "none",
             scrollTrigger: {
                 trigger: "#ip-adress",
                 containerAnimation: scrollTween,
                 start: "left left",
                 end: "right right",
-                marker: true,
-                scrub: 3,
-                id: "2"
+                scrub: 4,
             }
         });
     });

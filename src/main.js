@@ -25,6 +25,7 @@ window.onload = function(){
 			if(submitform.id == "header-form"){
 				loadingTracertHome(ip);
 			}
+			setDomainInDNSSection(ip);
 		});
 	})
 
@@ -34,7 +35,6 @@ window.onload = function(){
 			if(i === 2){
 				ele.querySelector("span").innerHTML = ip;
 			}
-
 			setTimeout(function() {
 				ele.classList.add("fadeIn");
 			}, i * 250);
@@ -72,4 +72,24 @@ window.onload = function(){
 		}
 		scrollToHash("#ip-address");
 	});
+
+	function setDomainInDNSSection(ip){
+		var ip2 = ip.replace(/(^\w+:|^)\/\//, '');
+		if(!ip2.startsWith("www.")){
+			ip2 = "www." + ip2;
+		}
+		var urlParts = ip2.split(".");
+		document.querySelector(".dns-section .section6 .d").innerHTML = urlParts[0]+"."+urlParts[urlParts.length - 2]+"."+urlParts[urlParts.length - 1];
+		document.querySelectorAll(".dns-section .setDomain").forEach(function(ele){
+			ele.querySelectorAll("span.d").forEach(function(d,i){
+				if(i == 0){
+					d.innerHTML = urlParts[0];
+				}else if(i == 1){
+					d.innerHTML = urlParts[urlParts.length - 2];
+				}else{
+					d.innerHTML = urlParts[urlParts.length - 1];
+				}
+			});
+		});
+	}
 }

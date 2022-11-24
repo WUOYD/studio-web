@@ -4,6 +4,7 @@ export let locations = [];
 export var locationsRoutes = [];
 import { unPinGLobe} from './gsap.js';
 var loading = false;
+var lastIP = "8.8.8.8";
 
 var julian = false;
 if(julian) {
@@ -132,6 +133,8 @@ export function traceIP(ip){
 				let location = await prepareLocation(cleanIP);
 				if( typeof location === 'object' && typeof location != undefined){
 					appendLocation(location);
+					lastIP = location.query;
+					//console.log(lastIP);
 				}
 			},
 			data: {
@@ -146,6 +149,9 @@ export function traceIP(ip){
 					printErrorMessageHome();
 				}, 1500);
 			}
+			setTimeout(function() {
+				setIPInDnsSection(lastIP);
+			}, 500);
 			loading = false;
 			updateLoadingAnimation();
 			//document.querySelector(".sidebar").innerHTML +="all done!</br>";
@@ -267,4 +273,16 @@ function repositionHeader() {
 		traceSection.style.display = 'block';
 		$("header .trace-section").animate({opacity: "1"});
 	}, 500);
+}
+
+function setIPInDnsSection(domainIP){
+	var splitIP = domainIP.split(".");
+	document.querySelectorAll("#ip-adress span.i").forEach(function(ele, i){
+		ele.innerHTML = splitIP[i];
+	});
+	document.querySelectorAll(".ip-locate").forEach(function(ele, i){
+		ele.querySelectorAll("span.i").forEach(function(el, i){
+			el.innerHTML = splitIP[i];
+		});
+	});
 }
