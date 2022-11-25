@@ -120,6 +120,7 @@ export function traceIP(ip){
 	if(!loading){
 		resetTrace();
 		loading = true;
+		//document.getElementById("status").style.visibility = "hidden";
 		updateLoadingAnimation();
 		var xhr = $.ajax({
 			url: ajaxPath,
@@ -155,7 +156,7 @@ export function traceIP(ip){
 			loading = false;
 			clearInterval(setInterval);
 			document.getElementById("explore-button").style.visibility = "visible";
-			document.getElementById("status").style.visibility = "visible";
+			//document.getElementById("status").style.visibility = "visible";
 			updateLoadingAnimation();
 		});
 	}

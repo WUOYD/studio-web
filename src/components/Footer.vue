@@ -8,7 +8,7 @@
                 ©<span id="year"></span> 
             </div>
             <div class="footer-cell" id="right">
-                <a href="https://www.w3schools.com">Impressum</a>
+                <a href="impressum.html">Impressum</a>
             </div>
         </div>
     </footer>

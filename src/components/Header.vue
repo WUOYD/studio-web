@@ -131,7 +131,7 @@
         border-radius: 35px;
         position: relative;
         bottom: 0;
-        visibility: hidden;
+        visibility: visible;
     }
 
     header .sidebar .locations {
