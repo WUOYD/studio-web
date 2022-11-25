@@ -1,5 +1,3 @@
-
-import { EMPTY_ARR } from '@vue/shared';
 import mapboxgl from 'mapbox-gl';
 import { locations, locationsRoutes } from "./trace.js"
 import {MapboxLayer} from '@deck.gl/mapbox';
@@ -19,10 +17,12 @@ export function loadMapBox(){
         /*cooperativeGestures: true,*/
     });
 
-    let data = {};
+    
 
      /*
     //LineLayer
+
+    let data = {};
     map.on('load', async () => {
         map.addSource('route', {
             'type': 'geojson',
@@ -171,7 +171,6 @@ export function loadMapBox(){
             */
         }, 500);
     }
-
-    /*setMarkersAndArcs();
-    spinGlobe();*/
+    setMarkersAndArcs();
+    spinGlobe();
 }

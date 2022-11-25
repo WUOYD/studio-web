@@ -27,8 +27,13 @@
                             <div></div>
                         </div>
                     </div>
+                    <div id="status">
+                            <p>Finished!</p>
+                    </div>
                 </div>
-                <button id="explore-button">Explore how it works</button>
+                <div class="explore-button-section">
+                    <button id="explore-button">Explore how it works</button>
+                </div>
             </div>
             <div class="cta-wrapper">
                 <p>Enter a domain to track the network path of a <span class="stroke">website</span><span class="blue">.</span></p>
@@ -103,11 +108,30 @@
         padding: 15px 30px;
     } 
 
-    header #explore-button {
+    header .explore-button-section{
+        justify-content: center ;
+        display: flex;
         width: 100%;
-        border-radius: 5px;
-        position: absolute;
+    }
+
+    header .loading-wrapper{
+        justify-content: center ;
+        display: flex;
+    }
+
+    header #status{
+        visibility: hidden;
+        justify-content: center;
+        display: flex;
+        padding-top: 1rem;
+    }
+
+    header #explore-button {
+        width: 50%;
+        border-radius: 35px;
+        position: relative;
         bottom: 0;
+        visibility: hidden;
     }
 
     header .sidebar .locations {
@@ -250,7 +274,7 @@
     }
 
     form button {
-        border-radius: 5px;
+        border-radius: 30px;
         border-top-left-radius: 0px;
         border-bottom-left-radius: 0px;
     }
@@ -259,7 +283,7 @@
         color: white;
         border: 2px solid white;
         background-color: transparent;
-        border-radius: 5px;
+        border-radius: 30px;
         padding: 10px 10px;
         width: 40%;
         font-size: 20px;
