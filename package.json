@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@vue/test-utils": "^2.2.4",
+    "cypress": "^11.2.0",
     "deck.gl": "^8.8.20",
     "gsap": "^3.11.3",
     "happy-dom": "^7.7.0",
