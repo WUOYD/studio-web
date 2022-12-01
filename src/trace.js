@@ -1,8 +1,8 @@
-import { loadMapBox } from './mapbox.js';
-
-export let locations = [];
-export var locationsRoutes = [];
+import { drawData } from './mapbox.js';
 import { unPinGLobe} from './gsap.js';
+
+let marker;
+
 var loading = false;
 var lastIP = "8.8.8.8";
 
@@ -144,7 +144,7 @@ export function traceIP(ip){
 				ajax: true
 			},             
 		}).always(function( data ) {
-			if((Array.isArray(data) && data.includes("invalid domain")) || data === "invalid domain" /*|| data === ""*/){
+			if((Array.isArray(data) && data.includes("invalid domain")) || data === "invalid domain"){
 				setTimeout(function() {
 					cleanIPInput();
 					printErrorMessageHome();
@@ -207,26 +207,13 @@ function updateLoadingAnimation(){
 }
 
 function appendLocation(location){
-	let marker = {};
-	let locationsRoute = {};
-	marker.type = 'Point';
-	marker.lng= location.lon;
-	marker.lat = location.lat;
-	marker.title = 'Mapbox';
-	marker.description = location.city
-	locations.push(marker);
+	marker = [parseFloat(location.lat), parseFloat(location.lon)];
+	drawData(marker);
 	appendLocationText(location);
-	if (locations.length >= 2){
-		locationsRoute.startLat = locations[locations.length-2].lat;
-		locationsRoute.startLng = locations[locations.length-2].lng;
-		locationsRoute.endLat = locations[locations.length-1].lat;
-		locationsRoute.endLng = locations[locations.length-1].lng;
-		locationsRoutes.push(locationsRoute);
-	}
 }
 
 function resetTrace(){
-	locations = [];
+	//locations = [];
 	var sidebar = document.querySelector("header .sidebar .locations");
 	sidebar.innerHTML = "";
 }
