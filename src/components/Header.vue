@@ -99,11 +99,11 @@
     }
 
     header .trace-section form input {
-        width: 70%;
+        width: 85%;
     }
 
     header .trace-section form button {
-        width: 30%;
+        width: 15%;
     }
 
     header .sidebar {
@@ -133,6 +133,7 @@
 
     header #explore-button {
         width: 50%;
+        height: 30px;
         border-radius: 35px;
         position: relative;
         bottom: 0;
@@ -176,7 +177,7 @@
 
     header .cta-wrapper p {
         font-size: 65px;
-        line-height: 0.9;
+        line-height: 1.1;
         color: white;
         width: 50%;
         text-align: center;
@@ -286,7 +287,7 @@
 
     form button {
         border-radius: 30px;
-        width: 30%;
+        width: 15%;
     }
 
     form input {

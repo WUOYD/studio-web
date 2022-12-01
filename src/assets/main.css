@@ -28,13 +28,13 @@ html {
 }
 
 button{
-    color: white;
+    color: black;
     border: 2px solid rgb(67, 242, 255);
-    background-color: transparent;
+    background-color: rgb(67, 242, 255);
     border-radius: 5px;
     padding:  2px 5px 2px 5px;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 17px;
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     cursor: pointer;
@@ -147,7 +147,7 @@ header .sidebar .locations li .org{
     font-weight: 600;
     color: white;
     font-size: 80px;
-    line-height:0.8;
+    line-height:1;
     z-index:  1;
     font-family: 'Roboto', sans-serif;
 }
@@ -220,7 +220,7 @@ section .panel:last-of-type {
     position: absolute;
     top: 185%;
     left: 0;
-    font-size: 25%;
+    font-size: 40%;
     text-align: center;
     width: 100%;
 }
@@ -237,7 +237,7 @@ section .panel:last-of-type {
 
 section .text-big{
     font-size: 60px;
-    line-height: 0.9;
+    line-height: 1.1;
     color: white;
     margin-bottom: 50px;
 }
