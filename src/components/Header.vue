@@ -7,10 +7,9 @@
             <div class="header-item ">WORLD</div>
             <div class="header-item ">WIDE</div>
             <div class="header-item ">WEB</div>
-            <div class="scroll-section" >
-                <a class="scroller" href="#track-domain">Scroll to discover</a>
-                <img id="scroll-svg" src="../assets/scroll_colored.svg">
-            </div>
+            <a class="scroller" href="#track-domain">
+                <img src="../assets/scroll_colored.svg">
+            </a>
             <p class="info">A journey through the <span class="stroke">internet</span><span class="blue">.</span></p>
             
         </div>
@@ -100,11 +99,11 @@
     }
 
     header .trace-section form input {
-        width: 70%;
+        width: 75%;
     }
 
     header .trace-section form button {
-        width: 30%;
+        width: 25%;
     }
 
     header .sidebar {
@@ -177,20 +176,11 @@
 
     header .cta-wrapper p {
         font-size: 65px;
-        line-height: 0.9;
+        line-height: 1.1;
         color: white;
         width: 50%;
         text-align: center;
         font-weight: 500;
-    }
-
-    header .scroll-section {
-        width: 20%;
-        padding-top: 80px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
     }
 
     header .scroller {
@@ -198,14 +188,14 @@
         cursor: pointer;
         color: white;
         font-size: 16px;
-    }
-
-    header #scroll-svg{
+        position: absolute;
         margin: auto;
-        padding-top: 10px;
-        width: 30%;
+        width: 9%;
+        bottom: 5%;
+        left: 50%;
+        padding: 15px;
+        transform: translateX(-50%);
     }
-
 
     @keyframes scale {
         0% {
@@ -296,7 +286,7 @@
 
     form button {
         border-radius: 30px;
-        width: 30%;
+        width: 25%;
     }
 
     form input {

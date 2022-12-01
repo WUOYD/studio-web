@@ -16,7 +16,7 @@
 
 <style scoped>
 .wrapper{
-    padding: 5vh 0;
+    padding: 15px 0;
     display: flex;
     flex-direction: row;
     border-top: 1px solid white;
@@ -39,7 +39,7 @@
 }
 
 #right a{
-    color: var(--color-text);
+    color: white;
     text-decoration: none;
 }
 

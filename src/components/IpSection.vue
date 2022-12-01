@@ -56,6 +56,7 @@
         position:absolute;
         bottom:0;
         left:0;
+        font-weight: 400;
         z-index: 2;
     }
 
