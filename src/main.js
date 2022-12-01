@@ -29,15 +29,18 @@ window.onload = function(){
 		});
 	})
 
-	function loadingTracertHome(ip){
+	function loadingTracertHome(domain){
 		var elements = document.querySelectorAll("header .tracert-loading p.loading-dots");
 		elements.forEach(function(ele, i){
 			if(i === 2){
-				ele.querySelector("span").innerHTML = ip;
+				ele.querySelector("span").innerHTML = domain;
 			}
 			setTimeout(function() {
 				ele.classList.add("fadeIn");
-			}, i * 250);
+				setTimeout(function() {
+					ele.classList.add("fadeOut");
+				}, 2500);
+			}, i * 4000);
 		});
 	}
 

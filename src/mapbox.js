@@ -1,4 +1,3 @@
-
 import mapboxgl from 'mapbox-gl';
 import { locations, locationsRoutes } from "./trace.js"
 
@@ -87,7 +86,6 @@ export function loadMapBox(){
 
 
 
-
     // Create a GeoJSON source with an empty lineString.
     const geojson = {
         'type': 'FeatureCollection',
@@ -169,4 +167,45 @@ export function loadMapBox(){
             animation = requestAnimationFrame(animateLine);
         }
     });
+
+    function setMarkersAndArcs(){
+        setInterval(() => {
+            locations.forEach(element => {
+                    // create a HTML element for each feature
+                    const el = document.createElement('div');
+                    el.className = 'marker';             
+                    // make a marker for each feature and add to the map
+                    new mapboxgl.Marker(el).setLngLat({lng: element.lng, lat: element.lat}).addTo(map);
+                });
+                
+                /*
+                //Line Version
+                let i = 0;
+                if(locationsRoutes.length > i){
+                    let routeData = [[locationsRoutes[locationsRoutes.length-1].startLat, locationsRoutes[locationsRoutes.length-1].startLng], [locationsRoutes[locationsRoutes.length-1].endLat, locationsRoutes[locationsRoutes.length-1].endLng]]
+                    data.geometry.coordinates[0].push(routeData)
+                    map.getSource('route').setData(data).
+                    map.panTo(routeData[routeData.length])
+                    i++
+                }
+                else{}
+                
+                    /*
+                // Arc Version
+                let newArcLayerData
+                newArcLayerData = {
+                    start: [locationsRoutes[locationsRoutes.length-1].startLat, locationsRoutes[locationsRoutes.length-1].startLng],
+                    end: [locationsRoutes[locationsRoutes.length-1].endLat, locationsRoutes[locationsRoutes.length-1].endLng]
+                }
+                let arcLayerData = [];
+                arcLayerData.push(newArcLayerData)
+                console.log(arcLayerData)
+                arcLayer.setProps({ data: arcLayerData})
+            }
+            else{}
+            */
+        }, 500);
+    }
+    setMarkersAndArcs();
+    spinGlobe();
 }

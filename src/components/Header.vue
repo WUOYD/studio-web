@@ -7,8 +7,12 @@
             <div class="header-item ">WORLD</div>
             <div class="header-item ">WIDE</div>
             <div class="header-item ">WEB</div>
-            <a class="scroller" href="#track-domain">Scroll to discover</a>
+            <div class="scroll-section" >
+                <a class="scroller" href="#track-domain">Scroll to discover</a>
+                <img id="scroll-svg" src="../assets/scroll_colored.svg">
+            </div>
             <p class="info">A journey through the <span class="stroke">internet</span><span class="blue">.</span></p>
+            
         </div>
         <div id="track-domain" class="h-wrapper">
             <div class="trace-section">
@@ -19,6 +23,9 @@
                     </form>
                     <ul class="locations"></ul>
                     <!-- <LoadingAnimation /> -->
+                    <div id="status">
+                            <p>Finished!</p>
+                    </div>
                     <div class="loading-wrapper">
                         <div class="loading">
                             <div></div>
@@ -28,7 +35,9 @@
                         </div>
                     </div>
                 </div>
-                <button id="explore-button">Explore how it works</button>
+                <div class="explore-button-section">
+                    <button id="explore-button">Explore how it works</button>
+                </div>
             </div>
             <div class="cta-wrapper">
                 <p>Enter a domain to track the network path of a <span class="stroke">website</span><span class="blue">.</span></p>
@@ -38,7 +47,7 @@
                     <button type="submit">Trace</button>
                 </form>
                 <div class="tracert-loading">
-                    <p style="position: absolute;" class="error">Error: Tracing your Domain</p>
+                    <p class="error">Error: Tracing your Domain</p>
                     <p class="loading-dots">tracing started</p>
                     <p class="loading-dots">searching for the next hops</p>
                     <p class="loading-dots">locating <span></span></p>
@@ -59,18 +68,19 @@
 
     header .cta-wrapper .tracert-loading {
         position: absolute;
-        bottom: 10%;
+        bottom: 20%;
+        width: 50%;
         display: flex;
         flex-direction: column;
         justify-content:  flex-start;
         align-items: flex-start;
+        text-align: center;
     }
 
     header .cta-wrapper .tracert-loading p {
-        text-align: left;
+        position: absolute;
         width: 100%;
         font-size: 25px;
-        margin-top: 15px;
         opacity: 0;
     }
 
@@ -83,6 +93,7 @@
         z-index: 5;
         padding-bottom: 60px;
     }
+
 
     header .trace-section form {
         display: flex;
@@ -103,11 +114,30 @@
         padding: 15px 30px;
     } 
 
-    header #explore-button {
+    header .explore-button-section{
+        justify-content: center ;
+        display: flex;
         width: 100%;
-        border-radius: 5px;
-        position: absolute;
+    }
+
+    header .loading-wrapper{
+        justify-content: center ;
+        display: flex;
+    }
+
+    header #status{
+        visibility: hidden;
+        justify-content: center;
+        display: flex;
+        padding-top: 1rem;
+    }
+
+    header #explore-button {
+        width: 50%;
+        border-radius: 35px;
+        position: relative;
         bottom: 0;
+        visibility: visible;
     }
 
     header .sidebar .locations {
@@ -154,18 +184,28 @@
         font-weight: 500;
     }
 
+    header .scroll-section {
+        width: 20%;
+        padding-top: 80px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
     header .scroller {
-        position: absolute;
         text-decoration: none;
         cursor: pointer;
-        padding: 10px 5px;
-        bottom: 5%;
-        left: 50%;
-        transform: translateX(-50%);
         color: white;
-        font-size: 18px;
-        animation: scale 1s ease-in-out infinite alternate
+        font-size: 16px;
     }
+
+    header #scroll-svg{
+        margin: auto;
+        padding-top: 10px;
+        width: 30%;
+    }
+
 
     @keyframes scale {
         0% {
@@ -233,12 +273,17 @@
     }
 
     #header-form {
-        width: 100%;
+        width: auto;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
         margin-top: 50px;
+    }
+
+    form .domain{
+        width: 100%;
+        padding-left: 10px;
     }
 
     form {
@@ -250,22 +295,28 @@
     }
 
     form button {
-        border-radius: 5px;
-        border-top-left-radius: 0px;
-        border-bottom-left-radius: 0px;
+        border-radius: 30px;
+        width: 30%;
     }
 
     form input {
-        color: white;
-        border: 2px solid white;
         background-color: transparent;
-        border-radius: 5px;
-        padding: 10px 10px;
+        color: white;
+        border: none;
         width: 40%;
         font-size: 20px;
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
         border-right: none;
+    }
+    
+    .tracert-form{
+        color: white;
+        border: 2px solid white;
+        border-radius: 30px;
+        padding: 7px 7px;
+    }
+
+    #header-form{
+        width: 50%;
     }
 
     #info p{
@@ -277,11 +328,6 @@
         outline: 0;
     }
     
-    button{
-        width: 20%;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-    }
 
 </style>
 

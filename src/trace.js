@@ -6,7 +6,7 @@ import { unPinGLobe} from './gsap.js';
 var loading = false;
 var lastIP = "8.8.8.8";
 
-var julian = false;
+var julian = true;
 if(julian) {
 	var ajaxPath = "http://localhost/studio-web/server/ajax.php"
 }else{
@@ -120,6 +120,7 @@ export function traceIP(ip){
 	if(!loading){
 		resetTrace();
 		loading = true;
+		document.getElementById("status").style.visibility = "hidden";
 		updateLoadingAnimation();
 		var xhr = $.ajax({
 			url: ajaxPath,
@@ -153,8 +154,8 @@ export function traceIP(ip){
 				setIPInDnsSection(lastIP);
 			}, 500);
 			loading = false;
+			clearInterval(setInterval);
 			updateLoadingAnimation();
-			//document.querySelector(".sidebar").innerHTML +="all done!</br>";
 		});
 	}
 }
@@ -200,6 +201,8 @@ function updateLoadingAnimation(){
 			loadingAni.classList.remove("fadeIn");
 			loadingAni.classList.remove("fadeOut");
 		}, 1000);
+		document.getElementById("explore-button").style.visibility = "visible";
+		document.getElementById("status").style.visibility = "visible";
 	}
 }
 
