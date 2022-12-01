@@ -131,7 +131,7 @@ export function loadMapBox(){
 
         startTime = performance.now();
 
-        animateLine();
+        //animateLine();
          
         // reset startTime and progress once the tab loses or gains focus
         // requestAnimationFrame also pauses on hidden tabs by default
@@ -206,6 +206,6 @@ export function loadMapBox(){
             */
         }, 500);
     }
-    setMarkersAndArcs();
-    spinGlobe();
+  /*  setMarkersAndArcs();
+    spinGlobe();*/
 }

@@ -66,15 +66,15 @@ window.onload = function(){
 
 	var firstShowContent = true;
 
-	/*document.querySelector("#explore-button").addEventListener("click", function(){
-		if(firstShowContent){*/
+	document.querySelector("#explore-button").addEventListener("click", function(){
+		if(firstShowContent){
 			document.querySelector("main").style.display = 'block';
 			document.querySelector("footer").style.display = 'block';
 			gsapSliders();
-			/*firstShowContent = false;
+			firstShowContent = false;
 		}
 		scrollToHash("#ip-address");
-	});*/
+	});
 
 	function setDomainInDNSSection(ip){
 		var ip2 = ip.replace(/(^\w+:|^)\/\//, '');
@@ -95,4 +95,29 @@ window.onload = function(){
 			});
 		});
 	}
+
+	document.querySelector("#hamburger").addEventListener("click", function(){
+		var body = document.querySelector("body");
+		if($(body).hasClass("menu-open")){
+			$("aside .sidebar").animate({
+				opacity: "0"
+			},200);
+			setTimeout(function() {
+				$("aside").animate({
+					width: "0"
+				},300);
+				$(body).toggleClass("menu-open");
+			},100);
+		}else{
+			$(body).toggleClass("menu-open");
+			$("aside").animate({
+				width: "30vw",
+			},200);
+			setTimeout(function() {
+				$("aside .sidebar").animate({
+					opacity: "1"
+				},300);
+			},100);
+		}
+	});
 }

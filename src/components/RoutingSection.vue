@@ -61,7 +61,7 @@
 
 <style scoped>
     .section2 {
-        margin-left: -30%;
+        margin-left: -20%;
         min-width: 105% !important;
     }
 
