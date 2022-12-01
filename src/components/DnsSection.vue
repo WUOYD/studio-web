@@ -80,14 +80,6 @@
 
         }),
         mounted() {
-            function getPanelMarginLeft(){
-                var width = document.querySelector(".dns-section .title-section.panel").offsetWidth;
-                var windowWidth = window.innerWidth;
-                return ((windowWidth - width) / 2);
-            }
-
-            document.querySelector(".dns-section .section1.panel").style.marginLeft = getPanelMarginLeft() + "px";
-            //document.querySelector(".dns-section .section5.panel").style.marginLeft = getPanelMarginLeft() + "px";
         }
     }
 </script>

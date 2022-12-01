@@ -63,15 +63,15 @@ window.onload = function(){
 
 	var firstShowContent = true;
 
-	document.querySelector("#explore-button").addEventListener("click", function(){
-		if(firstShowContent){
+	/*document.querySelector("#explore-button").addEventListener("click", function(){
+		if(firstShowContent){*/
 			document.querySelector("main").style.display = 'block';
 			document.querySelector("footer").style.display = 'block';
 			gsapSliders();
-			firstShowContent = false;
+			/*firstShowContent = false;
 		}
 		scrollToHash("#ip-address");
-	});
+	});*/
 
 	function setDomainInDNSSection(ip){
 		var ip2 = ip.replace(/(^\w+:|^)\/\//, '');

@@ -143,7 +143,7 @@ export function traceIP(ip){
 				ajax: true
 			},             
 		}).always(function( data ) {
-			if((Array.isArray(data) && data.includes("invalid domain")) || data === "invalid domain"){
+			if((Array.isArray(data) && data.includes("invalid domain")) || data === "invalid domain" /*|| data === ""*/){
 				setTimeout(function() {
 					cleanIPInput();
 					printErrorMessageHome();
@@ -231,7 +231,7 @@ function resetTrace(){
 var firstLocation = true;
 
 function appendLocationText(location){
-	console.log(location);
+	//console.log(location);
 	if(firstLocation){
 		repositionHeader();
 	}

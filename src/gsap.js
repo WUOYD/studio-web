@@ -86,6 +86,19 @@ Object.defineProperty(Element.prototype, 'outerWidth', {
     }
 });
 
+function getPanelMarginLeft2(section){
+    var width = section.querySelector(".title-section").offsetWidth;
+    var windowWidth = window.innerWidth;
+    return ((windowWidth - width) / 2);
+}
+
+function setSectionBGSize(section){
+    var width = section.offsetWidth;
+    var windowWidth = window.innerWidth;
+    section.querySelector(".bg").style.left = "-"+(windowWidth - width) / 2+"px";
+    section.querySelector(".bg").style.width = windowWidth+"px";
+}
+
 export function gsapSliders(){
     var sections = [
         "section.ip-section",
@@ -95,6 +108,11 @@ export function gsapSliders(){
 
     sections.forEach(function(section){
         var sec = document.querySelector(section);
+
+       // setSectionBGSize(sec);
+
+        sec.querySelector(".section1.panel").style.marginLeft = getPanelMarginLeft2(sec) + "px";
+
         let p = sec.querySelectorAll(".panel");
         var panelWidths = 0;
         p.forEach(function(pa, i){
