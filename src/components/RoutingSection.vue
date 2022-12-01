@@ -65,6 +65,21 @@
         min-width: 105% !important;
     }
 
+    .section2::before {
+        background: none !important;
+    }
+
+    .section1::after {
+        content: "";
+        position: absolute;
+        background-color: black;
+        top: calc(-100vh / 6);
+        height: 100vh;
+        width: 90%;
+        left: 90%;
+        z-index: -1
+    }
+
     .section4 {
         margin-left: -10%;
         min-width: 115% !important;
@@ -89,14 +104,6 @@
 
         }),
         mounted() {
-            function getPanelMarginLeft(){
-                var width = document.querySelector(".routing-section .title-section.panel").offsetWidth;
-                var windowWidth = window.innerWidth;
-                return ((windowWidth - width) / 2);
-            }
-
-            document.querySelector(".routing-section .section1.panel").style.marginLeft = getPanelMarginLeft() + "px";
-            //document.querySelector(".routing-section .section5.panel").style.marginLeft = getPanelMarginLeft() + "px";
         }
     }
 </script>

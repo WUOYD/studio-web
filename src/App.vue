@@ -8,6 +8,26 @@
 <template>
     <Header />
     <main>
+        <aside>
+            <div class="sidebar">
+                <nav>
+                    <ul>
+                        <li>
+                            <a class="stroke" href="#"><span>Trace Domains</span></a>
+                        </li>
+                        <li>
+                            <a class="stroke" href="#"><span>The ID-Adress</span></a>
+                        </li>
+                        <li>
+                            <a class="stroke" href="#"><span>The DNS-Server</span></a>
+                        </li>
+                        <li>
+                            <a class="stroke" href="#"><span>The Routing</span></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
         <article>
             <IpSection />
             <DnsSection />

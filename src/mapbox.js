@@ -1,7 +1,5 @@
 import mapboxgl from 'mapbox-gl';
 import { locations, locationsRoutes } from "./trace.js"
-import {MapboxLayer} from '@deck.gl/mapbox';
-import {ArcLayer} from '@deck.gl/layers';
 
 export function loadMapBox(){
     var selector = document.querySelector("#globe");
@@ -17,55 +15,6 @@ export function loadMapBox(){
         /*cooperativeGestures: true,*/
     });
 
-    
-
-     /*
-    //LineLayer
-
-    let data = {};
-    map.on('load', async () => {
-        map.addSource('route', {
-            'type': 'geojson',
-            'data': {
-                'type': 'Feature',
-                'properties': {},
-                'geometry': {
-                    'type': 'LineString',
-                    'coordinates': [
-                    ]
-                }   
-            }
-        })
-
-        map.addLayer({
-            'id': 'route',
-            'type': 'line',
-            'source': 'route',
-            'layout': {
-            'line-join': 'round',
-            'line-cap': 'round'
-            },
-            'paint': {
-            'line-color': '#43F2FF',
-            'line-width': 8
-            }
-        });
-    })
-   
-    //ArcLayer
-    const arcLayer = new MapboxLayer({
-        id: 'arc-layer',
-        type: ArcLayer,
-        data: [],
-        getSourcePosition: d => d.start,
-        getTargetPosition:  d => d.end,
-        getSourceColor: [67, 242, 255],
-        getTargetColor: [67, 242, 255],
-        getWidth: 1, 
-    })
-
-    */
-  
     map["scrollZoom"].disable();
     map["boxZoom"].disable();
     map["dragRotate"].disable();
@@ -131,6 +80,92 @@ export function loadMapBox(){
     // When animation is complete, start spinning if there is no ongoing interaction
     map.on('moveend', () => {
         spinGlobe();
+    });
+
+
+
+
+
+    // Create a GeoJSON source with an empty lineString.
+    const geojson = {
+        'type': 'FeatureCollection',
+        'features': [
+        {
+            'type': 'Feature',
+            'geometry': {
+                'type': 'LineString',
+                'coordinates': [[0, 0]]
+            }
+        }
+        ]
+    };
+
+    const speedFactor = 30; // number of frames per longitude degree
+    let animation; // to store and cancel the animation
+    let startTime = 0;
+    let progress = 0; // progress = timestamp - startTime
+    let resetTime = false; // indicator of whether time reset is needed for the animation
+
+    map.on('load', () => {
+
+        map.addSource('line', {
+            'type': 'geojson',
+            'data': geojson
+        });
+
+        // add the line which will be modified in the animation
+        map.addLayer({
+            'id': 'line-animation',
+            'type': 'line',
+            'source': 'line',
+            'layout': {
+                'line-cap': 'round',
+                'line-join': 'round'
+            },
+            'paint': {
+                'line-color': '#43F2FF',
+                'line-width': 5,
+                'line-opacity': 0.8
+            }
+        });
+
+        startTime = performance.now();
+
+        animateLine();
+         
+        // reset startTime and progress once the tab loses or gains focus
+        // requestAnimationFrame also pauses on hidden tabs by default
+        document.addEventListener('visibilitychange', () => {
+            resetTime = true;
+        });
+     
+        // animated in a circle as a sine wave along the map.
+        function animateLine(timestamp) {
+            if (resetTime) {
+                // resume previous progress
+                startTime = performance.now() - progress;
+                resetTime = false;
+            } else {
+                progress = timestamp - startTime;
+            }
+         
+            // restart if it finishes a loop
+            if (progress > speedFactor * 360) {
+                startTime = timestamp;
+                geojson.features[0].geometry.coordinates = [];
+            } else {
+                const x = progress / speedFactor;
+                // draw a sine wave with some math.
+                const y = Math.sin((x * Math.PI) / 90) * 40;
+                // append new coordinates to the lineString
+                //console.log(x,y)
+                geojson.features[0].geometry.coordinates.push([x, y]);
+                // then update the map
+                map.getSource('line').setData(geojson);
+            }
+            // Request the next frame of the animation.
+            animation = requestAnimationFrame(animateLine);
+        }
     });
 
     function setMarkersAndArcs(){
