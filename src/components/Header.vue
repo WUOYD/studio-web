@@ -99,11 +99,11 @@
     }
 
     header .trace-section form input {
-        width: 85%;
+        width: 75%;
     }
 
     header .trace-section form button {
-        width: 15%;
+        width: 25%;
     }
 
     header .sidebar {
@@ -133,7 +133,6 @@
 
     header #explore-button {
         width: 50%;
-        height: 30px;
         border-radius: 35px;
         position: relative;
         bottom: 0;
@@ -287,7 +286,7 @@
 
     form button {
         border-radius: 30px;
-        width: 15%;
+        width: 25%;
     }
 
     form input {
