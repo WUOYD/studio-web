@@ -9,7 +9,7 @@ const app = createApp(App)
 app.mount('#app')
 
 import { doGSAP, gsapSliders} from './gsap.js';
-import { traceIP, getIPValue } from './trace.js';
+import { traceIP, getIPValue,loadingTracertHome } from './trace.js';
 import { loadMapBox } from './mapbox.js';
 
 window.onload = function(){
@@ -28,21 +28,6 @@ window.onload = function(){
 			setDomainInDNSSection(ip);
 		});
 	})
-
-	function loadingTracertHome(domain){
-		var elements = document.querySelectorAll("header .tracert-loading p.loading-dots");
-		elements.forEach(function(ele, i){
-			if(i === 2){
-				ele.querySelector("span").innerHTML = domain;
-			}
-			setTimeout(function() {
-				ele.classList.add("fadeIn");
-				setTimeout(function() {
-					ele.classList.add("fadeOut");
-				}, 2500);
-			}, i * 4000);
-		});
-	}
 
 	function scrollToHash(hash){
 		var speed = 600;

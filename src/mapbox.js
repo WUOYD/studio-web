@@ -72,6 +72,28 @@ export function loadMapBox(){
         spinGlobe();
     });
 
+    map.on('load', () => {
+        map.addSource('line', {
+            'type': 'geojson',
+            'data': geojson
+        });
+
+        map.addLayer({
+            'id': 'route',
+            'type': 'line',
+            'source': 'line',
+            'layout': {
+                'line-cap': 'round',
+                'line-join': 'round'
+            },
+            'paint': {
+                'line-color': '#FFFFFF',
+                'line-width': 2,
+                'line-opacity': 1
+            }
+        });
+    });
+
     function spinGlobe() {
         const zoom = map.getZoom();
         if (spinEnabled && !userInteracting && zoom < maxSpinZoom) {
@@ -101,29 +123,10 @@ function drawMarkers(){
 
 function drawLines(){
     if(locations.length == 0){
-        map.addSource('line', {
-            'type': 'geojson',
-            'data': geojson
-        });
-
-        map.addLayer({
-            'id': 'route',
-            'type': 'line',
-            'source': 'line',
-            'layout': {
-                'line-cap': 'round',
-                'line-join': 'round'
-            },
-            'paint': {
-                'line-color': '#FFFFFF',
-                'line-width': 2,
-                'line-opacity': 1
-            }
-        });
+        
     }
     else if(locations.length >= 1){
         geojson.features[0].geometry.coordinates.push(locations[locations.length-1]);
-        console.log(geojson);
         map.getSource('line').setData(geojson);
         map.panTo(locations[locations.length])
     }

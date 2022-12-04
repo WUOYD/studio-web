@@ -47,9 +47,11 @@
                 </form>
                 <div class="tracert-loading">
                     <p class="error">Error: Tracing your Domain</p>
-                    <p class="loading-dots">tracing started</p>
-                    <p class="loading-dots">searching for the next hops</p>
-                    <p class="loading-dots">locating <span></span></p>
+                    <div class="success">
+                        <p class="loading-dots">tracing started</p>
+                        <p class="loading-dots">searching for the next hops</p>
+                        <p class="loading-dots">locating <span></span></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -74,6 +76,10 @@
         justify-content:  flex-start;
         align-items: flex-start;
         text-align: center;
+    }
+
+    header .cta-wrapper .tracert-loading .success {
+        width: 100%;
     }
 
     header .cta-wrapper .tracert-loading p {

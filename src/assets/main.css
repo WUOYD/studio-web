@@ -256,12 +256,12 @@ section.routing-section {
 /* Animations */
 .fadeIn {
     opacity: 1 !important;
-    transition: opacity 1.5s; 
+    transition: opacity 500ms; 
 }
 
 .fadeOut {
     opacity: 0 !important;
-    transition: opacity 1.5s; 
+    transition: opacity 500ms; 
 }
 
 .show-loading {

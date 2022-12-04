@@ -135,7 +135,6 @@ export function traceIP(ip){
 				if( typeof location === 'object' && typeof location != undefined){
 					appendLocation(location);
 					lastIP = location.query;
-					//console.log(lastIP);
 				}
 			},
 			data: {
@@ -160,17 +159,16 @@ export function traceIP(ip){
 	}
 }
 
+var abortLoadingTracertHome = false;
+
 function printErrorMessageHome(){
-	var elements = document.querySelectorAll("header .tracert-loading p.loading-dots");
-	for (let index = elements.length - 1; index >= 0; index--) {
-		setTimeout(function() {
-			elements[index].classList.remove("fadeIn");
-			elements[index].classList.add("fadeOut");
-		}, index * 250);
-		setTimeout(function() {
-			elements[index].classList.remove("fadeOut");
-		}, (index + 1) * 500);
-	}
+	var elementsWrapper = document.querySelector("header .tracert-loading .success");
+	$(elementsWrapper).removeClass("fadeIn").addClass("fadeOut");
+	setTimeout(function() {
+		console.log("test1");
+		elementsWrapper.classList.remove("fadeOut");
+		elementsWrapper.classList.add("fadeIn");
+	}, 5000);
 	setTimeout(function() {
 		document.querySelector("header .tracert-loading p.error").classList.add("fadeIn");
 		setTimeout(function() {
@@ -178,9 +176,28 @@ function printErrorMessageHome(){
 			document.querySelector("header .tracert-loading p.error").classList.add("fadeOut");
 			setTimeout(function() {
 				document.querySelector("header .tracert-loading p.error").classList.remove("fadeOut");
-			}, 1500);
-		}, 1500);
-	}, 2000);
+			}, 1000);
+		}, 1000);
+	}, 500);
+}
+
+export function loadingTracertHome(domain){
+	var elements = document.querySelectorAll("header .tracert-loading .success p.loading-dots");
+	elements.forEach(function(ele, i){
+		if(i === 2){
+			ele.querySelector("span").innerHTML = domain;
+		}
+		setTimeout(function() {
+			ele.classList.add("fadeIn");
+			setTimeout(function() {
+				ele.classList.add("fadeOut");
+				setTimeout(function() {
+					ele.classList.remove("fadeOut");
+					ele.classList.remove("fadeIn");
+				}, 600);
+			}, 1000);
+		}, i * 2000);
+	});
 }
 
 function cleanIPInput(){
