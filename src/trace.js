@@ -120,7 +120,7 @@ export function traceIP(ip){
 	if(!loading){
 		resetTrace();
 		loading = true;
-		document.getElementById("status").style.visibility = "hidden";
+		//document.getElementById("status").style.visibility = "hidden";
 		updateLoadingAnimation();
 		var xhr = $.ajax({
 			url: ajaxPath,
@@ -219,7 +219,7 @@ function updateLoadingAnimation(){
 			loadingAni.classList.remove("fadeOut");
 		}, 1000);
 		document.getElementById("explore-button").style.visibility = "visible";
-		document.getElementById("status").style.visibility = "visible";
+		//document.getElementById("status").style.visibility = "visible";
 	}
 }
 

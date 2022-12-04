@@ -21,10 +21,9 @@
                         <button class="submitbutton" type="submit">Trace</button>
                     </form>
                     <ul class="locations"></ul>
-                    <!-- <LoadingAnimation /> -->
-                    <div id="status">
-                            <p>Finished!</p>
-                    </div>
+                    <!-- <div id="status">
+                        <p>Finished!</p>
+                    </div> -->
                     <div class="loading-wrapper">
                         <div class="loading">
                             <div></div>
@@ -142,7 +141,7 @@
         border-radius: 35px;
         position: relative;
         bottom: 0;
-        visibility: visible;
+        visibility: hidden;
     }
 
     header .sidebar .locations {
