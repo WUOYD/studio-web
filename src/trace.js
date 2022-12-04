@@ -1,4 +1,4 @@
-import { drawData } from './mapbox.js';
+import { drawData, resetData } from './mapbox.js';
 import { unPinGLobe} from './gsap.js';
 
 let marker;
@@ -6,7 +6,7 @@ let marker;
 var loading = false;
 var lastIP = "8.8.8.8";
 
-var julian = false;
+var julian = true;
 if(julian) {
 	var ajaxPath = "http://localhost/studio-web/server/ajax.php"
 }else{
@@ -230,7 +230,7 @@ function appendLocation(location){
 }
 
 function resetTrace(){
-	//locations = [];
+	resetData();
 	var sidebar = document.querySelector("header .sidebar .locations");
 	sidebar.innerHTML = "";
 }

@@ -1,6 +1,7 @@
 import mapboxgl from 'mapbox-gl';
 
 let locations = [];
+let currentMarkers = [];
 let map;
 
 const geojson = {
@@ -87,7 +88,7 @@ export function loadMapBox(){
                 'line-join': 'round'
             },
             'paint': {
-                'line-color': '#FFFFFF',
+                'line-color': '#43f2ff',
                 'line-width': 2,
                 'line-opacity': 1
             }
@@ -117,7 +118,8 @@ function drawMarkers(){
             let marker = {};
             marker.lat = element[0];
             marker.lng = element[1];     
-            new mapboxgl.Marker(el).setLngLat({lng: marker.lng, lat: marker.lat}).addTo(map);
+            let currentMarker = new mapboxgl.Marker(el).setLngLat({lng: marker.lng, lat: marker.lat}).addTo(map);
+            currentMarkers.push(currentMarker);
     })
 }
 
@@ -126,7 +128,8 @@ function drawLines(){
         
     }
     else if(locations.length >= 1){
-        geojson.features[0].geometry.coordinates.push(locations[locations.length-1]);
+        let location = [locations[locations.length-1][1],locations[locations.length-1][0]];
+        geojson.features[0].geometry.coordinates.push(location);
         map.getSource('line').setData(geojson);
         map.panTo(locations[locations.length])
     }
@@ -137,6 +140,18 @@ export function drawData(location){
     locations.push(location);
     drawMarkers();
     drawLines();
+}
+
+export function resetData(){
+    currentMarkers.forEach((marker) => marker.remove())
+    currentMarkers = [];
+    const el = document.getElementsByClassName('marker');
+    while(el.length > 0){
+        el[0].parentNode.removeChild(el[0]);
+    }
+    geojson.features[0].geometry.coordinates = []
+    map.getSource('line').setData(geojson);
+    locations = [];
 }
     
     /*
