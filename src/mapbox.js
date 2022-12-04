@@ -121,6 +121,7 @@ function drawMarkers(){
             let currentMarker = new mapboxgl.Marker(el).setLngLat({lng: marker.lng, lat: marker.lat}).addTo(map);
             currentMarkers.push(currentMarker);
     })
+    map.panTo([locations[locations.length-1][1],locations[locations.length-1][0]], {duration: 2000})
 }
 
 function drawLines(){
@@ -131,7 +132,6 @@ function drawLines(){
         let location = [locations[locations.length-1][1],locations[locations.length-1][0]];
         geojson.features[0].geometry.coordinates.push(location);
         map.getSource('line').setData(geojson);
-        map.panTo(locations[locations.length])
     }
     else{}
 }
@@ -145,56 +145,9 @@ export function drawData(location){
 export function resetData(){
     currentMarkers.forEach((marker) => marker.remove())
     currentMarkers = [];
-    const el = document.getElementsByClassName('marker');
-    while(el.length > 0){
-        el[0].parentNode.removeChild(el[0]);
-    }
     geojson.features[0].geometry.coordinates = []
     map.getSource('line').setData(geojson);
     locations = [];
 }
     
-    /*
-    const speedFactor = 30; 
-    let animation; 
-    let startTime = 0;
-    let progress = 0; 
-
-    startTime = performance.now();
-     
-    // reset startTime and progress once the tab loses or gains focus
-    // requestAnimationFrame also pauses on hidden tabs by default
-    document.addEventListener('visibilitychange', () => {
-        resetTime = true;
-    });
     
-    // animated in a circle as a sine wave along the map.
-    function animateLine(timestamp) {
-        if (resetTime) {
-            // resume previous progress
-            startTime = performance.now() - progress;
-            resetTime = false;
-        } else {
-            progress = timestamp - startTime;
-        }
-     
-        // restart if it finishes a loop
-        if (progress > speedFactor * 360) {
-            startTime = timestamp;
-            geojson.features[0].geometry.coordinates = [];
-        } else {
-            const x = progress / speedFactor;
-            // draw a sine wave with some math.
-            const y = Math.sin((x * Math.PI) / 90) * 40;
-            // append new coordinates to the lineString
-            //console.log(x,y)
-            geojson.features[0].geometry.coordinates.push([x, y]);
-            // then update the map
-            map.getSource('line').setData(geojson);
-        }
-        // Request the next frame of the animation.
-        animation = requestAnimationFrame(animateLine);
-    }
-
-        //animateLine();
-        */
