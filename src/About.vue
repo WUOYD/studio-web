@@ -1,11 +1,11 @@
 <script setup> 
-    import ImpressumSection from './components/ImpressumSection.vue'
+    import AboutSection from './components/AboutSection.vue'
     import Footer from './components/Footer.vue'
 </script>
 <template>
     <main>
         <article>
-            <ImpressumSection />
+            <AboutSection />
         </article>
     </main>
     <Footer />

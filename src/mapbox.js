@@ -121,7 +121,7 @@ function drawMarkers(){
             let currentMarker = new mapboxgl.Marker(el).setLngLat({lng: marker.lng, lat: marker.lat}).addTo(map);
             currentMarkers.push(currentMarker);
     })
-    map.panTo([locations[locations.length-1][1],locations[locations.length-1][0]], {duration: 2000})
+    map.flyTo({center: [locations[locations.length-1][1],locations[locations.length-1][0]], speed: 0.2,})
 }
 
 function drawLines(){

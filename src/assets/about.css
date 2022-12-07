@@ -2,7 +2,7 @@
 
 /* General Css */
 
-#Impressum {
+#about {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 2rem;
@@ -27,10 +27,8 @@ section {
 }
 
 section .wrapper{
-    display: flex;
     width: 100%;
     height: 100%;
-    justify-content: flex-start;
 }
 
 section.text-left-img .wrapper,
@@ -39,8 +37,22 @@ section.text-right-img .wrapper {
     flex-direction: row;
 }
 
-section h2 {
+section h1 {
+    color: white;
     font-size: 26px;
+    font-weight: 600;
+}
+
+section h2 {
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    padding-top: 1rem;
+}
+
+section h3 {
+    color: white;
+    font-size: 16px;
     font-weight: 600;
 }
 
@@ -59,7 +71,6 @@ section .panel {
 
 
 .text-wrapper{
-    display: flex;
     flex-direction: column;
     width: 75%;
     color: white;

@@ -8,14 +8,18 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "php": "php -S localhost:8000 -t server/",
     "vitest": "vitest run --dom",
-    "vitest:report": "vitest run --dom --reporter json --outputFile test-results.json"
+    "vitest:report": "vitest run --dom --reporter json --outputFile test-results.json",
+    "cypress:open": "cypress open",
+    "cypress:report": "cypress run --reporter mochawesome"
   },
   "dependencies": {
     "@vue/test-utils": "^2.2.4",
     "cypress": "^11.2.0",
+    "cypress-mochawesome-reporter": "^3.2.3",
     "gsap": "^3.11.3",
     "happy-dom": "^7.7.0",
     "mapbox-gl": "^2.10.0",
+    "mochawesome": "^7.1.3",
     "vitest": "^0.25.3",
     "vue": "^3.2.38"
   },

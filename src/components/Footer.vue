@@ -8,7 +8,7 @@
                 ©<span id="year"></span> 
             </div>
             <div class="footer-cell" id="right">
-                <a href="impressum.html">Impressum</a>
+                <a href="about.html">About</a>
             </div>
         </div>
     </footer>
@@ -26,6 +26,7 @@
     position: relative;
     width: 33.3333%;
     margin: auto;
+    color: white;
 }
 
 #left{
