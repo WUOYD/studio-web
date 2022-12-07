@@ -75,7 +75,7 @@
         background-color: black;
         top: calc(-100vh / 6);
         height: 100vh;
-        width: 90%;
+        width: 120%;
         left: 90%;
         z-index: -1
     }

@@ -69,6 +69,11 @@ section .panel:not(:first-of-type)::before{
     background-color: black;
 }
 
+section .panel:last-of-type::before{
+    width: 120%;
+    background-color: black;
+}
+
 .row-2 {
     padding-top: calc(100vh/6)
 }
