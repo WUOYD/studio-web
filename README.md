@@ -35,7 +35,6 @@ Als User will ich den Weg von meiner IP bis zur aufgerufenen Webseite verfolgen 
 -   Responsiveness
 -   Performance
 -   Supported Browser (Chrome, Firefox, Safari)
--   Multi-language support (German, English)
 
 ## Datensatz
 
