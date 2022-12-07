@@ -32,7 +32,7 @@ button{
     border: 2px solid rgb(67, 242, 255);
     background-color: rgb(67, 242, 255);
     border-radius: 5px;
-    padding:  2px 5px 2px 5px;
+    padding:  10px 15px;
     font-weight: 500;
     font-size: 17px;
     font-family: 'Roboto', sans-serif;
@@ -43,7 +43,8 @@ button{
 
 button:hover,
 button:active {
-    background-color: rgb(67, 242, 255, 0.2);
+    background-color: rgb(215, 252, 255);
+    border: 2px solid rgb(215, 252, 255);
 }
 
 /* Components */
@@ -163,6 +164,7 @@ section > .wrapper{
     width: 100%;
     height: 100%;
     justify-content: flex-start;
+    z-index: -1;
 }
 
 section .title-section .wrapper {
@@ -254,12 +256,12 @@ section.routing-section {
 /* Animations */
 .fadeIn {
     opacity: 1 !important;
-    transition: opacity 1.5s; 
+    transition: opacity 500ms; 
 }
 
 .fadeOut {
     opacity: 0 !important;
-    transition: opacity 1.5s; 
+    transition: opacity 500ms; 
 }
 
 .show-loading {
@@ -429,83 +431,94 @@ section.routing-section {
     cursor: pointer;
 }
 
-/* Navigation */
+/* Hamburger */
+.hamburger {
+    position: fixed;
+    top: 5em;
+    right: 2rem;
+    margin-left: -2em;
+    margin-top: -45px;
+    width: 3em;
+    height: 45px;
+    z-index: 200;
+    cursor: pointer;
+}
+
+.hamburger div {
+    position: relative;
+    width: 3em;
+    height: 4px;
+    border-radius: 3px;
+    background-color: rgb(67, 242, 255);
+    margin-top: 8px;
+    transition: all 0.15s ease-in-out;
+}
+
+/* Animations */
+body.menu-open .hamburger .top-bun {
+    transform: rotate(-45deg);
+    margin-top: 20px;
+}
+body.menu-open .hamburger .bottom-bun {
+    opacity: 0;
+    transform: rotate(45deg);
+}
+body.menu-open .hamburger .meat {
+    transform: rotate(45deg);
+    margin-top: -3px;
+}
+
+body.menu-open .hamburger + .nav {
+    top: 0;
+    transform: scale(1);
+}
+
+/* Sidebar */
+body.menu-open aside {
+    pointer-events: auto;
+}
+
 aside {
     position: fixed;
-    top: 50%;
-    left: 5%;
-    transform: translateY(-50%);
-    display: flex;
-    z-index: 99;
-    height: calc(100vh/6*4);
+    background: #0a0a0a;
+    height: 100vh;
+    width: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 20;
+    pointer-events: none;
 }
 
 aside .sidebar {
-}
-
-aside .sidebar::before {
-    content: "";
-    position: absolute;
-    top: calc(0% - 10px);
-    left: calc(0% - 10px);
-    background: rgba(0, 0, 0, 0.5) ;
-    height: calc(100% + 20px);
-    width: calc(100% + 20px);
-}
-
-aside .sidebar,
-aside nav,
-aside nav ul {
     height: 100%;
-}
-
-aside nav ul li:not(:last-of-type) a::after{
-    content: "";
-    position: absolute;
-    border-left: 1px solid rgb(67, 242, 255);
-    height: calc((100vh/6*4 - (25px *4)) /3);
-    display: block;
-    left: calc(0% + 25px /2);
-    top: calc(0% + 25px);
-}
-
-aside nav ul li a::before{
-    content: "";
-    width: 25px;
-    height: 25px;
-    border: 1px solid rgb(67, 242, 255);
-    border-radius: 50%;
-    display: block;
-    position: absolute;
-}
-
-aside nav ul li a span {
+    display: flex;
+    align-items:center;
+    padding: 60px 40px;
     opacity: 0;
-    display: block;
-    padding-left: 30px;
-    transition: 500ms;
-    white-space: nowrap;
-    position: absolute;
-    top: -20%;
 }
 
-aside nav ul li a:hover span {
-    opacity: 1;
-}
-
-aside nav ul li a {
-    text-decoration: none;
-    color:  rgb(67, 242, 255);
-    font-size: 140%;
-    display: block;
-    height: 25px;
-    width: 25px;
-}
-
-aside nav ul {
+aside ul {
+    height: 100%;
     padding-left: unset;
-    list-style: none;
     display: flex;
     flex-direction: column;
+    list-style: none;
     justify-content: space-between;
+}
+
+aside ul li a {
+    text-decoration: none;
+    font-size: 40px;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    -webkit-text-fill-color: transparent;
+}
+
+aside nav {
+    height: 50%;
+    display: flex;
+    justify-content:center;
+    width: 100%;
 }

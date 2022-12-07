@@ -6,28 +6,33 @@
     import Footer from './components/Footer.vue'
 </script>
 <template>
+    <div id="hamburger" class="hamburger">
+        <div class="top-bun"></div>
+        <div class="meat"></div>
+        <div class="bottom-bun"></div>
+    </div>
     <Header />
+    <aside>
+        <div class="sidebar">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#">Trace Domains</a>
+                    </li>
+                    <li>
+                        <a href="#">IP-Adress</a>
+                    </li>
+                    <li>
+                        <a href="#">DNS-Server</a>
+                    </li>
+                    <li>
+                        <a href="#">Routing</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
     <main>
-        <aside>
-            <div class="sidebar">
-                <nav>
-                    <ul>
-                        <li>
-                            <a class="stroke" href="#"><span>Trace Domains</span></a>
-                        </li>
-                        <li>
-                            <a class="stroke" href="#"><span>The ID-Adress</span></a>
-                        </li>
-                        <li>
-                            <a class="stroke" href="#"><span>The DNS-Server</span></a>
-                        </li>
-                        <li>
-                            <a class="stroke" href="#"><span>The Routing</span></a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </aside>
         <article>
             <IpSection />
             <DnsSection />
