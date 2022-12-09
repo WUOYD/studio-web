@@ -278,7 +278,10 @@ function repositionHeader() {
 		document.querySelector("header .cta-wrapper").style.display = 'none';
 		var traceSection = document.querySelector("header .trace-section")
 		traceSection.style.display = 'block';
-		$("header .trace-section").animate({opacity: "1"});
+		var hSidebar = document.querySelector("header .sidebar");
+		var compStyle = window.getComputedStyle(hSidebar);
+		hSidebar.style.height = (traceSection.offsetHeight - traceSection.querySelector("#section-form").offsetHeight - traceSection.querySelector(".explore-button-section").offsetHeight - compStyle.marginTop.replace("px", "") - compStyle.marginBottom.replace("px", "")) + "px";
+		$("header #track-domain .trace-section").animate({opacity: "1"});
 	}, 500);
 }
 

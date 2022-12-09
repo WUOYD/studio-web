@@ -17,16 +17,16 @@
             <nav>
                 <ul>
                     <li>
-                        <a href="#">Trace Domains</a>
+                        <a href="#track-domain">Trace Domains</a>
                     </li>
                     <li>
-                        <a href="#">IP-Adress</a>
+                        <a href="#ip-section">IP-Adress</a>
                     </li>
                     <li>
-                        <a href="#">DNS-Server</a>
+                        <a href="#dns-section">DNS-Server</a>
                     </li>
                     <li>
-                        <a href="#">Routing</a>
+                        <a href="#routing-section">Routing</a>
                     </li>
                 </ul>
             </nav>

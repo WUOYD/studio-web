@@ -3,9 +3,10 @@
     import routingSVG2 from './routingSVG2.vue'
     import routingSVG3 from './routingSVG3.vue'
     import routingSVG4 from './routingSVG4.vue'
+    import routingSVG5 from './routingSVG5.vue'
 </script>
 <template>
-    <section class="routing-section">
+    <section id="routing-section" class="routing-section">
         <div class="wrapper">
             <div class="title-section panel">
                 <div class="wrapper">
@@ -38,18 +39,27 @@
                    <p>The keyword for this problem is reliability. The Internet will still work, because other nodes will still be available and take over traffic from the malfunctioning node.</p>
                 </div>
             </div>
-            <div class="section6 panel row-1">
+            <div class="section6 panel row-2">
+                <routingSVG5 />
+            </div>
+            <div class="section7 panel row-2">
+                <div class="text-wrapper">
+                    <p class="text-big">Usually <span class="stroke">big files</span> like audio or videos will not be transfered by a network as a whole<span class="blue">.</span></p>
+                   <p>The keyword for this problem is reliability. The Internet will still work, because other nodes will still be available and take over traffic from the malfunctioning node.</p>
+                </div>
+            </div>
+            <div class="section8 panel row-1">
                 <routingSVG3 />
             </div>
-            <div class="section7 panel row-3">
+            <div class="section9 panel row-3">
                 <div class="text-wrapper">
                     <p class="text-big">The different parts of the file can be transported <span class="stroke">in any given order</span><span class="blue">.</span></p>
                 </div>
             </div>
-            <div class="section8 panel row-1">
+            <div class="section10 panel row-1">
                 <routingSVG4 />
             </div>
-            <div class="section9 panel row-1">
+            <div class="section11 panel row-1">
                 <div class="text-wrapper">
                     <p class="text-big">When all packages have arrived at the requester, the network protocol called <span class="stroke">TCP</span> will rearange the recieved data<span class="blue">.</span></p>
                    <p>TCP has a list with each package and its place and sorts all packages the correct way. The transfer is complete and the user can view the data.</p>
@@ -80,18 +90,19 @@
         z-index: -1
     }
 
-    .section4 {
+    .section4,
+    .section6 {
         margin-left: -10%;
         min-width: 115% !important;
     }
 
-    .section6 {
+    .section8 {
         margin-left: -20%;
         max-width: 90% !important;
         min-width: 90% !important;
     }
 
-    .section8 {
+    .section10 {
         margin-left: -15%;
         max-width: 60% !important;
         min-width: 60% !important;

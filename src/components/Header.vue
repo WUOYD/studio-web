@@ -8,7 +8,6 @@
       <div class="header-item">WIDE</div>
       <div class="header-item">WEB</div>
       <div class="scroll-section">
-        <a class="scroller" href="#track-domain">Scroll to discover</a>
         <a href="#track-domain"
           ><img id="scroll-svg" src="../assets/scroll_colored.svg"
         /></a>
@@ -22,21 +21,21 @@
 
     <div id="track-domain" class="h-wrapper">
       <div class="trace-section">
+        <form class="tracert-form" id="section-form">
+          <input
+          class="domain"
+          placeholder="example-domain.com"
+          type="domain"
+          required
+          />
+          <button class="submitbutton" type="submit">Trace</button>
+        </form>
         <div class="sidebar">
-          <form class="tracert-form" id="section-form">
-            <input
-              class="domain"
-              placeholder="example-domain.com"
-              type="domain"
-              required
-            />
-            <button class="submitbutton" type="submit">Trace</button>
-          </form>
           <ul class="locations"></ul>
           <!-- <LoadingAnimation /> -->
-          <div id="status">
+         <!--  <div id="status">
             <p>Finished!</p>
-          </div>
+          </div> -->
           <div class="loading-wrapper">
             <div class="loading">
               <div></div>
@@ -67,9 +66,11 @@
         </form>
         <div class="tracert-loading">
           <p class="error">Error: Tracing your Domain</p>
-          <p class="loading-dots">tracing started</p>
-          <p class="loading-dots">searching for the next hops</p>
-          <p class="loading-dots">locating <span></span></p>
+          <div class="success">
+            <p class="loading-dots">tracing started</p>
+            <p class="loading-dots">searching for the next hops</p>
+            <p class="loading-dots">locating <span></span></p>
+          </div>
         </div>
       </div>
     </div>
@@ -110,26 +111,17 @@ header .trace-section {
   width: 45%;
   margin-top: 60px;
   z-index: 5;
-  padding-bottom: 60px;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 header .trace-section form {
   display: flex;
 }
 
-header .trace-section form input {
-  width: 85%;
-}
-
-header .trace-section form button {
-  width: 15%;
-}
-
 header .sidebar {
   overflow-y: auto;
-  background-color: rgba(0, 0, 0, 0.9);
-  height: 100%;
-  padding: 15px 30px;
+  padding: 0 15px;
+  margin: 15px 0;
 }
 
 header .explore-button-section {
@@ -143,27 +135,30 @@ header .loading-wrapper {
   display: flex;
 }
 
-header #status {
+/*header #status {
   visibility: hidden;
   justify-content: center;
   display: flex;
   padding-top: 1rem;
-}
+}*/
 
 header #explore-button {
   width: 50%;
-  height: 30px;
   border-radius: 35px;
   position: relative;
   bottom: 0;
-  visibility: visible;
+  visibility: hidden;
+}
+
+header .success {
+  width: 100%;
 }
 
 header .sidebar .locations {
   font-size: 18px;
   padding-left: 25px;
   color: white;
-  margin-top: 30px;
+  margin-top: 15px;
 }
 
 header .h-wrapper {
@@ -219,18 +214,10 @@ header .scroll-section {
   justify-content: center;
 }
 
-header .scroller {
-  text-decoration: none;
-  cursor: pointer;
-  color: white;
-  font-size: 16px;
-  display: none;
-}
-
 header #scroll-svg {
   margin: auto;
   padding-top: 10px;
-  width: 15%;
+  width: 7%;
 }
 
 @keyframes scale {
@@ -352,6 +339,24 @@ form input {
 form input:focus,
 form input:active {
   outline: 0;
+}
+
+@media only screen and (max-width: 1199.98px) {
+    .header-item {
+        font-size: 100px;
+    }
+}
+
+@media only screen and (max-width: 991.98px) {
+    #header-form,
+    header .cta-wrapper p {
+        width: 90%;
+    }
+
+    header .cta-wrapper p,
+    header .info {
+        font-size: 50px;
+    }
 }
 
 /*Tablet portrait 768 width*/

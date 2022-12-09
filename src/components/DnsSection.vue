@@ -1,5 +1,5 @@
 <template>
-    <section class="dns-section">
+    <section id="dns-section" class="dns-section">
         <div class="wrapper">
             <div class="title-section panel row-1">
                 <div class="wrapper">

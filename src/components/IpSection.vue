@@ -2,7 +2,7 @@
     import ipSVG from './ipSVG.vue'
 </script>
 <template>
-    <section id="ip-address" class="ip-section">
+    <section id="ip-section" class="ip-section">
         <div class="wrapper">
             <div class="title-section panel">
                 <div class="wrapper">

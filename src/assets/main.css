@@ -70,7 +70,7 @@ section .panel:not(:first-of-type)::before{
 }
 
 section .panel:last-of-type::before{
-    width: 120%;
+    width: 150%;
     background-color: black;
 }
 
@@ -447,6 +447,7 @@ section.routing-section {
     height: 45px;
     z-index: 200;
     cursor: pointer;
+    display: none;
 }
 
 .hamburger div {
@@ -526,4 +527,67 @@ aside nav {
     display: flex;
     justify-content:center;
     width: 100%;
+}
+
+/* Responsive */
+@media only screen and (max-width: 1920px) {
+
+}
+
+@media only screen and (max-width: 1599.98px) {
+
+}
+
+@media only screen and (max-width: 1399.98px) {
+
+}
+
+@media only screen and (max-width: 1199.98px) {
+
+}
+
+@media only screen and (max-width: 991.98px) {
+    div#globe {
+        left: 0;
+    }
+
+    header div.trace-section {
+        width: 100%;
+    }
+
+    header div.h-wrapper {
+        top: 250vh;
+    }
+}
+
+@media only screen and (max-width: 975px) {
+
+}
+
+@media only screen and (max-width: 839px) {
+    
+}
+
+@media only screen and (max-width: 767.98px) {
+    
+}
+
+@media only screen and (max-width: 575.98px) {
+    
+}
+
+@media only screen and (max-width: 499.98px) {
+    
+}
+
+@media only screen and (max-width: 399.98px) {
+
+}
+
+@media only screen and (max-width: 349.98px) {
+
+}
+
+@media only screen and (max-width: 319.98px) {
+
 }

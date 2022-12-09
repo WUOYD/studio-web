@@ -30,6 +30,15 @@ export function loadMapBox(){
         projection: 'globe',
     });
 
+    function checkMediaQuery() {
+        if (window.innerWidth < 991.98) {
+            console.log("test");
+            map.setZoom(1.5);
+        }else{
+        }
+    }
+    window.addEventListener('resize', checkMediaQuery);
+
     //Map Settings    
     map["scrollZoom"].disable();
     map["boxZoom"].disable();

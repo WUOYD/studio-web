@@ -1,15 +1,20 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import * as ScrollToPlugin from "gsap/ScrollToPlugin";
 
 var tlGlobe;
 
 export function doGSAP(){
 
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-    window.addEventListener("resize", function(){
-        /*TODO Responsive*/
-    });
+    function checkMediaQuery() {
+        if (window.innerWidth < 991.98) {
+            
+        }else{
+        }
+    }
+    window.addEventListener('resize', checkMediaQuery);
 
     /* ---------- Header ---------- */
 
@@ -151,5 +156,25 @@ export function gsapSliders(){
                 scrub: 4,
             }
         });
+
     });
+    /*document.querySelectorAll("aside a").forEach(anchor => {
+        anchor.addEventListener("click", function(e) {
+            e.preventDefault();
+            const targetElem = document.querySelector(e.target.getAttribute("href"));
+            console.log(targetElem);
+            const containerOffsetY = $(targetElem).offset().top;
+            const containerOffsetX = $(targetElem).offset().left;
+            //console.log(e.target.getAttribute("href"));
+            console.log(targetElem.parentElement);
+            gsap.to(targetElem.parentElement, {
+                scrollTo: {
+                    x: containerOffsetX,
+                    y: containerOffsetY
+                },
+                duration: 1
+            });
+
+        });
+    });*/
 }

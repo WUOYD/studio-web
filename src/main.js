@@ -35,14 +35,20 @@ window.onload = function(){
 			speed = 2000
 		}
 		$([document.documentElement, document.body]).animate({
-			scrollTop: $(hash).offset().top
+			scrollTop: $(hash).offset().top,
+			//scrollLeft: $(hash).offset().left
 		}, speed);
 	}
 
-	$("a, .button:not(.trace-btn)").on("click", function() {
-		var elem = $(this);
-		scrollToHash(elem.attr('href'));
-	});
+	loadScrollToListener();
+
+	function loadScrollToListener(){
+		$("a, .button:not(.trace-btn)").on("click", function() {
+			closeMenu(document.querySelector("body"));
+			var elem = $(this);
+			scrollToHash(elem.attr('href'));
+		});
+	}
 
 	var hash = window.location.hash;
 	if(hash && $(hash).length > 0){
@@ -54,11 +60,13 @@ window.onload = function(){
 	document.querySelector("#explore-button").addEventListener("click", function(){
 		if(firstShowContent){
 			document.querySelector("main").style.display = 'block';
+			document.querySelector(".hamburger").style.display = 'block';
 			document.querySelector("footer").style.display = 'block';
 			gsapSliders();
+			loadScrollToListener();
 			firstShowContent = false;
 		}
-		scrollToHash("#ip-address");
+		scrollToHash("#ip-section");
 	});
 
 	function setDomainInDNSSection(ip){
@@ -81,20 +89,18 @@ window.onload = function(){
 		});
 	}
 
-	document.querySelector("#hamburger").addEventListener("click", function(){
+	function toggleMenu(){
 		var body = document.querySelector("body");
 		if($(body).hasClass("menu-open")){
-			$("aside .sidebar").animate({
-				opacity: "0"
-			},200);
-			setTimeout(function() {
-				$("aside").animate({
-					width: "0"
-				},300);
-				$(body).toggleClass("menu-open");
-			},100);
+			closeMenu(body);
 		}else{
-			$(body).toggleClass("menu-open");
+			openMenu(body);
+		}
+	}
+
+	function openMenu(body){
+		if(!$(body).hasClass("menu-open")){
+			$(body).addClass("menu-open");
 			$("aside").animate({
 				width: "30vw",
 			},200);
@@ -104,5 +110,23 @@ window.onload = function(){
 				},300);
 			},100);
 		}
+	}
+
+	function closeMenu(body){
+		if($(body).hasClass("menu-open")){
+			$("aside .sidebar").animate({
+				opacity: "0"
+			},200);
+			setTimeout(function() {
+				$("aside").animate({
+					width: "0"
+				},300);
+				$(body).removeClass("menu-open");
+			},100);
+		}
+	}
+
+	document.querySelector("#hamburger").addEventListener("click", function(){
+		toggleMenu();
 	});
 }
