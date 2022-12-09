@@ -6,7 +6,7 @@ let marker;
 var loading = false;
 var lastIP = "8.8.8.8";
 
-var julian = false;
+var julian = true;
 if(julian) {
 	var ajaxPath = "http://localhost/studio-web/server/ajax.php"
 }else{

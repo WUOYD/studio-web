@@ -430,9 +430,8 @@ section.routing-section {
 .marker {
     background-image: url('./pinpoint.svg');
     background-size: cover;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    width: 12px;
+    height: 60px;
     cursor: pointer;
 }
 
@@ -527,6 +526,20 @@ aside nav {
     display: flex;
     justify-content:center;
     width: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+     border-radius: 10px;
+    color: #ffff;
+}
+   
+::-webkit-scrollbar-thumb {
+    background: #43f2ff; 
+    border-radius: 10px;
 }
 
 /* Responsive */
