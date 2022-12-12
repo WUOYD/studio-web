@@ -21,7 +21,7 @@
             <div class="section2 panel" id="ip-trigger">
                <div class="text-wrapper">
                     <p class="text-big">Every <span class="stroke">device</span> has an Ip adress<span class="blue">.</span></p>
-                    <p>The Ip adress is an unique indicator for a certain device.</p>
+                    <p>The IP adress is an unique indicator for a certain device.</p>
                     <div id="ip-adress"><span class="i">255</span><span class="blue">.</span>
                     <span class="i">255</span><span class="blue">.</span>
                     <span class="i">14</span><span class="blue">.</span>
@@ -30,8 +30,8 @@
             </div>
             <div class="section3 panel row-1">
                 <div class="text-wrapper">
-                    <p class="text-big">An IP adress consists four <span class="stroke">numbers</span><span class="blue">.</span></p>
-                    <p>They are separated with a point. These numbers represent bits, which every computer works with internally. The numbers range from 0 to 255.</p>
+                    <p class="text-big">An IP adress consists of four <span class="stroke">numbers</span><span class="blue">.</span></p>
+                    <p>They are separated with a point. These numbers represent bits, which every computer works with. The numbers range from 0 to 255.</p>
                 </div>
             </div> 
             <div class="section4 panel row-1">
