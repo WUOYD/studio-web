@@ -21,6 +21,10 @@
 
     <div id="track-domain" class="h-wrapper">
       <div class="trace-section">
+        <div class="trace-title">
+            <h2>Trace your Domain</h2>
+            <p>Location the traced website starts at the webserver location in switzerland.</p>
+        </div>
         <form class="tracert-form" id="section-form">
           <input
           class="domain"
@@ -84,6 +88,20 @@
 header {
   height: 450vh;
   z-index: 2;
+}
+
+header h2 {
+    color: white;
+    font-size: 25px;
+}
+
+header h2 + p {
+    color: white;
+    padding-bottom: 20px;
+}
+
+header .trace-title {
+    padding: 0px 17px;
 }
 
 header .cta-wrapper .tracert-loading {
@@ -265,7 +283,8 @@ header .header-wrapper {
   display: flex;
   height: 100vh;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 15vh;
   flex-direction: column;
 }
 
@@ -348,14 +367,66 @@ form input:active {
 }
 
 @media only screen and (max-width: 991.98px) {
-    #header-form,
+    #header-form {
+        width: 75%;
+    }
+
     header .cta-wrapper p {
         width: 90%;
     }
 
+    header .cta-wrapper {
+        height: 60%;
+        opacity: 1 !important;
+        display: flex !important;
+    }
+
+    header .cta-wrapper::before {
+        height:  100%;
+    }
+
+    header .sidebar {
+        height: auto !important;
+        margin-bottom: 30px;
+    }
+
     header .cta-wrapper p,
     header .info {
-        font-size: 50px;
+        font-size: 40px;
+    }
+
+    header div.trace-section {
+        width: 100%;
+        top: 150vh;
+        position: absolute;
+        height: auto !important;
+        padding-bottom: 30px;
+    }
+
+    header div.trace-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -10vw;
+        width: 120vw;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.0) 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 100%);
+        height: 100%;
+    }
+
+    header div.h-wrapper {
+        top: 195vh;
+    }
+
+    header .info {
+        top:  78vh;
+    }
+
+    header {
+        height: auto;
+    }
+
+    header .trace-section form {
+        display: none;
     }
 }
 

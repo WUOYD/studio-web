@@ -10,10 +10,13 @@ export function doGSAP(){
 
     function checkMediaQuery() {
         if (window.innerWidth < 991.98) {
-            
         }else{
+            initGlobeGSAP();
         }
     }
+
+    checkMediaQuery();
+
     window.addEventListener('resize', checkMediaQuery);
 
     /* ---------- Header ---------- */
@@ -42,23 +45,25 @@ export function doGSAP(){
         stagger: 0.0
     }, 'initial');
 
-
-    tlGlobe = gsap.timeline({
-        scrollTrigger:{
-            trigger: document.querySelector("#globe-wrapper"),
-            pin: true,
-            scrub: 0.3,
-            start: () => "0% 0",
-            end: () => '+=100%',
-            markers: false,
-        }
-    });
-
+    function initGlobeGSAP() {
+        tlGlobe = gsap.timeline({
+            scrollTrigger:{
+                trigger: document.querySelector("#globe-wrapper"),
+                pin: true,
+                scrub: 0.3,
+                start: () => "0% 0",
+                end: () => '+=100%',
+                markers: false,
+            }
+        });
+    }
 }
 
 export function unPinGLobe(){
-    tlGlobe.kill(true);
-    gsap.set("#globe-wrapper", {clearProps: true});
+    if (typeof tlGlobe !== 'undefined') {
+        tlGlobe.kill(true);
+        gsap.set("#globe-wrapper", {clearProps: true});
+    }
 }
 
 

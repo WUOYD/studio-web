@@ -398,13 +398,6 @@ section.routing-section {
     right: 0;
 }
 
-/* Mapbox */
-.marker {
-    /*background-image: url('https://docs.mapbox.com/mapbox-gl-js/assets/pin.svg');
-    background-size: cover;*/
-    cursor: pointer;
-}
-
 /* Globe */
 #globe-wrapper {
     width: 100%;
@@ -430,9 +423,8 @@ section.routing-section {
 .marker {
     background-image: url('./pinpoint.svg');
     background-size: cover;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    width: 12px;
+    height: 60px;
     cursor: pointer;
 }
 
@@ -517,17 +509,43 @@ aside ul li a {
     text-decoration: none;
     font-size: 40px;
     color: white;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: white;
-    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+    line-height: 1;
 }
 
 aside nav {
     height: 50%;
     display: flex;
     justify-content:center;
-    width: 100%;
 }
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+     border-radius: 10px;
+    color: #ffff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #43f2ff; 
+    border-radius: 10px;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+     border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #43f2ff; 
+    border-radius: 10px;
+}
+
 
 /* Responsive */
 @media only screen and (max-width: 1920px) {
@@ -548,15 +566,12 @@ aside nav {
 
 @media only screen and (max-width: 991.98px) {
     div#globe {
-        left: 0;
+        left: 0 !important;
     }
 
-    header div.trace-section {
-        width: 100%;
-    }
-
-    header div.h-wrapper {
-        top: 250vh;
+    #globe-wrapper,
+    #globe-wrapper.globeTop {
+        top: 250vh !important;
     }
 }
 

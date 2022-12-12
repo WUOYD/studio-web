@@ -30,11 +30,13 @@ export function loadMapBox(){
         projection: 'globe',
     });
 
+    checkMediaQuery();
+
     function checkMediaQuery() {
-        if (window.innerWidth < 991.98) {
-            console.log("test");
-            map.setZoom(1.5);
-        }else{
+        if(window.innerWidth < 767.98){
+
+        } else if (window.innerWidth < 991.98) {
+            map.setZoom(2);
         }
     }
     window.addEventListener('resize', checkMediaQuery);

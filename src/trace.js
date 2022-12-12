@@ -237,10 +237,22 @@ function resetTrace(){
 
 var firstLocation = true;
 
+function scrollToLocation() {
+	if (window.innerWidth < 991.98) {
+		var ele = $("header .trace-title")[0];
+		console.log($(ele).offset().top)
+		/*console.log(ele);
+		$([document.documentElement, document.body]).animate({
+			scrollTop: document.querySelector("header .sidebar").getBoundingClientRect().top
+		}, 1000);*/
+	}
+}
+
 function appendLocationText(location){
 	//console.log(location);
 	if(firstLocation){
 		repositionHeader();
+		scrollToLocation();
 	}
 	var sidebar = document.querySelector("header .sidebar .locations");
 	sidebar.innerHTML +='<li class="location">'+
@@ -280,7 +292,7 @@ function repositionHeader() {
 		traceSection.style.display = 'block';
 		var hSidebar = document.querySelector("header .sidebar");
 		var compStyle = window.getComputedStyle(hSidebar);
-		hSidebar.style.height = (traceSection.offsetHeight - traceSection.querySelector("#section-form").offsetHeight - traceSection.querySelector(".explore-button-section").offsetHeight - compStyle.marginTop.replace("px", "") - compStyle.marginBottom.replace("px", "")) + "px";
+		hSidebar.style.height = (traceSection.offsetHeight - traceSection.querySelector(".trace-title").offsetHeight - traceSection.querySelector("#section-form").offsetHeight - traceSection.querySelector(".explore-button-section").offsetHeight - compStyle.marginTop.replace("px", "") - compStyle.marginBottom.replace("px", "")) + "px";
 		$("header #track-domain .trace-section").animate({opacity: "1"});
 	}, 500);
 }
