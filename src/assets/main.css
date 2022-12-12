@@ -519,26 +519,15 @@ aside nav {
     justify-content:center;
 }
 
+
 /* Scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-     border-radius: 10px;
-    color: #ffff;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #43f2ff; 
     border-radius: 10px;
-}
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-     border-radius: 10px;
+    color: #ffff;
 }
 
 ::-webkit-scrollbar-thumb {

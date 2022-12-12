@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="section6 panel row-2">
-                <routingSVG5 />
+                <routingSVG3 />
             </div>
             <div class="section7 panel row-2">
                 <div class="text-wrapper">
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="section8 panel row-1">
-                <routingSVG3 />
+                <routingSVG4 />
             </div>
             <div class="section9 panel row-3">
                 <div class="text-wrapper">
@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div class="section10 panel row-1">
-                <routingSVG4 />
+                <routingSVG5 />
             </div>
             <div class="section11 panel row-1">
                 <div class="text-wrapper">
@@ -106,6 +106,10 @@
         margin-left: -15%;
         max-width: 60% !important;
         min-width: 60% !important;
+    }
+
+    .section11 {
+        margin-left: 15%;
     }
 </style>
 
