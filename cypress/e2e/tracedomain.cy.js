@@ -2,9 +2,8 @@ describe('Searching for amazon.com should provide the location Hochschule Luzern
     it('passes', () => {
       cy.visit('http://127.0.0.1:5173/')
       cy.get('#header-form input[placeholder="example-domain.com"]').type("amazon.com")
-      cy.wait(3000)
       cy.get('#header-form > button').click()
-      cy.wait(60000)
+      cy.wait(30000)
       cy.get('.locations').contains('Hochschule Luzern')
     })
   })

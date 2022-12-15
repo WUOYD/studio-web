@@ -20,7 +20,7 @@
             </div>
             <div class="section2 panel" id="ip-trigger">
                <div class="text-wrapper">
-                    <p class="text-big">Every <span class="stroke">device</span> has an Ip adress<span class="blue">.</span></p>
+                    <p class="text-big">Every <span class="stroke">device</span> has an IP adress<span class="blue">.</span></p>
                     <p>The IP adress is an unique indicator for a certain device.</p>
                     <div id="ip-adress"><span class="i">255</span><span class="blue">.</span>
                     <span class="i">255</span><span class="blue">.</span>
