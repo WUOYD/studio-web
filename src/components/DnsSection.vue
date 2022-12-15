@@ -23,8 +23,8 @@
             </div>
             <div class="section4 panel row-2">
                 <div class="text-wrapper">
-                    <p class="text-big">Every Domain has an IP adress as its <span class="stroke">alias</span><span class="blue">assinged.</span></p>
-                    <p>It’s much easier remembering the adress of a service like Google, when you are not required to know the long IP adress and instead can use google.com.</p>
+                    <p class="text-big">Every Domain has an IP adress as its <span class="stroke">alias</span> assinged<span class="blue">.</span></p>
+                    <p>It is much easier remembering the adress of a service like Google, when you are not required to know the long IP adress and instead can use google.com.</p>
                 </div>
             </div>
             <div class="section5 panel row-2">
