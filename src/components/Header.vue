@@ -4,9 +4,9 @@
     <div class="header-wrapper">
       <div class="header-item sp">WHAT</div>
       <div class="header-item sp">THE</div>
-      <div class="header-item">WORLD</div>
-      <div class="header-item">WIDE</div>
-      <div class="header-item">WEB</div>
+      <div class="world outline" >W<span id="hworld">ORLD</span></div>
+      <div class="wide outline" >W<span id="hwide">IDE</span></div>
+      <div class="web outline" >WEB</div>
       <div class="scroll-section">
         <a href="#track-domain"
           ><img id="scroll-svg" src="../assets/scroll_colored.svg"
@@ -84,6 +84,43 @@
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+.outline span {
+  font-weight: 800;
+}
+.white{
+    font-weight: 800;
+    color: white;
+    font-size: 6.5vw;
+    line-height: 0.9;
+    font-family: "Roboto", sans-serif;
+
+}
+
+.outline{
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(67, 242, 255);
+    -webkit-text-fill-color: transparent;
+    font-family: "Roboto", sans-serif;
+    font-size: 6.5vw;
+    line-height: 0.9;
+    font-weight: 800;
+  
+}
+.world{
+    width: 20%;
+    
+}
+
+.wide{
+    width: 20%;
+   transform: translate(80px, 0px);
+}
+
+.web{
+    width: 20%;
+   transform: translate(147px, 0px);
+}
 
 header {
   height: 450vh;
