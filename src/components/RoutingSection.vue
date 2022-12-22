@@ -149,22 +149,6 @@
         }
     }
 
-    @media only screen and (max-width: 767.98px) {
-        
-    }
-
-    @media only screen and (max-width: 399.98px) {
-        .section4 svg {
-            display: none;
-        }
-
-        #routingMobile1 {
-            display:block;
-            width: 100%;
-            object-fit: contain;
-        }
-    }
-
 </style>
 
 <script>

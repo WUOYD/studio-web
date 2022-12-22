@@ -569,6 +569,10 @@ aside nav {
         top: 250vh !important;
     }
 
+    #app{
+        overflow-x: hidden;
+    }
+
     section,
     section.routing-section {
         padding: unset;

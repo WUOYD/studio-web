@@ -631,6 +631,22 @@ form input:active {
     header .info {
         font-size: 28px;
     }
+
+    #globe-wrapper {
+        height: 380px;
+    }
+
+    #globe-wrapper{
+        margin-top: 30px;
+    }
+
+    header .cta-wrapper .tracert-loading p{
+        font-size: 20px;
+    }
+
+    header #explore-button {
+        width: 100%;
+    }
 }
 
 </style>
