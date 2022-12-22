@@ -21,29 +21,27 @@ export function doGSAP(){
 
     /* ---------- Header ---------- */
 
-    let headerWrapper =  document.querySelector('header .header-wrapper');
-    const tl = gsap.timeline({
-        scrollTrigger:{
-            trigger: headerWrapper,
-            pin: true,
-            scrub: true,
-            start: () => "top 0",
-            end: () => '+=100%',
-            markers: false,
-        }
-    });
+    let tl= gsap.timeline()
+.to(".wide",{x:0, duration:2},"<")
+.to(".web",{x:0, duration:2},"<")
+.to(".wide",{y:-100, duration:2},"<")
+.to(".web",{y:-200, duration:2},"<")
+.to("#hworld",{opacity:0, duration:1},"<")
+.to("#hwide",{opacity:0, delay:0.3},"<")
 
-    tl.addLabel('initial');
-    tl.to(headerWrapper.querySelectorAll('header div.header-wrapper div.header-item:not(.sp)'), {
-        ease: 'none',
-        x: 0,
-        stagger: 0.0
-    }, 'initial');
-    tl.to(headerWrapper.querySelectorAll('header div.header-wrapper div.header-item.sp'), {
-        ease: 'none',
-        x: 0,
-        stagger: 0.0
-    }, 'initial');
+
+
+ScrollTrigger.create({
+    trigger: ".header-wrapper",
+    start:"top top",
+    end:"bottom top",
+    scrub:1,
+    animation:tl,
+    markers:true,
+    pin: true,
+       
+  })
+
 
     function initGlobeGSAP() {
         tlGlobe = gsap.timeline({
@@ -53,7 +51,7 @@ export function doGSAP(){
                 scrub: 0.3,
                 start: () => "0% 0",
                 end: () => '+=100%',
-                markers: false,
+                markers: true,
             }
         });
     }
