@@ -10,8 +10,8 @@
             </div>
             <div class="section1 panel">
                 <div class="text-wrapper">
-                    <p class="text-big">A <span class="stroke">domain</span> consists two parts: the domain name and the top level domain<span class="blue">.</span></p>
-                   <p>The domain name can be anything like your name or the name of a business. The top level domain (TLD) describes the use of the domain. It can be a country specific TLD like .fr for France or a generic TLD like .com short for commercial which is used by businesses.</p>
+                    <p class="text-big">A <span class="stroke">domain</span> consists of two parts: the domain name and the top level domain<span class="blue">.</span></p>
+                   <p>The domain name can be anything like your name or the name of a business. The top level domain (TLD) describes the use of the domain. It can be a country specific TLD such as .fr for France or a generic TLD like .com short for commercial which is used by businesses.</p>
                 </div>
             </div>
             <div class="section2 panel row-2">
@@ -23,8 +23,8 @@
             </div>
             <div class="section4 panel row-2">
                 <div class="text-wrapper">
-                    <p class="text-big">Every Domain has assinged an IP adress as its <span class="stroke">alias</span><span class="blue">.</span></p>
-                    <p>It is much easier remembering the adress of a service like Google, when you do not have to know a long IP adress and instead can use google.com.</p>
+                    <p class="text-big">Every Domain has an IP adress as its <span class="stroke">alias</span> assinged<span class="blue">.</span></p>
+                    <p>It is much easier remembering the adress of a service like Google, when you are not required to know the long IP adress and instead can use google.com.</p>
                 </div>
             </div>
             <div class="section5 panel row-2">
@@ -42,8 +42,8 @@
             </div>
             <div class="section6 panel row-2">
                 <div class="text-wrapper">
-                    <p class="text-big">DNS is a service who works like a dynamic <span class="stroke">telephone book</span><span class="blue">.</span></p>
-                   <p>But who knows which IP adress is <span class="d">www.google.com</span> assigned to? Here comes the Domain Name System (DNS).  If you enter a domain the DNS translates it to an IP adress.</p>
+                    <p class="text-big">DNS is a service which works like a dynamic <span class="stroke">telephone book</span><span class="blue">.</span></p>
+                   <p>But who knows which IP adress is <span class="d">www.google.com</span> assigned to? Here comes the Domain Name System (DNS).  If you enter a domain, the DNS translates into an IP adress.</p>
                 </div>
             </div>
         </div>

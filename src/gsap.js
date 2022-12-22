@@ -166,23 +166,4 @@ export function gsapSliders(){
         });
 
     });
-    /*document.querySelectorAll("aside a").forEach(anchor => {
-        anchor.addEventListener("click", function(e) {
-            e.preventDefault();
-            const targetElem = document.querySelector(e.target.getAttribute("href"));
-            console.log(targetElem);
-            const containerOffsetY = $(targetElem).offset().top;
-            const containerOffsetX = $(targetElem).offset().left;
-            //console.log(e.target.getAttribute("href"));
-            console.log(targetElem.parentElement);
-            gsap.to(targetElem.parentElement, {
-                scrollTo: {
-                    x: containerOffsetX,
-                    y: containerOffsetY
-                },
-                duration: 1
-            });
-
-        });
-    });*/
 }

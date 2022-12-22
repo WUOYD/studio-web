@@ -27,7 +27,7 @@
             <div class="section3 panel row-1">
                 <div class="text-wrapper">
                     <p class="text-big">The internet is a network with many <span class="stroke">nodes</span><span class="blue">.</span></p>
-                    <p>These nodes are connected with eachother creating a system called world wide web (WWW). You can send and recieve data from all over the world, when connected to the Internet. Normally nodes try to send data in the most efficient way possible.</p>
+                    <p>These nodes are connected with each other creating a system called World Wide Web (WWW). You can send and recieve data from all over the world, when connected to the internet. Normally, nodes try to send data in the most efficient way possible.</p>
                 </div>
             </div>
             <div class="section4 panel row-2">
@@ -36,8 +36,8 @@
             </div>
             <div class="section5 panel row-2">
                 <div class="text-wrapper">
-                    <p class="text-big">But what if a node in the network has an <span class="stroke">issue</span> and cannot work properly<span class="blue">?</span></p>
-                   <p>The keyword for this problem is reliability. The Internet will still work, because other nodes are available and take over traffic from the malfunctioning node.</p>
+                    <p class="text-big">But what if a node in the network has an <span class="stroke">issue</span> and cannot work propperly<span class="blue">?</span></p>
+                   <p>The keyword for this problem is reliability. The Internet will still work because other nodes will still be available and take over traffic from the malfunctioning node.</p>
                 </div>
             </div>
             <div class="section6 panel row-2">
@@ -45,7 +45,7 @@
             </div>
             <div class="section7 panel row-2">
                 <div class="text-wrapper">
-                    <p class="text-big">Usually <span class="stroke">big files</span> like audio or videos will not be transfered by a network as a whole<span class="blue">.</span></p>
+                    <p class="text-big">Usually, <span class="stroke">big files</span> like audios or videos will not be transfered by a network as a whole<span class="blue">.</span></p>
                 </div>
             </div>
             <div class="section8 panel row-1">
@@ -61,8 +61,8 @@
             </div>
             <div class="section11 panel row-1">
                 <div class="text-wrapper">
-                    <p class="text-big">When all packages have arrived at the requester, the network protocol called <span class="stroke">TCP</span> will rearange the recieved data<span class="blue">.</span></p>
-                   <p>TCP has a list with each package. After receiving the data TCP sorts all packages in the correct order. The transfer is complete and the user can view the data.</p>
+                    <p class="text-big">When all packages have arrived at the requester, the network protocol called <span class="stroke">TCP</span> will rearange the received data<span class="blue">.</span></p>
+                   <p>TCP has a list with each package and its intended place. According to this list, it sorts all packages in the correct order. The transfer is complete and the user can view the data.</p>
                 </div>
             </div>
         </div>

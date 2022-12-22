@@ -1,0 +1,107 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-12-22T14:11:04.102Z",
+    "end": "2022-12-22T14:11:23.998Z",
+    "duration": 19896,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "611d2435-c4c5-415f-97d2-e4190a632bc3",
+      "title": "",
+      "fullFile": "cypress\\e2e\\tracedomain.cy.js",
+      "file": "cypress\\e2e\\tracedomain.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "7ff90847-66d0-41b0-8c41-da130abdd8c4",
+          "title": "Searching for youtube.com should provide the location Hostpoint AG as the first search result.",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "passes",
+              "fullTitle": "Searching for youtube.com should provide the location Hostpoint AG as the first search result. passes",
+              "timedOut": null,
+              "duration": 16704,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://whattheweb.ch/');\ncy.get('#header-form input[placeholder=\"example-domain.com\"]').type(\"youtube.com\");\ncy.get('#header-form > button').click();\ncy.wait(10000);\ncy.get('.locations').contains('Hostpoint AG');",
+              "err": {},
+              "uuid": "cccf69c1-3ea5-4a35-858e-9fe76b4d77c4",
+              "parentUUID": "7ff90847-66d0-41b0-8c41-da130abdd8c4",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "cccf69c1-3ea5-4a35-858e-9fe76b4d77c4"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 16704,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "charts": false,
+        "html": true,
+        "json": true,
+        "reportDir": "cypress/reports",
+        "reportFilename": "report",
+        "overwrite": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

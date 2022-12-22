@@ -10,7 +10,7 @@
     "vitest": "vitest run --dom",
     "vitest:report": "vitest run --dom --reporter json --outputFile test-results.json",
     "cypress:open": "cypress open",
-    "cypress:report": "cypress run --reporter mochawesome"
+    "cypress:report": "cypress run --reporter mochawesome --browser chrome"
   },
   "dependencies": {
     "@vue/test-utils": "^2.2.4",
