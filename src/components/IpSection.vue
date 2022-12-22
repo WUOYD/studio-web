@@ -14,14 +14,15 @@
             <div class="section1 panel row-1">
                 <div class="text-wrapper">
                     <p class="text-big">The Internet is a network of <span class="stroke">networks</span><span class="blue">.</span></p>
-                    <p>It connects billions of devices together like a laptop or a smartphone.</p>
+                    <p>It connects billions of devices like a laptop or a smartphone.</p>
                 </div>
                 <ipSVG/>
+                <img id="ipMobile1" src="../assets/ipMobile1.png">
             </div>
             <div class="section2 panel" id="ip-trigger">
                <div class="text-wrapper">
-                    <p class="text-big">Every <span class="stroke">device</span> has an Ip adress<span class="blue">.</span></p>
-                    <p>The Ip adress is an unique indicator for a certain device.</p>
+                    <p class="text-big">Every <span class="stroke">device</span> has an IP adress<span class="blue">.</span></p>
+                    <p>The IP adress is an unique indicator for a certain device.</p>
                     <div id="ip-adress"><span class="i">255</span><span class="blue">.</span>
                     <span class="i">255</span><span class="blue">.</span>
                     <span class="i">14</span><span class="blue">.</span>
@@ -30,13 +31,13 @@
             </div>
             <div class="section3 panel row-1">
                 <div class="text-wrapper">
-                    <p class="text-big">An IP adress consists four <span class="stroke">numbers</span><span class="blue">.</span></p>
-                    <p>They are separated with a point. These numbers represent bits, which every computer works with internally. The numbers range from 0 to 255.</p>
+                    <p class="text-big">An IP adress consists of four <span class="stroke">numbers</span><span class="blue">.</span></p>
+                    <p>They are separated with a point. These numbers represent bits, which every computer works with. The numbers range from 0 to 255.</p>
                 </div>
             </div> 
             <div class="section4 panel row-1">
                 <div class="text-wrapper"> 
-                    <p class="text-big">Normally users don’t know the IP adress of a <span class="stroke">service</span><span class="blue">.</span></p>
+                    <p class="text-big">Normally users do not know the IP adress of a <span class="stroke">service</span><span class="blue">.</span></p>
                     <p>The first number refers to a country, the second to a region, the third to a subnet and the last to specifc device.</p> 
                 </div>
                 <div class="ip-locate text-wrapper special-text text-big">
@@ -58,6 +59,10 @@
         left:0;
         font-weight: 400;
         z-index: 2;
+    }
+
+    #ipMobile1 {
+        display: none;
     }
 
     .section1 {
@@ -105,6 +110,62 @@
         align-items: center;
     }
 
+    @media only screen and (max-width: 1199.98px) {
+        .section1 svg {
+             padding-top: 10%;
+        }
+    }
+   
+    @media only screen and (max-width: 991.98px) {
+        .section1 {
+            min-width: 100%;
+            max-width: 100%;
+            margin-right: unset;
+            z-index: -1;
+            flex-direction: column;
+        }
+
+        #ip-adress {
+            position: static;
+            margin-top: 60px;
+        }
+
+        .section4 > div:first-of-type {
+          width: 100%;
+          justify-content: flex-start;
+        }
+
+        .section4 > div:last-of-type {
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+          padding-top: 60px;
+        }
+
+        .section1 svg {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            transform: scale(1);
+        }
+    }
+
+    @media only screen and (max-width: 767.98px) {
+        
+    }
+
+    @media only screen and (max-width: 399.98px) {
+        .section1 svg {
+            display: none;
+        }
+
+        #ipMobile1 {
+            display: block;
+            margin-top: 60px;
+            width: 100%;
+            object-fit: contain;
+        }
+    }
 </style>
 
 <script>

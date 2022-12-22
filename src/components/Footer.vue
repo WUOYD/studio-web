@@ -2,10 +2,10 @@
     <footer>
         <div class="wrapper">
             <div class="footer-cell" id="left">
-                HSLU Digital Ideation
+                <span>HSLU Digital Ideation</span><span class="mobile">HSLU DI</span>
             </div>
             <div class="footer-cell" id="mittle">
-                ©<span id="year"></span> 
+                ©<span>{{year}}</span>
             </div>
             <div class="footer-cell" id="right">
                 <a href="about.html">About</a>
@@ -29,6 +29,10 @@
     color: white;
 }
 
+#left > span.mobile {
+    display: none;
+}
+
 #left{
     text-align: left;
 }
@@ -44,16 +48,23 @@
     text-decoration: none;
 }
 
+@media only screen and (max-width: 575.98px) {
+    #left > span {
+        display: none;
+    }
+
+    #left > span.mobile {
+        display: block;
+    }
+}
+
 </style>
 
 <script>
     export default {
         data: () => ({
-
+            year: new Date().getFullYear()
         }),
-        mounted() {
-            document.getElementById("year").innerHTML = new Date().getFullYear();
-        }
     }
 </script>
 

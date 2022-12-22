@@ -18,7 +18,7 @@
             <div class="section1 panel row-1">
                 <div class="text-wrapper">
                     <p class="text-big">After a connection is established, a computer can <span class="stroke">request data</span> from a server like a picture or a document<span class="blue">.</span></p>
-                   <p>The server will respond with sending data back to the Requester.</p>
+                   <p>The server will respond with sending data back to the requester.</p>
                 </div>
             </div>
             <div class="section2 panel row-1">
@@ -27,16 +27,17 @@
             <div class="section3 panel row-1">
                 <div class="text-wrapper">
                     <p class="text-big">The internet is a network with many <span class="stroke">nodes</span><span class="blue">.</span></p>
-                    <p>These nodes are connected with eachother creating a system called world wide web (WWW). You can send and recieve data from all over the world, when you are connected with the Internet. Normally nodes try to send data in the most efficient way possible.</p>
+                    <p>These nodes are connected with eachother creating a system called world wide web (WWW). You can send and recieve data from all over the world, when connected to the Internet. Normally nodes try to send data in the most efficient way possible.</p>
                 </div>
             </div>
             <div class="section4 panel row-2">
                 <routingSVG2 />
+                <img id="routingMobile1" src="../assets/routingMobile1.png">
             </div>
             <div class="section5 panel row-2">
                 <div class="text-wrapper">
-                    <p class="text-big">But what if a node in the network has an <span class="stroke">issue</span> and can’t work<span class="blue">?</span></p>
-                   <p>The keyword for this problem is reliability. The Internet will still work, because other nodes will still be available and take over traffic from the malfunctioning node.</p>
+                    <p class="text-big">But what if a node in the network has an <span class="stroke">issue</span> and cannot work properly<span class="blue">?</span></p>
+                   <p>The keyword for this problem is reliability. The Internet will still work, because other nodes are available and take over traffic from the malfunctioning node.</p>
                 </div>
             </div>
             <div class="section6 panel row-2">
@@ -45,7 +46,6 @@
             <div class="section7 panel row-2">
                 <div class="text-wrapper">
                     <p class="text-big">Usually <span class="stroke">big files</span> like audio or videos will not be transfered by a network as a whole<span class="blue">.</span></p>
-                   <p>The keyword for this problem is reliability. The Internet will still work, because other nodes will still be available and take over traffic from the malfunctioning node.</p>
                 </div>
             </div>
             <div class="section8 panel row-1">
@@ -62,7 +62,7 @@
             <div class="section11 panel row-1">
                 <div class="text-wrapper">
                     <p class="text-big">When all packages have arrived at the requester, the network protocol called <span class="stroke">TCP</span> will rearange the recieved data<span class="blue">.</span></p>
-                   <p>TCP has a list with each package and its place and sorts all packages the correct way. The transfer is complete and the user can view the data.</p>
+                   <p>TCP has a list with each package. After receiving the data TCP sorts all packages in the correct order. The transfer is complete and the user can view the data.</p>
                 </div>
             </div>
         </div>
@@ -77,6 +77,10 @@
 
     .section2::before {
         background: none !important;
+    }
+
+    #routingMobile1 {
+        display: none;
     }
 
     .section1::after {
@@ -106,11 +110,61 @@
         margin-left: -15%;
         max-width: 60% !important;
         min-width: 60% !important;
+        padding-right: 15%;
     }
 
-    .section11 {
-        margin-left: 15%;
+    @media only screen and (max-width: 1199.98px) {
+        .section2,
+        .section8 {
+            padding-right: 10%;
+        }
     }
+
+    @media only screen and (max-width: 991.98px) {
+        .section2,
+        .section4,
+        .section6,
+        .section8,
+        .section10 {
+            min-width: 100% !important;
+            max-width: 100% !important;
+        }
+
+        .section2,
+        .section8,
+        .section10 {
+            padding-top: unset;
+            padding-right: unset;
+        }
+
+        .section2 svg,
+        .section4 svg,
+        .section6 svg,
+        .section8 svg,
+        .section10 svg {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            transform: scale(1);
+        }
+    }
+
+    @media only screen and (max-width: 767.98px) {
+        
+    }
+
+    @media only screen and (max-width: 399.98px) {
+        .section4 svg {
+            display: none;
+        }
+
+        #routingMobile1 {
+            display:block;
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+
 </style>
 
 <script>

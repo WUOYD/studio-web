@@ -33,9 +33,13 @@ export function loadMapBox(){
     checkMediaQuery();
 
     function checkMediaQuery() {
-        if(window.innerWidth < 767.98){
-
-        } else if (window.innerWidth < 991.98) {
+        if(window.innerWidth < 400){
+            map.setZoom(0.5);
+        } else if(window.innerWidth < 500){
+            map.setZoom(0.9);
+        } else if(window.innerWidth < 768){
+            map.setZoom(1.4);
+        } else if (window.innerWidth < 992) {
             map.setZoom(2);
         }
     }

@@ -4,9 +4,9 @@
     <div class="header-wrapper">
       <div class="header-item sp">WHAT</div>
       <div class="header-item sp">THE</div>
-      <div class="header-item">WORLD</div>
-      <div class="header-item">WIDE</div>
-      <div class="header-item">WEB</div>
+      <div class="world outline" >W<span id="hworld">ORLD</span></div>
+      <div class="wide outline" >W<span id="hwide">IDE</span></div>
+      <div class="web outline" >WEB</div>
       <div class="scroll-section">
         <a href="#track-domain"
           ><img id="scroll-svg" src="../assets/scroll_colored.svg"
@@ -85,6 +85,57 @@
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
+header .outline span {
+  font-weight: 800;
+}
+
+header .white{
+    font-weight: 800;
+    color: white;
+    font-size: 6.5vw;
+    line-height: 0.9;
+    font-family: "Roboto", sans-serif;
+}
+
+header .outline{
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(67, 242, 255);
+    -webkit-text-fill-color: transparent;
+    font-family: "Roboto", sans-serif;
+    font-size: 6.5vw;
+    line-height: 0.9;
+    font-weight: 800;
+}
+
+/*header .world{
+    width: 20%;
+}
+
+header .wide{
+    width: 20%;
+    transform: translate(80px, 0px);
+}
+
+header .web{
+    width: 20%;
+    transform: translate(147px, 0px);
+}*/
+header .world{
+    width: 20%;
+    opacity: 0;
+}
+
+header .wide{
+    width: 20%;
+    opacity: 0;
+    transform: translate(0px, 0px);
+}
+
+header .web{
+    width: 20%;
+    transform: translate(0px, 0px);
+}
+
 header {
   height: 450vh;
   z-index: 2;
@@ -138,6 +189,8 @@ header .trace-section form {
 
 header .sidebar {
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #43f2ff #000;
   padding: 0 15px;
   margin: 15px 0;
 }
@@ -361,8 +414,15 @@ form input:active {
 }
 
 @media only screen and (max-width: 1199.98px) {
-    .header-item {
+    .header-item,
+    .world.outline,
+    .wide.outline,
+    .web.outline {
         font-size: 100px;
+    }
+
+    header #explore-button{
+        width: 60%;
     }
 }
 
@@ -428,34 +488,151 @@ form input:active {
     header .trace-section form {
         display: none;
     }
+
+    .header-wrapper div{
+      transform: translateX(-80%);
+    }
 }
 
 /*Tablet portrait 768 width*/
 
 @media screen and (max-width: 768px) {
-  .header-item {
-    font-size: 12vw;
-  }
-  header .cta-wrapper p {
-    width: 80%;
-  }
+    .header-item,
+    .world.outline,
+    .wide.outline,
+    .web.outline {
+        font-size: 130px;
+    }
+    header .cta-wrapper p,
+    #header-form {
+        width: 100%;
+    }
 
-  .header-wrapper div:nth-of-type(1) {
-  transform: translateX(-60%);
+    .header-wrapper {
+        align-items: center;
+        height: 100vh;
+        padding-top: 20vh;
+    }
+
+    header div.h-wrapper {
+        top: 110vh;
+    }
+
+    .header-wrapper div{
+        width: auto;
+    }
+
+    .header-wrapper div:nth-of-type(1) {
+        transform: translateX(-10%);
+    }
+
+    .header-wrapper div:nth-of-type(2){
+        transform: translateX(5%);
+    }
+
+    .header-wrapper div:nth-of-type(5) {
+        transform: translateX(25%);
+    }
+
+    .header-wrapper div:nth-of-type(3),
+    .header-wrapper div:nth-of-type(4) {
+        display: none;
+    }
+
+    header .info {
+        top: 80vh;
+    }
+
+    header .cta-wrapper .tracert-loading {
+        bottom: -10%;
+        width: 100%;
+    }
+
+    #globe-wrapper {
+        height: 500px;
+    }
+
+    #globe-wrapper, #globe-wrapper.globeTop {
+        top: 145vh !important;
+    }
+
+    header div.trace-section {
+        top: 100vh;
+        margin-top: unset;
+    }
+
+    header .h-wrapper {
+        height: unset;
+    }
 }
-.header-wrapper div:nth-of-type(2) {
-  transform: translateX(-45%);
+
+@media only screen and (max-width: 575.98px) {
+    .header-item,
+    .world.outline,
+    .wide.outline,
+    .web.outline {
+        font-size: 120px;
+    }
+
+    #globe-wrapper{
+        margin-top: 90px;
+    }
+
+    #globe-wrapper,
+    #track-domain {
+        position: static;
+    }
+
+    header div.trace-section {
+        top: 100%;
+        padding-top: 15px;
+    }
+
 }
-.header-wrapper div:nth-of-type(3) {
-  transform: translateX(0%);
+
+@media only screen and (max-width: 499.98px) {
+    .header-item,
+    .world.outline,
+    .wide.outline,
+    .web.outline {
+        font-size: 110px;
+    }
+
+    #globe-wrapper {
+        height: 400px;
+    }
+
+    header #explore-button {
+        width: 80%;
+    }
 }
-.header-wrapper div:nth-of-type(4) {
-  transform: translateX(45%);
+
+@media only screen and (max-width: 399.98px) {
+    .header-item,
+    .world.outline,
+    .wide.outline,
+    .web.outline {
+        font-size: 90px;
+    }
+
+    .header-wrapper div:nth-of-type(1) {
+        transform: translateX(0%);
+    }
+
+    .header-wrapper div:nth-of-type(2){
+        transform: translateX(0%);
+    }
+
+    .header-wrapper div:nth-of-type(5) {
+        transform: translateX(0%);
+    }
+
+    header .cta-wrapper p,
+    header .info {
+        font-size: 28px;
+    }
 }
-.header-wrapper div:nth-of-type(5) {
-  transform: translateX(90%);
-}
-}
+
 </style>
 
 

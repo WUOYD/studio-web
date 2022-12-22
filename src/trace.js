@@ -6,7 +6,7 @@ let marker;
 var loading = false;
 var lastIP = "8.8.8.8";
 
-var julian = true;
+var julian = false;
 if(julian) {
 	var ajaxPath = "http://localhost/studio-web/server/ajax.php"
 }else{
@@ -36,7 +36,7 @@ async function checkIfIpInDB(ip){
 	});
 }
 
-async function getLocation(ip){
+export async function getLocation(ip){
 	return await postData('http://ip-api.com/json/'+ip);
 }
 
@@ -62,7 +62,7 @@ function sortOutDuplicateCitys(data){
 
 async function prepareLocation(ip){
 	let data = false;
-	if(ValidateIPaddress(ip)){
+	if(validateIPaddress(ip)){
 		let ipInDB = await checkIfIpInDB(ip);
 		if(!ipInDB){
 			let location = await getLocation(ip);
@@ -80,7 +80,7 @@ async function prepareLocation(ip){
 	}
 }
 
-function ValidateIPaddress(ipaddress) {  
+export function validateIPaddress(ipaddress) {  
 	if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipaddress)) {  
 		return (true)  
 	}
@@ -120,7 +120,6 @@ export function traceIP(ip){
 	if(!loading){
 		resetTrace();
 		loading = true;
-		//document.getElementById("status").style.visibility = "hidden";
 		updateLoadingAnimation();
 		var xhr = $.ajax({
 			url: ajaxPath,
@@ -165,7 +164,6 @@ function printErrorMessageHome(){
 	var elementsWrapper = document.querySelector("header .tracert-loading .success");
 	$(elementsWrapper).removeClass("fadeIn").addClass("fadeOut");
 	setTimeout(function() {
-		console.log("test1");
 		elementsWrapper.classList.remove("fadeOut");
 		elementsWrapper.classList.add("fadeIn");
 	}, 5000);
@@ -240,16 +238,10 @@ var firstLocation = true;
 function scrollToLocation() {
 	if (window.innerWidth < 991.98) {
 		var ele = $("header .trace-title")[0];
-		console.log($(ele).offset().top)
-		/*console.log(ele);
-		$([document.documentElement, document.body]).animate({
-			scrollTop: document.querySelector("header .sidebar").getBoundingClientRect().top
-		}, 1000);*/
 	}
 }
 
 function appendLocationText(location){
-	//console.log(location);
 	if(firstLocation){
 		repositionHeader();
 		scrollToLocation();
@@ -269,7 +261,7 @@ function appendLocationText(location){
 	firstLocation = false;
 }
 
-function cleanUpIP(ip){
+export function cleanUpIP(ip){
 	let traceIP = ip.split("#");
 	return /[^/]*$/.exec(traceIP[traceIP.length-1])[0];
 }

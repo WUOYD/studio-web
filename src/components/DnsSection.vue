@@ -11,7 +11,7 @@
             <div class="section1 panel">
                 <div class="text-wrapper">
                     <p class="text-big">A <span class="stroke">domain</span> consists two parts: the domain name and the top level domain<span class="blue">.</span></p>
-                   <p>The domain name can be anything like your name or the name of a business. The top level domain (TLD) discribes the use of the domain. It can be a country specific TLD like .fr for france or a generic TLD like .com short for commercial which is used by businesses.</p>
+                   <p>The domain name can be anything like your name or the name of a business. The top level domain (TLD) describes the use of the domain. It can be a country specific TLD like .fr for France or a generic TLD like .com short for commercial which is used by businesses.</p>
                 </div>
             </div>
             <div class="section2 panel row-2">
@@ -24,7 +24,7 @@
             <div class="section4 panel row-2">
                 <div class="text-wrapper">
                     <p class="text-big">Every Domain has assinged an IP adress as its <span class="stroke">alias</span><span class="blue">.</span></p>
-                    <p>It’s much easier remembering the adress of a service like Google, when you don’t have to know a long IP adress and instead can use google.com.</p>
+                    <p>It is much easier remembering the adress of a service like Google, when you do not have to know a long IP adress and instead can use google.com.</p>
                 </div>
             </div>
             <div class="section5 panel row-2">
@@ -70,6 +70,27 @@
         justify-content: flex-start;
         align-items: center;
         flex-direction: column;
+    }
+
+    .section5 .setDomain::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 100%;
+        height: 90%;
+        width: 1px;
+        background-color: #43f1ff;
+    }
+
+    @media only screen and (max-width: 991.98px) {
+        .section5 .setDomain::after {
+            height: 70%;
+        }
+
+        .section5 .text-wrapper {
+            margin-left: unset;
+        }
     }
 
 </style>

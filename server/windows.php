@@ -50,7 +50,7 @@ function traceIP($ip){
 		$first = true;
 		$play = true;
 
-		$proc = popen("tracert ". $ip, 'r');
+		$proc = popen("tracert ".$ip, 'r');
 		while (!feof($proc) && $play) {
 			$o = fread($proc, 4096);
 			echo $o;

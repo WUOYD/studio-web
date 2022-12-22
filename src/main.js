@@ -59,10 +59,13 @@ window.onload = function(){
 
 	document.querySelector("#explore-button").addEventListener("click", function(){
 		if(firstShowContent){
+			document.querySelector("main").style.paddingTop = getHeaderPadding() + "px";
 			document.querySelector("main").style.display = 'block';
 			document.querySelector(".hamburger").style.display = 'block';
 			document.querySelector("footer").style.display = 'block';
-			gsapSliders();
+			if(window.innerWidth > 991){
+				gsapSliders();
+			}
 			loadScrollToListener();
 			firstShowContent = false;
 		}
@@ -98,11 +101,41 @@ window.onload = function(){
 		}
 	}
 
+	getSidebarWidth();
+	getHeaderPadding();
+
+    function getSidebarWidth() {
+    	if(window.innerWidth < 576){
+        	return "100vw";
+        }else if(window.innerWidth < 992){
+        	return "60vw";
+        }else if(window.innerWidth < 1200){
+        	return "45vw";
+        }else{
+        	return "30vw";
+        }
+    }
+
+    function getHeaderPadding() {
+    	if(window.innerWidth < 576){
+        	return document.querySelector(".trace-section").offsetHeight
+        }else if(window.innerWidth < 768){
+        	return window.innerHeight / 100 * 110 +  document.querySelector(".trace-section").offsetHeight 
+        }else if(window.innerWidth < 992){
+        	return window.innerHeight / 100 * 150 +  document.querySelector(".trace-section").offsetHeight 
+        }else{
+        	return 0;
+        }
+    }
+
+
+    window.addEventListener('resize', getHeaderPadding);
+
 	function openMenu(body){
 		if(!$(body).hasClass("menu-open")){
 			$(body).addClass("menu-open");
 			$("aside").animate({
-				width: "30vw",
+				width: getSidebarWidth(),
 			},200);
 			setTimeout(function() {
 				$("aside .sidebar").animate({

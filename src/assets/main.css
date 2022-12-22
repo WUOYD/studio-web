@@ -15,6 +15,11 @@ body {
     font-weight: 500;
 }
 
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #43f2ff #000;
+}
+
 main {
     display: none;
 }
@@ -195,7 +200,8 @@ section .panel:last-of-type {
     position: relative;
 }
 
-.text-wrapper p {
+.text-wrapper p,
+.text-wrapper p:not(.text-big) > span {
     font-size: 36px;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
@@ -215,7 +221,7 @@ section .panel:last-of-type {
 }
 
 .special-text > div:nth-of-type(2)::after {
-    content: "name";
+    content: "domain";
 }
 
 .special-text > div:nth-of-type(3)::after {
@@ -562,6 +568,69 @@ aside nav {
     #globe-wrapper.globeTop {
         top: 250vh !important;
     }
+
+    section,
+    section.routing-section {
+        padding: unset;
+        height: auto;
+    }
+
+    section .text-big,
+    section .text-wrapper div#ip-adress {
+        font-size: 50px;
+    }
+
+    .text-wrapper p:not(.text-big),
+    .text-wrapper p:not(.text-big) > span {
+        font-size: 30px;
+    }
+
+    section > .wrapper {
+        flex-direction: column;
+    }
+
+    section .panel {
+        padding: 60px 0;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        width: 100% !important;
+        margin-left: unset !important;
+        margin-right: unset !important;
+        background-color: unset;
+        flex-direction: column;
+    }
+
+    .title-section .titel-wrapper {
+        align-items:flex-start;
+    }
+
+    section .panel:not(:first-of-type)::before,
+    section .panel:nth-of-type(2)::before{
+        background: black !important;
+        left: -30px;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        height: 100%;
+        width: calc(100% + 60px);
+    }
+
+    section .panel::after {
+        background: unset !important;
+        z-index: -1 !important;
+    }
+
+    section .panel .text-wrapper {
+        width: 100%;
+    }
+
+    section .panel .text-wrapper.special-text {
+        padding-bottom: 60px;
+    }
+
+    #particles-js {
+        z-index: -2;
+    }
 }
 
 @media only screen and (max-width: 975px) {
@@ -581,11 +650,31 @@ aside nav {
 }
 
 @media only screen and (max-width: 499.98px) {
-    
+    section .panel {
+        padding: 40px 0;
+    }
+
+    section .text-big {
+        margin-bottom: 15px;
+    }
+
+    .title-section h2 {
+        font-size: 40px;
+    }
+
+    section .text-big, section .text-wrapper div#ip-adress {
+        font-size: 30px;
+    }
+
+    .text-wrapper p:not(.text-big), .text-wrapper p:not(.text-big) > span {
+        font-size: 20px;
+    }
 }
 
 @media only screen and (max-width: 399.98px) {
-
+    #app {
+        padding: 0 15px;
+    }
 }
 
 @media only screen and (max-width: 349.98px) {

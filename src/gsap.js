@@ -9,8 +9,13 @@ export function doGSAP(){
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
     function checkMediaQuery() {
-        if (window.innerWidth < 991.98) {
+        if (window.innerWidth < 768) {
+            
+        }
+        else if (window.innerWidth < 992) {
+            headerAnimation(200, 100);
         }else{
+            headerAnimation(290, 145);
             initGlobeGSAP();
         }
     }
@@ -21,29 +26,28 @@ export function doGSAP(){
 
     /* ---------- Header ---------- */
 
-    let headerWrapper =  document.querySelector('header .header-wrapper');
-    const tl = gsap.timeline({
-        scrollTrigger:{
-            trigger: headerWrapper,
-            pin: true,
-            scrub: true,
-            start: () => "top 0",
-            end: () => '+=100%',
-            markers: false,
-        }
-    });
+    function headerAnimation(x1, x2, x3 = 0){
 
-    tl.addLabel('initial');
-    tl.to(headerWrapper.querySelectorAll('header div.header-wrapper div.header-item:not(.sp)'), {
-        ease: 'none',
-        x: 0,
-        stagger: 0.0
-    }, 'initial');
-    tl.to(headerWrapper.querySelectorAll('header div.header-wrapper div.header-item.sp'), {
-        ease: 'none',
-        x: 0,
-        stagger: 0.0
-    }, 'initial');
+        document.querySelector("header .web").style.transform = "translate("+ x3 +"," + -2 * document.querySelector("header .outline").offsetHeight + "px)";
+        document.querySelector("header .wide").style.transform = "translate("+ x3 +"," + -1 * document.querySelector("header .outline").offsetHeight + "px)";
+
+        let tl= gsap.timeline()
+        .to(".wide",{opacity:1, delay:0.3},"<")
+        .to(".world",{opacity:1, duration:1},"<")
+        .to(".web",{x: x1, duration:2},"<")
+        .to(".wide",{y: 0, duration:2},"<")
+        .to(".web",{y: 0, duration:2},"<")
+        .to(".wide",{x: x2, duration:2},"<")    
+
+        ScrollTrigger.create({
+            trigger: ".header-wrapper",
+            start:"top top",
+            end:"bottom top",
+            scrub:1,
+            animation:tl,
+            pin: true,
+        })
+    }
 
     function initGlobeGSAP() {
         tlGlobe = gsap.timeline({
@@ -53,7 +57,6 @@ export function doGSAP(){
                 scrub: 0.3,
                 start: () => "0% 0",
                 end: () => '+=100%',
-                markers: false,
             }
         });
     }
